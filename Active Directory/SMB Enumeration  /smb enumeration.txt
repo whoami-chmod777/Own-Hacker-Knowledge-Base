@@ -1,6 +1,7 @@
 -- SMBMap --
 
 smbmap -H 10.10.10.100
+smbmap -U SVC_TGS -p <password> -H 10.10.10.100
 
 
 -- SMBClient --
