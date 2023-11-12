@@ -1,0 +1,7 @@
+# Execute a fully interactive shell on remote Windows machine
+impacket-psexec active.htb/Administrator@10.10.10.100
+
+# Basic Usage
+./psexec.py <target_ip> -u <username> -p <password> "<command>"
+
+
