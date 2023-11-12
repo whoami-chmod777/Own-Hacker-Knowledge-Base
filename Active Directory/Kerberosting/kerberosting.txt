@@ -1,3 +1,5 @@
+Kerberos is a network authentication protocol that allows entities to prove their identity over a non-secure network in a secure way. Kerberoasting is a technique used in penetration testing and security assessments to exploit vulnerabilities in the Kerberos authentication system. The goal is to obtain Kerberos Ticket Granting Ticket (TGT) hashes for service accounts and crack them offline to obtain plaintext passwords.
+
 impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS -no-pass
 impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS:<password>
 
