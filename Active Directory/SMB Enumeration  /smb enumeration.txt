@@ -1,0 +1,11 @@
+-- SMBMap --
+
+smbmap -H 10.10.10.100
+
+
+-- SMBClient --
+
+smbclient //10.10.10.100/Replication
+smbclient //10.10.10.100/Replication -c 'recurse;ls'
+
+> get Groups.xml
