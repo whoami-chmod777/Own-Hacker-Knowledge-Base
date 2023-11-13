@@ -1,1 +1,81 @@
+**System Information **
+- systeminfo: Display detailed information about the computer's configuration.
+- hostname: Show the computer's name.
 
+**User Information **
+- whoami: Display the current username.
+- net user: List user accounts on the system.
+
+**Running Processes **
+- tasklist: Show a list of running processes.
+- tasklist /v: Display detailed information about running processes.
+
+**Services **
+- net start: List all running services.
+- sc query: Display information about a service.
+
+**Network Information **
+- ipconfig /all: Display detailed IP configuration.
+- netstat -ano: Show active network connections and listening ports.
+
+**Firewall Configuration **
+- netsh advfirewall show allprofiles: Display firewall settings.
+- netsh advfirewall firewall show rule name=all: Show all firewall rules.
+
+**Logged-in Users **
+- qwinsta: Display information about remote desktop sessions.
+- query user: Show information about users on a terminal server.
+
+**File System **
+- dir: List files and directories in the current directory.
+- dir /s: List files recursively in subdirectories.
+
+**Registry **
+- reg query HKLM\Software /s: Search for a specific key in the registry.
+- reg query HKCU: Display user-specific registry entries.
+
+**Event Viewer **
+- eventvwr.msc: Open the Event Viewer.
+- wevtutil qe Security /c:1 /rd:true /f:text: Query Security events.
+
+**Disk Information **
+- wmic diskdrive: Display information about disk drives.
+- fsutil fsinfo drives: Show available drives.
+
+**System Logs **
+- get-eventlog -logname system: Get system events.
+- get-eventlog -logname security: Get security events.
+
+**Check for Rootkits **
+- chkdsk: Check disk for errors.
+- sfc /scannow: System File Checker for integrity violations.
+
+**Task Scheduler **
+- schtasks /query /fo LIST /v: List scheduled tasks.
+
+**Network Configuration **
+- netsh interface show interface: Display network interfaces.
+- netsh wlan show profiles: Show wireless network profiles.
+
+**USB Devices **
+- wmic logicaldisk where drivetype=2: List removable drives.
+
+**Active Directory (if applicable) **
+- net user /domain: List domain users.
+- net group "Domain Admins" /domain: Show members of a domain group.
+
+**System File Changes **
+- sfc /scannow: Check and repair system files.
+- wmic process list brief: Check running processes.
+
+**PowerShell Logging (if enabled) **
+- Get-WinEvent -LogName Microsoft-Windows-PowerShell/Operational: Check PowerShell events.
+
+**Sysinternals Tools (downloadable) **
+- Use tools like PsExec, Process Explorer, and Autoruns for in-depth analysis.
+
+
+
+
+
+Remember to analyze the output of these commands carefully and consider additional tools and techniques based on the specific incident and investigation requirements. Always follow proper incident response procedures and consult with your organization's security policies.
