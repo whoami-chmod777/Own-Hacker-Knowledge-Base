@@ -1,0 +1,115 @@
+# HOST DISCOVERY
+-sL: List Scan - simply list targets to scan
+-sn: Ping Scan - disable port scan
+-Pn: Treat all hosts as online -- skip host discovery
+-PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports
+-PE/PP/PM: ICMP echo, timestamp, and netmask request discovery probes
+-PO[protocol list]: IP Protocol Ping
+-n/-R: Never do DNS resolution/Always resolve [default: sometimes]
+--dns-servers <serv1[,serv2],...>: Specify custom DNS servers
+--system-dns: Use OS's DNS resolver
+--traceroute: Trace hop path to each host
+
+
+# Ping Scan - Disable Port Scan
+nmap -sn 192.168.199.1/24
+nmap -sn 192.168.199.1-150
+nmap -sn 192.168.199.1, 192.168.199.38
+
+# Exclude Hosts/Networks
+nmap -sn 192.168.199.1/24 --exclude 192.168.199.1
+nmap -sn 192.168.199.1/24 --excludefile hosts.tx
+
+# Scan on specific Devices
+nmap -sn -iL hosts.txt
+
+# Don't Ping Scan
+nmap -Pn 192.168.199.1
+nmap -Pn 192.168.199.1.1-100 --excludefile hosts.txt
+nmap -Pn 192.168.199.1/24 --excludefile hosts.txt
+
+
+# TCP SYN Ping Scan
+nmap -PS 192.168.199.1/24
+nmap -PS -p21,23,80 192.168.199.1/24
+
+Wireshark
+tcp.flags == 0x012
+
+[ SYN, ACK ] --> device is online and the port is open
+[ RST, ACK ] --> device in offline and the port close
+
+
+# TCP ACK Ping Scan
+nmap -sn -PA nmap.scanme.org
+nmap -Pn -sn -PA nmap.scanme.org
+nmap -Pn -sn -PA -n nmap.scanme.org
+
+Wireshark
+tcp.flags == 0x010
+
+[ ACK ] --> device is online and the port is open
+[ RST, ACK ] --> device in offline and the port close
+
+
+# UDP Ping Scan
+sudo nmap -sn -PU nmap.scanme.org
+sudo nmap -sU -p1-1000 192.168.199.1
+
+Wireshark
+udp.dstport == 77
+
+Type: 3 (Destination unreachable)
+Code: 3 (Port unreachable)
+
+If we don't get response it means the port is open
+Destination unreachable (Port unreachable) --> port is close
+
+
+# ARP Ping Scan
+nmap -PR 192.168.199.1/24
+nmap -sP -PR 192.168.1/24
+
+Wireshark
+Address Resolution Protocol (reply)
+
+
+# ICMP ECHO Ping Scan
+sudo nmap -PE nmap.scanme.org
+
+Wireshark
+ICMP 42 Echo (ping) request  
+ICMP 60 Echo (ping) reply
+
+
+# ICMP Timestamp Ping Scan
+nmap -PP nmap.scanme.org
+
+Wireshark
+ICMP 54 Timestamp request  
+ICMP 60 Timestamp reply
+
+
+# IP Protocol Ping Scan
+sudo nmap -PO1 nmap.scanme.org
+sudo nmap -PO2 nmap.scanme.org
+
+Wireshark
+ICMP 54 Timestamp request  
+ICMP 60 Timestamp reply
+
+If no protocols are specified, the default is to send multiple IP packets for 
+- ICMP (protocol 1)
+- IGMP (protocol 2)
+- IP-in-IP (protocol 4)
+- TCP (protocol 6)
+- UDP (protocol 17)
+- SCTP (protocol 132)
+
+
+# Traceroute Option
+nmap -sn nmap.scanme.org --traceroute
+
+
+# Reverse DNS Resolution Option
+nmap -R 45.33.32.156
