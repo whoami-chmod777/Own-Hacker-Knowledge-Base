@@ -1,0 +1,23 @@
+In penetration testing and security assessments, it's common to scan a subset of UDP ports to identify potential vulnerabilities. The choice of which UDP ports to scan depends on the specific goals and target system. Common UDP ports to scan during penetration testing include:
+
+1. **53 (DNS)**: Domain Name System is frequently scanned for misconfigured DNS servers, which might allow DNS amplification attacks.
+2. **67, 68 (DHCP)**: Dynamic Host Configuration Protocol ports are scanned to find open DHCP servers, which may reveal information about the network configuration.
+3. **69 (TFTP)**: Trivial File Transfer Protocol is often scanned to look for open TFTP servers, which can be exploited to upload or download files.
+4. **161, 162 (SNMP)**: Simple Network Management Protocol ports are scanned for SNMP services, which may contain valuable information about the network.
+5. **137-139 (NetBIOS)**: These ports are commonly associated with NetBIOS services and can be scanned to identify Windows-based systems.
+6. **161, 162 (SNMP)**: SNMP ports are scanned to check for SNMP services that may reveal network and device information.
+7. **514 (Syslog)**: Syslog ports are scanned to identify open syslog servers, which can reveal system logs.
+8. **161, 162 (SNMP)**: SNMP ports are scanned to check for SNMP services that may reveal network and device information.
+9. **123 (NTP)**: Network Time Protocol is scanned to find open NTP servers that can be exploited for reflection attacks.
+10. **111 (RPC)**: Remote Procedure Call ports may be scanned to identify RPC services, which could be vulnerable to various attacks.
+
+
+#The Ports as a list
+
+53 (DNS)
+67, 68 (DHCP)
+69 (TFTP)
+161, 162 (SNMP)
+137-139 (NetBIOS)
+161, 162 (SNMP)
+
