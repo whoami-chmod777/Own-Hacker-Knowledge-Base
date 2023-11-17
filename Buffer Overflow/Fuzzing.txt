@@ -1,5 +1,4 @@
 The following Python script can be modified and used to fuzz remote entry points to an application. It will send increasingly long buffer strings in the hope that one eventually crashes the application.
-
 Check that the EIP register has been overwritten by A's (\x41). Make a note of any other registers that have either been overwritten, or are pointing to space in memory which has been overwritten.
 
 import socket, time, sys
