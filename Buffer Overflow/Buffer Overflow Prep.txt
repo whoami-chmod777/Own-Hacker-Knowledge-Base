@@ -1,4 +1,0 @@
-Buffer Overflow Prep
-Practice stack based buffer overflows!
-
-https://tryhackme.com/room/bufferoverflowprep
