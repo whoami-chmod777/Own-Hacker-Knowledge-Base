@@ -1,1 +1,15 @@
 
+# Wappalyzer
+https://www.wappalyzer.com/
+
+# built with
+https://builtwith.com/
+
+# Security Headers
+https://securityheaders.com/
+
+# WhatRuns
+https://www.whatruns.com/
+
+# DNS Dumpster
+https://dnsdumpster.com/
