@@ -1,1 +1,3 @@
 
+$ sublist3r -h
+$ sublist3r -d vulnweb.com
