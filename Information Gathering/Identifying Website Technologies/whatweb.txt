@@ -1,0 +1,35 @@
+
+# Basic Syntax
+whatweb [options] [target(s)]
+
+# Common Options:
+-h, --help: Show help message and exit.
+-v, --version: Show version information and exit.
+-a, --user-agent: Set a custom user agent string.
+-U, --update-verbose: Update plugins and show verbose output.
+
+
+# Scan a Single Website:
+whatweb example.com
+
+# Scan Multiple Websites:
+whatweb example.com example.net
+
+# Save Output to a File:
+whatweb example.com -o output.txt
+
+# Custom User Agent:
+whatweb example.com -a "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+# Update Plugins:
+whatweb -U
+
+Output Legend:
++: Positive match for a plugin.
+-: Negative match for a plugin.
+?: No match for a plugin.
+
+# Additional Tips:
+Use the --quiet option to suppress banner lines.
+Use the --color option for colored output.
+Use the -v option for verbose output.
