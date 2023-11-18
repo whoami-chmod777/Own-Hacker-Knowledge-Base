@@ -1,1 +1,30 @@
 
+# Basic Usage
+cat domains.txt | httprobe
+
+# Save Output to a File
+cat domains.txt | httprobe > output.txt
+
+# Specify HTTP/HTTPS Protocols
+cat domains.txt | httprobe -p http
+cat domains.txt | httprobe -p https
+
+# Output Unique Hosts
+cat domains.txt | httprobe -u
+
+# Specify Ports
+cat domains.txt | httprobe -p http -s -t 3000
+
+
+
+
+$ cat recon/example/domains.txt
+example.comexample.eduexample.net
+
+$ cat recon/example/domains.txt | httprobe
+http://example.com
+http://example.net
+http://example.edu
+https://example.com
+https://example.edu
+https://example.net
