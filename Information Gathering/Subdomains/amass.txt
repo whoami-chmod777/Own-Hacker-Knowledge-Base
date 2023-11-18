@@ -1,1 +1,42 @@
 
+# Discover subdomains using passive techniques
+amass enum -d example.com
+
+# Enumerate subdomains actively (more aggressive)
+amass enum -active -d example.com
+
+# Combine multiple domains from a file
+amass enum -dL domains.txt
+
+# Enumerate subdomains and save results to a file
+amass enum -d example.com -o output.txt
+
+# Show all discovered subdomains
+amass enum -d example.com -oA output
+
+# Perform ASN discovery for the target
+amass intel -asn AS13335
+
+# Output the discovered names in JSON format
+amass enum -d example.com -json output.json
+
+# Use specific DNS resolvers (comma-separated list)
+amass enum -d example.com -r 8.8.8.8,1.1.1.1
+
+# Brute-force subdomains with a wordlist
+amass enum -d example.com -w wordlist.txt
+
+# Exclude subdomains from the enumeration
+amass enum -d example.com -exclude excluded.txt
+
+# Discover additional information about subdomains
+amass intel -d example.com
+
+# Perform active DNS enumeration and bruteforcing
+amass enum -active -d example.com -brute
+
+# DNS enumeration
+amass enum -v -src -ip -brute -min-for-recursive 2 -share -d example.com
+
+# Open Source Intelligence
+amass intel -d owasp.org -whois
