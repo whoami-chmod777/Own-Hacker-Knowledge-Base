@@ -1,3 +1,38 @@
 
-$ sublist3r -h
-$ sublist3r -d vulnweb.com
+Sublist3r is a Python tool designed to enumerate subdomains of websites. 
+
+# List all the basic options and switches
+sublist3r -h
+
+# Enumerate subdomains of specific domain
+sublist3r -d vulnweb.com
+
+#Enumerate subdomains for multiple domains (comma-separated)
+python sublist3r.py -d example.com,example.org
+
+# Enumerate subdomains of specific domain and show only subdomains which have open ports 80 and 443
+sublist3r.py -d example.com -p 80,443
+
+# Enumerate subdomains of specific domain and show the results in realtime
+sublist3r.py -v -d example.com
+
+# Enumerate subdomains and enable the bruteforce module
+sublist3r.py -b -d example.com
+
+# Bruteforce Subdomains
+python sublist3r.py -d example.com -b -v -p wordlist.txt
+
+# Enumerate subdomains and use specific engines such Google, Yahoo and Virustotal engines
+sublist3r.py -e google,yahoo,virustotal -d example.com
+
+# Save results to a file
+python sublist3r.py -d example.com -o output.txt
+
+#Specify DNS Servers
+python sublist3r.py -d example.com -t 8.8.8.8,8.8.4.4
+
+
+
+
+
+
