@@ -1,0 +1,8 @@
+
+http://10.10.10.48/
+http://10.10.10.48/robots.txt
+http://10.10.10.48/admin
+
+https://www.domain.com/blog/artical/search?param=42
+https://sub.domain.com/blog/artical/search?param=42
+https://www.domain.com/blog/artical/search?url=42
