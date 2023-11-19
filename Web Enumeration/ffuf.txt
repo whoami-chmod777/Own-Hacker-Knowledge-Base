@@ -1,0 +1,106 @@
+Cheat sheet for FFuf a versatile web fuzzing tool commonly used in penetration testing.
+
+Remember to replace placeholders like `http://target/FUZZ` with your target URL and the appropriate wordlist file. 
+FFuf is a powerful tool for discovering hidden resources and vulnerabilities in web applications during penetration testing, and this cheat sheet should help you get started.
+
+
+FFuf Cheat Sheet for Penetration Testing
+----------------------------------------
+
+#Help
+$ ffuf -h
+
+#Basic Usage
+$ ffuf -w wordlist.txt -u http://target/FUZZ
+$ ffuf -w wordlist.txt -u http://target:3000/FUZZ 
+
+#Specify Extensions
+$ ffuf -w wordlist.txt -u http://target/FUZZ -e .php,.txt
+
+#Specify Multiple Extensions
+$ ffuf -w wordlist.txt -u http://target/FUZZ -e .php -e .txt
+
+#Set Request Method (GET by default)
+$ ffuf -w wordlist.txt -u http://target/FUZZ -X POST
+
+#Specify Headers
+$ ffuf -w wordlist.txt -u http://target/FUZZ -H "Authorization: Bearer <token>"
+
+#Follow Redirects
+$ ffuf -w wordlist.txt -u http://target/FUZZ -r
+
+#Set Delay Between Requests (milliseconds)
+$ ffuf -w wordlist.txt -u http://target/FUZZ -p 100
+
+#Match Keywords in Response
+$ ffuf -w wordlist.txt -u http://target/FUZZ -fc 200,301,302 -fw "Forbidden"
+
+#Match Keywords (Negative)
+$ ffuf -w wordlist.txt -u http://target/FUZZ -mc 200 -ms "Not Found"
+
+#Brute-Force Cookies
+$ ffuf -w wordlist.txt -u http://target/FUZZ -C "name=value"
+
+#Set Custom Data in Request
+$ ffuf -w wordlist.txt -u http://target/FUZZ -d "param=value&another=value"
+
+#Enable Verbosity
+$ ffuf -w wordlist.txt -u http://target/FUZZ -v
+
+#Save Output to a File
+$ ffuf -w wordlist.txt -u http://target/FUZZ -o output.txt
+
+#Load Cookies from a File
+$ ffuf -w wordlist.txt -u http://target/FUZZ -b cookies.txt
+
+#Generate URLs with Number Ranges
+$ ffuf -w numbers.txt -u http://target/FUZZ -r -s 1 -e 100
+
+#Ignore SSL Certificate Errors
+$ ffuf -w wordlist.txt -u https://target/FUZZ -k
+
+#Use Multiple Threads
+$ ffuf -w wordlist.txt -u http://target/FUZZ -t 10
+
+#Configure Output Format (e.g., JSON)
+$ ffuf -w wordlist.txt -u http://target/FUZZ -of json
+
+#Specify Timeout for Requests (in seconds)
+$ ffuf -w wordlist.txt -u http://target/FUZZ -timeout 10
+
+#Save Request/Response to a Directory
+$ ffuf -w wordlist.txt -u http://target/FUZZ -oD directory/
+
+#Extract Links from Responses
+$ ffuf -w wordlist.txt -u http://target/FUZZ -sf
+
+#Fuzz URL Parameters
+$ ffuf -w wordlist.txt -u "http://target/?param1=FUZZ&param2=FUZZ2"
+
+#Follow Subdomains
+$ ffuf -w subdomains.txt -u "http://FUZZ.target.com"
+
+#Number of seconds of `delay` between requests
+ffuf -w /usr/share/wordlist/dirb/common.txt -u http://tenet.htb/FUZZ -fc 403 -p 1
+
+
+-- Advanced Cheat Sheet --
+
+#Enumerate URLs
+ffuf -u http://localhost:3000/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/big.txt
+
+#Enumerate Files
+ffuf -u http://localhost:3000/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-words-lowercase.txt -e .php,.html,.txt
+ffuf -u http://localhost:3000/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/raft-medium-words-lowercase.txt -e .php,.html,.txt -mc 200
+
+#Enumerate Sub Domain
+ffuf -u http://FUZZ.mydomain.com -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt
+
+#Find Usernames
+ffuf -w /usr/share/SecLists/Usernames/top-usernames-shortlist.txt -X POST -d "username=FUZZ&&password=x" -H "Content-Type: application/x-www-form-urlencoded" -u http://mydomain.com/login -mr "username already exists"
+
+#Brute Forcing
+ffuf -w usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/10-million-password-list-top-100.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u http://localhost:3000/login -fc 200
+
+
+
