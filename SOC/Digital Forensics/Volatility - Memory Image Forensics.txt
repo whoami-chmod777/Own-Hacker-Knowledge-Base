@@ -1,1 +1,53 @@
 
+# What is the SHA1 hash of Triage-Memory.mem (memory dump)
+sha1sum Triage-Memory.mem 
+c95e8cc8c946f95a109ea8e47a6800de10a27abd  Triage-Memory.mem
+
+# What volatility profile is the most appropriate for this machine? (ex: Win10x86_14393)
+volatility -f Triage-Memory.mem imageinfo
+
+# What was the process ID of notepad.exe
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 pslist
+
+# Name the child process of wscript.exe
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 pslist
+
+# What was the IP address of the machine at the time the RAM dump was created
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 netscan
+
+# Based on the answer regarding the infected PID, can you determine the IP of the attacker
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 netscan
+
+# How many processes are associated with VCRUNTIME140.dll
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 dlllist | grep "VCRUNTIME140.dll"
+
+# After dumping the infected process, what is its md5 hash
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 procdump -D 3496/ -p 3496
+
+md5sum executable.3496.exe 
+690ea20bc3bdfb328e23005d9a80c290  executable.3496.exe
+
+# What is the LM hash of Bob’s account
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 hashdump
+
+# What memory protection constants does the VAD node at 0xfffffa800577ba10 have
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 vadinfo | grep "0xfffffa800577ba10" -B 10 -A 10
+
+# What memory protection did the VAD starting at 0x00000000033c0000 and ending at 0x00000000033dffff have
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 vadinfo | grep "0x00000000033c0000" -B 10 -A 10
+
+# There was a VBS script that ran on the machine. What is the name of the script? (submit without file extension)
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 cmdline | grep ".vbs"
+
+# An application was run at 2019–03–07 23:06:58 UTC. What is the name of the program? (Include extension)
+volatility --info
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 shimcache | grep "2019-03-07"
+
+# What was written in notepad.exe at the time when the memory dump was captured
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 memdump -p 3032 -D 3032/
+strings -e l 3032/3032.dmp | grep "flag"
+
+# What is the short name of the file at file record 59045
+volatility -f Triage-Memory.mem --profile=Win7SP1x64 mftparser | grep "59045" -B 30 -A 30
+
+
