@@ -2,7 +2,10 @@
 # Wappalyzer
 https://www.wappalyzer.com/
 
-# built with
+# W3Techs
+https://w3techs.com/sites
+
+# BuiltWith
 https://builtwith.com/
 
 # Security Headers
@@ -13,3 +16,8 @@ https://www.whatruns.com/
 
 # DNS Dumpster
 https://dnsdumpster.com/
+
+# React Developer Tools
+https://addons.mozilla.org/en-US/firefox/addon/react-devtools/
+
+Inspect (Q) --> Debugger
