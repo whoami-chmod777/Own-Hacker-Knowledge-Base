@@ -1,1 +1,47 @@
+The "waybackurls" tool is a command-line utility that helps you fetch all the URLs that the Wayback Machine has archived for a specific domain. This can be useful for discovering historical versions of a website or finding hidden or removed content.
 
+
+# Installation
+go get github.com/tomnomnom/waybackurls
+
+# Fetch the historical versions from the Wayback Machine
+cat example.txt | ./waybackurls > example.urls
+
+# Fetch URLs for a Single Domain
+waybackurls example.com
+
+# Output to a File
+waybackurls example.com > urls.txt
+
+# Pipe Output to Other Tools
+waybackurls example.com | grep admin
+
+# Include Subdomains
+waybackurls -no-subs=false example.com
+
+# Filter by Status Code
+waybackurls -status-code 200 example.com
+
+# Include Potentially Interesting Path
+waybackurls -interesting example.com
+
+# Recursive Fetching
+waybackurls -depth 3 example.com
+
+# Custom User-Agent
+waybackurls -ua "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" example.com
+
+# Specify Wayback Machine API URL
+waybackurls -api https://web.archive.org/cdx/search?url= example.com
+
+# Extract JavaScript Endpoints
+waybackurls -extract-js example.com
+
+# Use with httprobe for Live Hosts
+waybackurls example.com | httprobe
+
+# Output in JSON Format
+waybackurls -json example.com
+
+
+https://github.com/tomnomnom/waybackurls
