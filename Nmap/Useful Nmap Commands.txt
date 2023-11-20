@@ -1,5 +1,8 @@
 # Redteam Pentesting
 
+nmap -p 0- -sV -sS -T4 192.168.10.
+
+
 # PhD Security
 nmap -A -p- -Pn 192.168.199.1 -v
 
