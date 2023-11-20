@@ -8,6 +8,7 @@ cat domains.txt | httprobe > output.txt
 # Specify HTTP/HTTPS Protocols
 cat domains.txt | httprobe -p http
 cat domains.txt | httprobe -p https
+cat domains.txt | httprobe --prefer-https
 
 # Output Unique Hosts
 cat domains.txt | httprobe -u
@@ -15,6 +16,27 @@ cat domains.txt | httprobe -u
 # Specify Ports
 cat domains.txt | httprobe -p http -s -t 3000
 
+# Skipping Default Probes
+cat domains.txt | httprobe -s -p https:8443
+
+# Extra Probes
+cat domains.txt | httprobe -p http:81 -p https:8443
+
+# Concurrency
+cat domains.txt | httprobe -c 50
+
+# Timeout
+cat domains.txt | httprobe -t 20000
+
+# Docker
+docker build -t httprobe .
+cat domains.txt | docker run -i httprobe <args>
+
+# Output Unique Hosts
+cat domains.txt | httprobe -u
+
+# Save Output to a File
+cat domains.txt | httprobe > output.txt
 
 
 
@@ -28,3 +50,7 @@ http://example.edu
 https://example.com
 https://example.edu
 https://example.net
+
+...
+...
+...
