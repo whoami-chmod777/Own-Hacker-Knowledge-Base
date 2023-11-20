@@ -7,7 +7,7 @@
 
 # Hunt for Process Injection
 
-$strings
+# strings
 
 # Listing Processes 
 
