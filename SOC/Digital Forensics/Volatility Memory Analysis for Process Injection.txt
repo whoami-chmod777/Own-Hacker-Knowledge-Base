@@ -1,1 +1,30 @@
 
+# Volatility’s Imageinfo
+
+# Hidden Process
+
+# Network Connections
+
+# Hunt for Process Injection
+
+$strings
+
+# Listing Processes 
+
+# Currently Active Connections
+
+# Outbound Connections
+
+# Inbound Connections
+
+# Find Injected Code Inside the Processes Memory
+
+# Use Apihooks on Specifically PID
+
+# Retrieve Information about API Calls made by the Code
+
+# Look at the Handles used by a Process
+
+# Dump Out Memory Section for Further Analysis
+
+# Get a hold of a File in Memory
