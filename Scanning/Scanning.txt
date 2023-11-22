@@ -1,0 +1,46 @@
+-- Scanning Tools --
+
+· nmap
+· 
+
+
+-- Installed Version --
+
+nmap --version
+nmap --help
+
+-- Common Scan Types --
+
+TCP SYN Scan (Stealth Scan)
+nmap -sS 10.10.10.20
+
+Full TCP Connect Scan
+nmap -sT 10.10.10.20
+nmap -T4 -A -p- 10.10.10.20
+nmap -sC -sV -p- -vv -oA full 10.10.10.20
+nmap -A -sV --script=default,vuln -p- --open -oA tcp_full_scan 10.10.10.20
+
+Full UDP Scan
+nmap -sU 10.10.10.20
+nmap -sU -sV -vv -oA quick_udp 10.10.10.20
+nmap -A -sV -sU --script=default,vuln --open -oA udp_full_scan 10.10.10.20
+
+Port Knock
+for x in 7000 8000 9000; do nmap -Pn --host_timeout 201 --max-retries 0 -p $x 1
+
+Scan all ports
+nmap -sS -A -T4 -p 1-65535 -oA nmapscan.txt 10.10.10.20
+
+OS Guess
+nmap -O -v -n 10.10.10.0/24 --osscan-guess
+
+
+-- Different Scan Types from Courses --
+
+nmap -T4 -p--A 192.168.160.143 
+nmap -sS 192.168.160.143 
+nmap -sU -T4 -p 192.168.160.146 
+nmap -sS -sU 192.168.160.143 
+nmap -T4 -A -p 53,80,443 192.168.160.143
+
+
