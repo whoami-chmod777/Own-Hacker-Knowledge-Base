@@ -17,7 +17,7 @@ hashcat -a [attack mode] -m 1800 [hashfile] [dictionary or mask]
 -r, --rules-file: Specify a rules file for modifying wordlists
 
 
-
+# Using hasfile and wordlist
 hashcat -m 1800 hash.txt /opt/rockyou.txt
 
 # Brute-force Attack
@@ -28,3 +28,14 @@ hashcat -a 0 -m 1800 hashfile wordlist.txt
 
 # Combination Attack
 hashcat -a 1 -m 1800 hashfile wordlist1.txt wordlist2.txt
+
+# Crack SHA-512crypt Hashes from File
+hashcat -m 1800 -a 0 hashes.txt /usr/share/wordlists/rockyou.txt
+
+# Crack Specific Hash from File
+hashcat -m 1800 -a 0 '$6$SaltTest$testpassword' /usr/share/wordlists/rockyou.txt
+
+
+
+
+
