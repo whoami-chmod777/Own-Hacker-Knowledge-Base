@@ -1,0 +1,14 @@
+
+# Target URL
+http://192.168.57.134:80/
+http://192.168.57.134:80/admin
+
+# Wordlist
+/usr/share/wordlist/dirbuster/
+/usr/share/wordlist/dirbuster/directory-list-2.3-small.txt
+
+# Dir to start with
+/ 
+
+# File Extension
+php, aps, apsx, txt, zip, rar, pdf, docx
