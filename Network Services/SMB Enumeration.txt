@@ -1,1 +1,87 @@
 
+-- Manually enumerate Windows Shares --
+
+C$
+D$
+ADMIN$
+IPC$
+PRINT$
+FAX$
+SYSVOL
+NETLOGON
+
+-- Mount a shared folder --
+mount -t cifs //x.x.x.x/share /mnt/share
+mount -t cifs -o "username=user,password=password" //x.x.x.x/share /mnt/share
+
+
+-- Metasploit --
+
+msf6 > search smb
+msf6 > use auxiliary/scanner/smb/smb_version
+msf6 auxiliary(scanner/smb/smb_version) > info
+msf6 auxiliary(scanner/smb/smb_version) > options
+msf6 auxiliary(scanner/smb/smb_version) > set RHOSTS 192.168.23.129
+msf6 auxiliary(scanner/smb/smb_version) > run
+
+msf6 > use auxiliary/scanner/smb/smb_lookupsid
+msf6 > set rhosts hostname.local
+msf6 > run
+
+
+-- nbtscan --
+
+nbtscan -r 192.168.0.1/24
+
+
+-- smbclient --
+
+# null session to connect to a windows share
+smbclient -U '%' -N \\\\<IP>\\<SHARE> 
+
+# authenticated session to connect to a windows share (you will be prompted for a password)
+smbclient -U '<USER>' \\\\<IP>\\<SHARE> 
+
+# returns NT_STATUS_BAD_NETWORK_NAME
+smbclient -U '%' -N \\\\192.168.0.24\\im_clearly_not_here 
+
+# returns NT_STATUS_ACCESS_DENIED or even gives you a session
+smbclient -U '%' -N \\\\192.168.0.24\\ADMIN$ 
+
+smbclient -L \\192.168.23.129\
+smbclient -L \\\\192.168.23.129\\
+smbclient \\\\192.168.23.129\\ADMIN$
+
+smbclient --no-pass -L //<IP> # Null user
+
+# If you omit the pwd, it will be prompted. With --pw-nt-hash, the pwd provided is the NT hash
+smbclient -U 'username[%passwd]' -L [--pw-nt-hash] //<IP> 
+
+smb: \> help
+smb: \> ls
+
+
+-- smbmap --
+# Null user
+smbmap -H <IP> [-P <PORT>]
+
+# Creds
+smbmap -u "username" -p "password" -H <IP> [-P <PORT>] 
+
+# Pass-the-Hash
+smbmap -u "username" -p "<NT>:<LM>" -H <IP> [-P <PORT>] 
+
+# Recursive list
+smbmap -R -u "username" -p "password" -H <IP> [-P <PORT>] 
+
+
+-- rpcclient --
+
+rpcclient -U "" -N 10.10.10.10
+enumdomusers
+enumdomgroups
+
+
+
+
+
