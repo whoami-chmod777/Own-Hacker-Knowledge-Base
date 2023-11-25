@@ -1,1 +1,30 @@
 
+
+
+
+-- SHA-512 Crypt (SHA-512 $6$) --
+
+# Example Hash
+$6$salt$hashedpassword
+
+# Hashcat Command
+hashcat -a [attack mode] -m 1800 [hashfile] [dictionary or mask]
+
+-a, --attack-mode: Specify the attack mode (0: Straight, 3: Brute-force, etc.)
+-m, --hash-type: Specify the hash type (1800 for SHA-512 Crypt)
+-o, --outfile: Specify the output file for recovered passwords
+-w, --workload-profile: Specify the workload profile (Use -w 3 for a balanced workload)
+-r, --rules-file: Specify a rules file for modifying wordlists
+
+
+
+hashcat -m 1800 hash.txt /opt/rockyou.txt
+
+# Brute-force Attack
+hashcat -a 3 -m 1800 hashfile ?a?a?a?a?a?a
+
+# Dictionary Attack
+hashcat -a 0 -m 1800 hashfile wordlist.txt
+
+# Combination Attack
+hashcat -a 1 -m 1800 hashfile wordlist1.txt wordlist2.txt
