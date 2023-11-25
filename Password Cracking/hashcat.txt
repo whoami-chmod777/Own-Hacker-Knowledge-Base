@@ -1,5 +1,4 @@
-
-
+Hashcat is a powerful password cracking tool that supports various hashing algorithms
 
 
 -- SHA-512 Crypt (SHA-512 $6$) --
