@@ -1,0 +1,42 @@
+John the Ripper is a widely used open-source password cracking tool. 
+
+
+# View help and options
+john --help
+
+# Create a password hash (for testing)
+john --test
+
+# Benchmark performance
+john --test --format=FORMAT
+
+# Specifying a format (e.g., hashed password format)
+john --format=FORMAT password_file
+
+# Wordlist Mode
+john --wordlist=wordlist.txt password_file
+
+# MD5 Format
+john --format=raw-md5 password_file
+
+# SHA-256 Format
+john --format=sha256crypt password_file
+
+# Show cracked passwords
+john --show password_file
+
+# Specify cracking method
+john --force --format=FORMAT password_file
+
+# Crack SHA-512crypt Hashes from File
+john --format=sha512crypt hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
+
+# Crack SHA-512crypt Hashes with Default Format
+john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+
+# Crack SHA-512crypt Hashes from File
+john --format=sha512crypt hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
+
+# Crack SHA-512crypt Hashes with Default Format
+john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+
