@@ -1,0 +1,77 @@
+-- Scanning Tools --
+
+· arp-scan
+· netdiscover
+
+
+
+-- ARP Scan --
+
+# Scan the local network
+arp-scan -l
+
+# Scan a specific IP range
+arp-scan -r 192.168.1.0/24
+
+# Specify a network interface
+arp-scan -l -i eth0
+
+# Display only IP and MAC addresses
+arp-scan -l -q
+
+# Use a specific local IP address in the ARP request
+arp-scan -l --localip 192.168.1.100
+
+# Save results to a file
+arp-scan -l -o results.txt
+
+# Display MAC addresses in hexadecimal
+arp-scan -l -x
+
+
+-- Netdiscover --
+
+# Display Help:
+netdiscover -h
+
+# Display Version:
+netdiscover -v
+
+# Basic Scan
+netdiscover
+
+# Specify Interface
+netdiscover -i eth0
+
+# Specify Range
+netdiscover -r 192.168.1.0/24
+
+# Specify Gateway:
+netdiscover -g 192.168.199.1
+
+# Specify MAC Address:
+netdiscover -p 00:11:22:33:44:55
+
+# Passive Mode:
+netdiscover -p
+
+# Scan for Specific MAC Vendor:
+netdiscover -v -p Cisco
+
+# Specify Scan Timeout:
+netdiscover -t 10
+
+# Output to a File:
+netdiscover -o output.txt
+
+# Fast Mode (Skips ARP Requests):
+netdiscover -f
+
+# ARP Request Interval:
+netdiscover -N
+
+# Disable ARP Requests:
+netdiscover -N
+
+# Display IP and MAC Addresses Only:
+netdiscover -n
