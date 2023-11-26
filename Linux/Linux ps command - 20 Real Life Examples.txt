@@ -1,0 +1,75 @@
+The ps command, short for Process Status, is a command line utility that is used to display or view information related to the processes running in a Linux system
+
+# ps command without arguments
+ps
+
+# Viewing all the running processes in different formats
+ps -A
+ps -e
+
+# View processes associated with the terminal
+ps -T
+
+# View processes not associated with terminal
+ps -a
+
+# Show all current running processes
+ps -ax
+
+# Display all processes in BSD format
+ps au 
+ps aux
+
+# Perform full format listing
+ps -ef 
+ps -eF
+
+# Filter processes according to the user
+ps -u user
+ps -u jamie
+
+# Filter process by thread process
+ps -L 4264
+
+# Show every process running as root
+ps -U root -u root
+
+# Display group processes
+ps -fG group_name
+ps -fG groupID
+ps -fG root
+
+# Search Process PID
+ps -C process_name
+ps -C bash
+
+# Listing processes by PID
+ps -fp PID
+ps -fp 1294
+
+# To display process hierarchy in a tree diagram
+ps -f --forest -C bash
+
+# Display child processes of a parent process
+ps -o pid,uname,comm -C bash
+
+ps --ppid PID no.
+ps --ppid 1294
+
+# Display process threads
+ps -p pid_no -L
+ps -p 1294 -L 
+
+# Display a selected list of columns
+ps -e -o pid,uname,pcpu,pmem,comm
+
+# Renaming column labels
+ps -e -o pid=PID,uname=USERNAME,pcpu=CPU_USAGE,pmem=%MEM,comm=COMMAND
+
+# Display elapsed time of processes
+Elapsed time refers to how long the process has been running for
+ps -e -o pid,comm,etime
+
+# Using ps command with grep
+ps -ef  | grep systemd
+
