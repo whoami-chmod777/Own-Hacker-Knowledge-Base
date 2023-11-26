@@ -1,0 +1,18 @@
+
+# Hydra 
+hydra -L user.txt -P password.txt 192.168.0.8 ssh
+
+# Medusa 
+
+
+# X-Hydra 
+
+
+# Metasploit
+
+
+# Patator 
+
+
+# Ncrack 
+
