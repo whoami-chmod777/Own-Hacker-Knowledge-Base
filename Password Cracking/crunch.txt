@@ -1,0 +1,34 @@
+
+Crunch is a tool developed in C by **bofh28** that can create custom, highly modifiable wordlists that may aid an attacker in the situations mentioned above. It takes in min size, max size and alphanumeric character sets as input and generates any possible combination of words with or without meaning and writes it out in a text file.
+
+# Installation and first run
+apt install crunch
+crunch 1 3 -o dict.txt
+
+# Crunch Options
+
+-b : the maximum size of the wordlist (requires -o START)
+-c : numbers of lines to write to the wordlist (requires -o START)
+-d : limit the number of duplicate characters
+-e : stop generating words at a certain string
+-f : specify a list of character sets from the charset.lst file
+-i : invert the order of characters in the wordlist
+-l : allows the literal interpretation of @,%^ when using -t
+-o : the output wordlist file
+-p : print permutations without repeating characters (cannot be used with -s)
+-q : Like the -p option except it reads the strings from a specified file
+-r : resume a previous session (cannot be used with -s)
+-s : specify a particular string to begin the wordlist with
+-t : set a specific pattern of @,%^
+-z : compress the output wordlist file, accompanied by -o
+
+
+# Defined Alphanumeric Characters
+crunch 5 7 pass123 -o dict.txt
+
+# Space character wordlist
+crunch 1 3 "raj " -o space.txt
+
+
+# CTFs
+crunch 3 3 0123456789ABCDEF -o 3digits.txt
