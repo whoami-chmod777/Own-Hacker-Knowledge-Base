@@ -21,7 +21,6 @@ msf6 auxiliary(scanner/ssh/ssh_login) > set THREADS 10
 msf6 auxiliary(scanner/ssh/ssh_login) > set VERBOSE true 
 msf6 auxiliary(scanner/ssh/ssh_login) > exploit
 
-
 # Patator 
 
 
