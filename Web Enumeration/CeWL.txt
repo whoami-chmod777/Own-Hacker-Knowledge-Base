@@ -1,0 +1,28 @@
+
+CeWL (pronounced "cool") is a custom word list generator tool that spiders websites to create word lists based on the site's content. Beyond simple wordlist generation, CeWL can also compile a list of email addresses or usernames identified in team members' page links.
+
+
+# How to use CeWL
+cewl -h
+
+# Generate a basic wordlist from a website
+cewl http://10.10.104.241
+
+# Save the wordlist generated to a file
+cewl http://10.10.104.241 -w output.txt
+
+# Specify spidering depth
+cewl http://10.10.104.241 -d 2 -w output1.txt
+
+# Set minimum and maximum word length
+cewl http://10.10.104.241 -m 5 -x 10 -w output2.txt
+
+# Create a password list
+cewl -d 2 -m 5 -w passwords.txt http://10.10.104.241 --with-numbers
+
+# Create a username list
+cewl -d 0 -m 5 -w usernames.txt http://10.10.104.241/team.php --lowercase
+
+
+
+
