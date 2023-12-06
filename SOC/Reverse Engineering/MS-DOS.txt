@@ -8,6 +8,16 @@ File signatures, commonly referred to as "magic bytes", are specific byte sequen
 
 Used Application: BUMASTER.EXE
 
+-- -- DOS Cheat Sheet --
+
+CD		Change Directory
+DIR		Lists all files and directories in the current directory
+TYPE	Displays the contents of a text file
+CLS		Clears the screen
+HELP	Provides help information for DOS commands
+EDIT	The MS-DOS Editor
+
+
 List of some of the most common files and their magic:
 
 File Format                            Magic Bytes            ASCII representation
