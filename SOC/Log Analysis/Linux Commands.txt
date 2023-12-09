@@ -1,1 +1,46 @@
 
+# Linux View Commands
+
+ls -lah
+cat access.log
+less access.log
+head -n 1 access.log
+tail -n 1 access.log
+wc -l access.log
+nl access.log
+
+
+# Manually Parse Log Entries
+
+The cut command allows you to extract specific sections (columns) of lines from a file or input stream by "cutting" the line into columns based on a delimiter and selecting which columns to display. This can be done using the -d option (for delimiter) and the -f for position.
+
+cut -d ' ' -f1 access.log
+cut -d ' ' -f1,3,6 access.log
+cut -d '"' -f2 access.log
+cut -d '"' -f1 access.log
+
+# Get the list of unique domains accessed by all workstations.
+cut -d ' ' -f3 access.log | cut -d ':' -f1
+cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort
+cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq
+
+# Display the connection count made on each domain.
+cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq -c
+cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq -c | sort -n
+cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq -c | sort -nr
+
+# Hunting Down the Malicious Traffic
+cut -d ' ' -f3 access.log | cut -d ':' -f1 | sort | uniq -c | sort -n | tail -n 10
+grep **SUSPICIOUS DOMAIN** access.log | head -n 5 [2023/10/25:15:56:29] REDACTED_IP REDACTED_DOMAIN:80 GET /storage.php?goodies=aWQscmVjaXBpZW50LGdp 200 362 "Go-http-client/1.1"
+grep **SUSPICIOUS DOMAIN** access.log | cut -d ' ' -f5 | cut -d '=' -f2
+grep **SUSPICIOUS DOMAIN** access.log | cut -d ' ' -f5 | cut -d '=' -f2 | base64 -d id,recipient,gift
+
+
+# Linux Pipes
+grep 10.10.140.96 access.log
+grep 10.10.140.96 access.log | head -n 5
+
+
+
+
+
