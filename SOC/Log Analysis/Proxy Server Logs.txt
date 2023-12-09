@@ -18,3 +18,5 @@ timestamp - source_ip - domain:port - http_method - http_uri - status_code - res
 6	Status Code			  400
 7	Response Size		  630
 8	User Agent			 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+
+
