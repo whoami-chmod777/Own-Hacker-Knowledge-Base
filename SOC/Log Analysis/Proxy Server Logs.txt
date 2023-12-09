@@ -4,3 +4,17 @@ When you request information or access a web page, your device connects to the p
 The proxy server then forwards your request to the internet, receives the response, and sends it back to your device. 
 A proxy server offers enhanced visibility into network traffic and user activities, since it logs all web requests and responses. 
 
+
+# Squid Proxy Server Log Format
+timestamp - source_ip - domain:port - http_method - http_uri - status_code - response_size - user_agent
+
+[2023/10/25:16:17:14] 10.10.140.96 storage.live.com:443 GET / 400 630 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
+
+1	Timestamp			    [2023/10/25:16:17:14]
+2	Source IP			    10.10.140.96
+3	Domain and Port		storage.live.com:443
+4	HTTP Method			  GET
+5	HTTP URI			    /
+6	Status Code			  400
+7	Response Size		  630
+8	User Agent			 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36"
