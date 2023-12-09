@@ -1,3 +1,6 @@
 
-A proxy server is an intermediary between your computer or device and the internet. When you request information or access a web page, your device connects to the proxy server instead of connecting directly to the target server. The proxy server then forwards your request to the internet, receives the response, and sends it back to your device. A proxy server offers enhanced visibility into network traffic and user activities, since it logs all web requests and responses. 
+A proxy server is an intermediary between your computer or device and the internet. 
+When you request information or access a web page, your device connects to the proxy server instead of connecting directly to the target server. 
+The proxy server then forwards your request to the internet, receives the response, and sends it back to your device. 
+A proxy server offers enhanced visibility into network traffic and user activities, since it logs all web requests and responses. 
 
