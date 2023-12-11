@@ -1,0 +1,8 @@
+
+# Data representation can be done in the following ways
+
+- Binary
+- Base64
+- Hexadecimal
+- Octal
+- ASCII
