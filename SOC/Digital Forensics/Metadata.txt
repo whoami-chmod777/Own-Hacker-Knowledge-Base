@@ -1,0 +1,11 @@
+
+# Provided with information such as the read/write permissions, the file name and size, and the times for when the file was last accessed and modified.
+ls -lisap <file>
+stat <file>
+
+# Received metadata from files
+sudo apt-get install exiftool
+exiftool <file>
+
+exiftool picture.jpg
+exiftool picture.jpg | grep camera
