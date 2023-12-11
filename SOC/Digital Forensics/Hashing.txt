@@ -1,0 +1,23 @@
+
+-- Windows --
+
+get-fileHash [file]
+get-fileHash -algorithm [algorithm-to-use] [file]
+
+get-fileHash -algorithm md5 wallpaper.exe
+get-fileHash -algorithm sha1 wallpaper.exe
+get-fileHash -algorithm sha256 wallpaper.exe
+
+
+-- Linux --
+
+md5sum <file>
+sha1sum <file>
+sha256sum <file>
+
+md5sum wallpaper.exe
+sha1sum wallpaper.exe
+sha256sum wallpaper.exe
+
+echo -n <text> | string
+echo -n "Hi Students!" | md5sum
