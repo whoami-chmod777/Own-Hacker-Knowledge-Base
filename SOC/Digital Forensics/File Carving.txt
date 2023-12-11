@@ -1,0 +1,14 @@
+
+# To choose which file type you want to retrieve you can edit in /etc/scalpel/scalpel.conf
+
+# To start retrieving a file using command below
+scalpel -b -o <output-dir> <disk-image-file>
+
+scalpel -b -o /root/Desktop/ScalpelOutput DiskImage1.img
+
+sudo cp /etc/scalpel/scalpel.conf ./q1.conf
+sudo chown ubuntu q1.conf
+nano q1.conf
+scalpel -c q1.conf carve1.img
+md5sum scalpel-output/jpg-2-0/00000000.jpg
+
