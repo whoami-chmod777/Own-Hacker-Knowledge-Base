@@ -1,1 +1,40 @@
 
+In the real world, a forensics lab analyst will first note the suspect drive/forensic artefact details, such as the vendor/manufacturer and hardware ID, and then mount it with a write-blocking device to prevent accidental data tampering during forensic analysis.  
+ 
+FTK Imager is a forensics tool that allows forensic specialists to acquire computer data and perform analysis without affecting the original evidence, preserving its authenticity, integrity, and validity for presentation during a trial in a court of law. 
+
+ 
+# Working With FTK Imager
+Open FTK Imager and navigate to File > Add Evidence Item, select Physical Drive in the pop-up window, then choose our emulated USB drive "\\PHYSICALDRIVE2 - Microsoft Virtual Disk [1GB SCSI]" to proceed. 
+
+
+# FTK Imager: User Interface (UI)
+
+FTK Imager's interface is intuitive and user-friendly. It displays an "x" icon next to deleted files and includes key UI components vital for its functionality. These components are:
+
+1. Evidence Tree pane: Displays a hierarchical view of the added evidence sources such as hard drives, flash drives, and forensic image files
+2. File List pane: Displays a list of files and folders contained in the selected directory from the evidence tree pane
+3. Viewer pane: Displays the content of selected files in either the evidence tree pane or the file list pane
+
+
+# FTK Imager: Previewing Modes
+
+FTK Imager presents three distinct modes for displaying file content, arranged sequentially from left to right, each represented by icons enclosed in yellow:
+
+1. Automatic mode: Selects the optimal preview method based on the file type. It utilises Internet Explorer (IE) for web-related files, displays text files in ASCII/Unicode, and opens unrecognised file types in their native applications or as hexadecimal code.
+2. Text mode: Allows file contents to be previewed as ASCII or Unicode text. This mode is useful for revealing hidden text and binary data in non-text files.
+3. Hex mode: Displays files in hexadecimal format, providing a detailed view of file data at the binary (or byte) level.
+
+
+# FTK Imager: Recovering Deleted Files and Folders
+
+To view and recover deleted files, expand directories in the File List pane and Evidence Tree pane. Right-click and select Export Files on individual files marked with an "x" icon or on entire directories/devices for bulk recovery of files (whether deleted or not). 
+
+
+# FTK Imager: Verifying Drive/Image Integrity
+
+To verify the integrity of a drive/image, click on it from the Evidence Tree pane and navigate to File > Verify Drive/Image to obtain its MD5 and SHA1 hashes. 
+
+
+https://www.notion.so/Practical-With-FTK-Imager-6e57eb1e49d34885bf55fddc02d44e5e
+
