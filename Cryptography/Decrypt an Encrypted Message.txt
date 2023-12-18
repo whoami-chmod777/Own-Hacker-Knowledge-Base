@@ -1,0 +1,30 @@
+# Read the contents of a file
+
+analyst@6f2edd68622a:~$ cat README.txt
+Hello,
+All of your data has been encrypted. To recover your data, you will need to solve a cipher. To get started look for a hidden file in the caesar subdirectory.
+
+analyst@e53a68915225:~$ cat Q1.encrypted 
+U2FsdGVkX1/nxHZY2p53/6gRmQ9alkNrVwOwPOgpTeB09rdnvKnydLPQsnOYHjgR
+42Mwdv0ye94Im+u100Fl2+Bx3SHjJ7wZjOxA7Jew1x7g3LcRsRnFcFLyfAnn0f3u
+xMIH/y+Y4HfVb6NUFueXM43M5Cn/Gz9JqIxpw+tZaajsrtZrsoEwenZEND1Ya6AY
+rnVCjCFdTmSVG9EnzGxFT40DOw0yIhEAw5WqfBzjwgNSfz+p44Bnb3jUHsJt38gw
+analyst@e53a68915225:~$
+
+
+# Find a hidden File
+
+analyst@6f2edd68622a:~/caesar$ cat .leftShift3 
+Lq rughu wr uhfryhu brxu ilohv brx zloo qhhg wr hqwhu wkh iroorzlqj frppdqg:
+rshqvvo dhv-256-fef -sengi2 -d -g -lq T1.hqfubswhg -rxw T1.uhfryhuhg -n hwwxeuxwh
+
+analyst@6f2edd68622a:~/caesar$ cat .leftShift3 | tr "d-za-cD-ZA-C" "a-zaA-Z"
+Hn order to recover your files you will need to enter the following command:
+openssl aes-256-cbc -pbkdf2 -a -d -in P1.encrypted -out P1.recovered -k ettubrute
+
+analyst@6f2edd68622a:~/caesar$ tr --help
+
+
+# Decrypt a file
+
+analyst@e53a68915225:~$ openssl aes-256-cbc -pbkdf2 -a -d -in Q1.encrypted -out Q1.recovered -k ettubruteanalyst@e53a68915225:~$
