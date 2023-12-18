@@ -1,4 +1,4 @@
-# Read the contents of a file
+-- Read the contents of a file --
 
 analyst@6f2edd68622a:~$ cat README.txt
 Hello,
@@ -12,7 +12,7 @@ rnVCjCFdTmSVG9EnzGxFT40DOw0yIhEAw5WqfBzjwgNSfz+p44Bnb3jUHsJt38gw
 analyst@e53a68915225:~$
 
 
-# Find a hidden File
+-- Find a hidden File --
 
 analyst@6f2edd68622a:~/caesar$ cat .leftShift3 
 Lq rughu wr uhfryhu brxu ilohv brx zloo qhhg wr hqwhu wkh iroorzlqj frppdqg:
@@ -25,6 +25,6 @@ openssl aes-256-cbc -pbkdf2 -a -d -in P1.encrypted -out P1.recovered -k ettubrut
 analyst@6f2edd68622a:~/caesar$ tr --help
 
 
-# Decrypt a file
+-- Decrypt a file --
 
 analyst@e53a68915225:~$ openssl aes-256-cbc -pbkdf2 -a -d -in Q1.encrypted -out Q1.recovered -k ettubruteanalyst@e53a68915225:~$
