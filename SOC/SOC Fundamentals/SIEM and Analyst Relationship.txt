@@ -1,0 +1,71 @@
+
+A SOC analyst is the first person to analyze any threats against a system. When the situation requires it, he/she escalates incidents to his seniors and thus makes catching threats possible. He/She plays an important role in the SOC because he/she is the first person to investigate.
+Security information and event management (SIEM), is a security solution that provides real-time logging of events in an environment. The actual purpose of event logging is to detect security threats.
+In general, SIEM products have a number of features. The ones that interest us most as SOC analysts are: they filter the data that they collect and create alerts for any suspicious events.
+Example of an alert: If someone on a Windows operating system attempts to enter 20 incorrect passwords in 10 seconds, this is suspicious activity. It is not likely that someone who forgot their password would try to re-enter their password so many times in such a short period. This is why we create a SIEM rule/filter, to determine such activities that exceed the threshold values. Due to this SIEM rule an alert will be created if such a situation occurs.
+
+
+-- Understand Why the Alert Was Triggered --
+
+In  order to perform a better analysis and to determine whether the  triggered alert is false positive, it is first necessary to understand  why the rule was triggered. Instead of starting the analysis directly,  first understand why this rule was triggered.
+· Examine the rule name. Rule names are usually created specifically for the attack to be detected. By examining the rule name, you can understand which attack you are facing.
+· Detect between which two devices the traffic is occurring. It's a good starting point to understand the situation by learning about the direction of traffic, what protocol is used between devices, etc.
+
+
+-- Collect Data --
+ 
+Gather some information that can be gathered quickly to get a better understanding of the traffic. These can be summarized as follows.
+
+· Ownership of the IP addresses and devices. 
+· If the traffic is coming from outside (Internet); 
+    - Ownership of IP address (Static or Pool Address? Who owns it? Is it web hosting?) 
+    - Reputation of IP Address (Search in VirusTotal, AbuseIPDB, Cisco Talos) 
+
+· If the traffic is coming from company network; 
+    - Hostname of the device 
+    - Who owns the device (username) 
+    - Last user logon time
+
+
+-- Examine HTTP Traffic --
+ 
+· Check the traffic content for any suspicious conditions such as web attack payloads (SQL Injection, XSS, Command Injection, IDOR, RFI/LFI). 
+· Examine all the fields in the HTTP Request. Since the attackers do not only attack through the URL, all the data from the source must be examined to understand whether there is really a cyber attack. 
+
+
+-- Is Traffic Malicious? --
+
+· Decide whether the traffic is malicious or not based on your investigations. 
+
+
+-- Check If It Is a Planned Test --
+ 
+Penetration tests or attack simulation products can trigger False Positive alarms if the rules are not set correctly. Check whether the malicious traffic is the result of a planned test
+· Check if there is an email showing that there will be planned work by searching for information such as hostname, username, IP address on the mailbox. 
+· Check if the device generating malicious traffic belongs to attack simulation products. If the Hostname contains the name of Attack Simulation products 
+(such as Verodin, AttackIQ, Picus…), these devices belong to Attack Simulation products within the framework of LetsDefend simulation and it is a planned work.
+
+
+-- What Is the Direction of Traffic? --
+ 
+· Select the direction of malicious traffic from the available options below. Format: Source -> Destination
+
+
+-- Containment --
+ 
+· Since it is detected that the device is compromised, the device must be isolated in order to restrict the attacker, prevent the spread of the attack and reduce the impact. 
+· Go to the Endpoint Security page and contain the relevant device with the help of the "Request Containment" button. 
+
+** Each institution has a separate containment procedure. While some institutions give containment authorization, some do not. Do not forget to learn the containment procedure in the institution you work for.
+
+
+-- Do You Need Tier 2 Escalation? --
+ 
+Tier 2 escalation should be performed in the following situations
+· In cases where the attack succeeds, 
+· When the attacker compromises a device in the internal network (in cases where the direction of harmful traffic is from inside → inside)
+
+Tier 2 escalation is not required in the following cases 
+· In cases where attacks from the Internet do not succeed 
+
+** Institutions may have their own escalation procedure. Don't forget to learn about the escalation procedure in your institution.
