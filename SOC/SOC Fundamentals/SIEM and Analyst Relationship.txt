@@ -74,3 +74,9 @@ Tier 2 escalation is not required in the following cases
 · In cases where attacks from the Internet do not succeed 
 
 ** Institutions may have their own escalation procedure. Don't forget to learn about the escalation procedure in your institution.
+
+
+-- Analyst Note --
+
+· Please enter your analysis comments
+
