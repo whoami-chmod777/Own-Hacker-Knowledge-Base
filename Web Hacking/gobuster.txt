@@ -1,1 +1,39 @@
 
+#Basic Syntax
+gobuster dir -u <URL> -w <wordlist> -t <threads>
+
+gobuster dir -u https://example.com -w custom-wordlist.txt -t 10 -x php,html -o gobuster-results.txt
+
+#Basic Directory Scanning
+gobuster dir -u https://example.com -w common.txt -t 20
+
+#Directory Scanning with Custom Extensions
+gobuster dir -u https://example.com -w common.txt -t 10 -x php,html,txt
+
+#HTTP Basic Authentication
+gobuster dir -u https://example.com -w common.txt -t 10 -U username -P password
+
+
+
+gobuster -u http://fakebank.com -w wordlist.txt dir
+
+=====================================================
+Gobuster v2.0.1              OJ Reeves (@TheColonial)
+=====================================================
+[+] Mode         : dir
+[+] Url/Domain   : http://fakebank.com/
+[+] Threads      : 10
+[+] Wordlist     : wordlist.txt
+[+] Status codes : 200,204,301,302,307,403
+[+] Timeout      : 10s
+=====================================================
+2023/12/20 21:00:55 Starting gobuster
+=====================================================
+/images (Status: 301)
+/bank-transfer (Status: 200)
+=====================================================
+2023/12/20 21:01:03 Finished
+=====================================================
+
+http://fakebank.com/bank-transfer
+
