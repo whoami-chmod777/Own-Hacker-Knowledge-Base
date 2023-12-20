@@ -59,6 +59,11 @@ Penetration tests or attack simulation products can trigger False Positive alarm
 ** Each institution has a separate containment procedure. While some institutions give containment authorization, some do not. Do not forget to learn the containment procedure in the institution you work for.
 
 
+-- Add Artifacts --
+
+· Collect find artifacts
+
+
 -- Do You Need Tier 2 Escalation? --
  
 Tier 2 escalation should be performed in the following situations
