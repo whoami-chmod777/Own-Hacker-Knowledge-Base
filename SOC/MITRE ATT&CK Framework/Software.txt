@@ -1,0 +1,11 @@
+
+Software are the programs developed to work on digital systems. In the software section of MITRE ATT&CK Framework, there are software used by APT groups.
+Each software has a unique ID, name and description.
+
+In order to obtain detailed information about the software, you can click on the software name so you can access the related software page. 
+
+The number of software at the time of preparation of this training is as follows:
+Software: 718
+
+Software: https://attack.mitre.org/software/ 
+
