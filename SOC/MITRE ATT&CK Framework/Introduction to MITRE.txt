@@ -1,1 +1,4 @@
-csxcx
+
+Today, in order to fully understand a cyber attack, it is necessary to model the steps and details of cyber attacks in a way that is suitable for certain groups. One of the important frameworks that meet this modeling need is the MITRE ATT&CK framework. 
+
+
