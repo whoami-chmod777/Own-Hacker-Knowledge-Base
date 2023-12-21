@@ -1,0 +1,85 @@
+
+-- Steps to Conduct a Buffer Overflow --
+
+1. Spiking
+2. Fuzzing
+3. Finding the Offset
+4. Overwriting the EIP
+5. Finding Bad Characters
+6. Finding the Right Module
+7. Generating Shellcode
+8. Root!
+
+
+-- Spiking --
+
+To find the vulnerable command, we will test each one of them and send a bunch of characters to see if we can overflow the buffer. If the program crashes, then the command might be vulnerable or otherwise we move on to the next command.
+
+generic_send_tcp
+
+generic_send_tcp HOST PORT SPIKE_SCRIPT SKIPVAR SKIPSTR
+
+HOST will be the IP of the Windows Machine at which vulnserver is running
+PORT will be 9999 (default port of vulnserver)
+SPIKE_SCRIPT will be the script that iterates through the command and crashes the program
+SKIPVAR will be set to 0
+SKIPSTR will be set to 0
+
+
+spike_script for the command STATS
+
+s_readline();
+s_string("STATS ");
+s_string_variable("0");
+
+generic_send_tcp 192.168.37.131 9999 stats.spk 0 0
+
+
+generic_send_tcp 192.168.37.131 9999 trun.spk 0 0
+
+s_readline();
+s_string("TRUN ");
+s_string_variable("0");
+
+generic_send_tcp 192.168.37.131 9999 trun.spk 0 0
+
+Access violation when executing !!!
+
+
+-- Fuzzing --
+
+
+
+
+
+-- Finding the Offset --
+
+
+
+
+
+-- Overwriting the EIP --
+
+
+
+
+
+-- Finding Bad Characters --
+
+
+
+
+
+-- Finding the Right Module --
+
+
+
+-- Generating Shellcode --
+
+
+
+-- Root! --
+
+
+
+
