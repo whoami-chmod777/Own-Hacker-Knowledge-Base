@@ -1,0 +1,33 @@
+
+Mitigations refers to the measures and actions that can be taken in response to the techniques in the MITRE ATT&CK matrix. Each mitigation has a unique ID, name and description that provides clear understanding about them. 
+
+
+-- Types of Mitigations --
+
+· Enterprise Mitigations
+· Mobile Mitigations
+· ICS Mitigations
+
+
+-- Enterprise Mitigations --
+
+The number of enterprise mitigations at the time of preparation of this training is as follows:
+Mitigations: 43
+
+Enterprise Mitigations: https://attack.mitre.org/mitigations/enterprise/
+
+
+-- Mobile Mitigations --
+
+The number of mobile mitigations at the time of preparation of this training is as follows:
+Mitigations: 11
+
+Mobile Mitigations: https://attack.mitre.org/mitigations/mobile/ 
+
+
+-- ICS Mitigations --
+
+The number of ICS mitigations at the time of preparation of this training is as follows:
+Mitigations: 51
+
+ICS Mitigations: https://attack.mitre.org/mitigations/ics/ 
