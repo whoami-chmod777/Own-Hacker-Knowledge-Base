@@ -1,4 +1,5 @@
 
 Today, in order to fully understand a cyber attack, it is necessary to model the steps and details of cyber attacks in a way that is suitable for certain groups. One of the important frameworks that meet this modeling need is the MITRE ATT&CK framework. 
 
+MITRE ATT&CK that stands for Adversarial Tactics, Techniques, and Common Knowledge is the framework of a knowledge database that was introduced by MITRE in 2013 and has been continuously developed and expanded along with the technology. It is possible to analyze cyber attacks systematically through the MITRE ATT&CK framework. Cyber attacks can be divided into certain stages and the methods used in each stage can be analyzed in depth and used in studies related to cyber security. The MITRE ATT&CK Framework is an essential resource for each and every employee in the cybersecurity industry.
 
