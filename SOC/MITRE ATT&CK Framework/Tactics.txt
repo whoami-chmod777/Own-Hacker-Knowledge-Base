@@ -1,0 +1,59 @@
+
+Tactic expresses the purpose of the cyber attacker and the reason for his action. Tactics are one of the most important MITRE ATT&CK Framework components used to group cyber attacker behaviors and see the attack steps. Tactics are in the top row of the matrix.
+
+
+-- Enterprise Tactics --
+
+· Reconnaissance
+· Resource Development
+· Initial Access
+· Execution
+· Persistence
+· Privilege Escalation
+· Defense Evasion
+· Credential Access
+· Discovery
+· Lateral Movement
+· Collection
+· Command and Control
+· Exfiltration
+· Impact
+
+Enterprise Tactics: https://attack.mitre.org/tactics/enterprise/ 
+
+
+-- Mobile Tactics --
+
+· Initial Access
+· Execution
+· Persistence
+· Privilege Escalation
+· Evasion
+· Discovery
+· Lateral Movement
+· Collection
+· Command and Control
+· Inhibit Response Function
+· Impair Process Control
+· Impact
+
+Mobile Tactics: https://attack.mitre.org/tactics/mobile/ 
+
+
+-- ICS Tactics --
+
+· Initial Access
+· Execution
+· Persistence
+· Privilege Escalation
+· Evasion
+· Discovery
+· Lateral Movement
+· Collection
+· Command and Control
+· Inhibit Response Function
+· Impair Process Control
+· Impact
+
+ICS Tactics: https://attack.mitre.org/tactics/ics/ 
+
