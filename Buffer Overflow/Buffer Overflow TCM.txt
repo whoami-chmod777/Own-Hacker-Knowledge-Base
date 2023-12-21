@@ -35,7 +35,7 @@ s_string_variable("0");
 generic_send_tcp 192.168.37.131 9999 stats.spk 0 0
 
 
-generic_send_tcp 192.168.37.131 9999 trun.spk 0 0
+spike_script for the command TRUN
 
 s_readline();
 s_string("TRUN ");
