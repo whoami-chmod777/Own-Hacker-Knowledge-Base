@@ -306,7 +306,7 @@ python3 ./get_root.py
 
 
 
--- Use Immunity Debuger --
+-- Use Immunity Debugger --
 
 # Create Mona Workfolder
 !mona config -set workingfolder c:\mona
