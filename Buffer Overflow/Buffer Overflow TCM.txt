@@ -108,7 +108,7 @@ except:
 
 -- Overwriting the EIP --
 
-# overwriting_eip.py #
+#overwriting_eip.py #
 
 #!/usr/bin/python
 import sys, socket
