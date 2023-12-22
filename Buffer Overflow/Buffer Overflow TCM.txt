@@ -216,7 +216,7 @@ except:
         sys.exit()
 
 
-Im Immunity Debugger set a BreakPoint (F2)
+Set a BreakPoint (F2) im Immunity Debugger !!!
 Start Immunity Debbuger and execute the python script !!! The EIP is under Control !!!
 
 
