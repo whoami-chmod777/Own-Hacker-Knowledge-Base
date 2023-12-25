@@ -1,0 +1,35 @@
+
+When we suspect that an email is phishing, we will know what we should do and what the analysis  process should be like.
+
+Here are the key questions we need to answer when checking headings during a Phishing analysis:
+
+· Was the email sent from the correct SMTP server?
+· Are the data "From" and "Return-Path / Reply-To" the same?
+
+
+-- Was the email sent from the correct SMTP server --
+
+We can check the "Received" field to see the path followed by the mail. The mail is "101[.]99.94.116" from the IP address server.
+
+If we look at who is sending the mail ("sender"), we see that it came from the domain Letsdefend.io (From: "Jack <info@letsdefend.io>
+
+So under normal circumstances, "letsdefend.io" should use, "101[.]99.94.116" to send mail. To confirm this situation, We can query the MX servers actively used by "letsdefend.io"
+
+"mxtoolbox.com" helps by showing you the MX servers used by the domain you searched.
+
+If we look at the image above, the "letsdefend.io" domain uses Google addresses as an email server. So there is no relationship with the emkei[.]cz or "101[.]99.94.116" addresses.
+
+In this check, it was determined that the email did not come from the original address, but was spoofed.
+
+
+-- Are the data "From" and "Return-Path / Reply-To" the same --
+
+Except in exceptional cases, we expect the sender of the e-mail and the person receiving the responses to be the same.
+
+Returning to the e-mail all we have to do is compare the email addresses in the "From" and "Reply-to" fields. 
+
+From: "Jack" <info@letsdefend.io>
+Reply-To: info.letsdefend123722@gmail.com
+
+As you can see, the data is different. In other words, when we want to reply to this e-mail, we will send a reply to the gmail address below. Just because this data is different doesn't always mean it's definitely a phishing email, we need to consider the event as a whole. In other words, in addition to this suspicious situation, if there is a harmful attachment, URL or misleading content in the e-mail content, we can understand that the e-mail is phishing. In the continuation of the training, we will analyze the data in the body part of the e-mail.
+
