@@ -1,0 +1,45 @@
+
+"Header" is basically a section of the mail that contains information such as sender, recipient and date. In addition, there are fields such as "Return-Path", "Reply-To", and "Received".
+
+-- Allows Tracking an Email’s Route --
+
+It is important to check the route it follows to see if an email came from the right address. If we look at the sample email, we see that it came from the "ogunal@letsdefend.io" address, but did it actually come from the "letsdefend.io" domain or from a different fake server that mimics the same name? We can use the header information to answer this question.
+
+
+-- Header Fields -- 
+
+From:  showing the sender's email address
+To:    showing the recipient's email address
+Date:  showing the date when the email was sent.
+
+
+-- Optional Header Fields --
+
+Subject:  showing the message's subject
+Received:  the received field lists each mail server that went through an email before arriving in the recipient's inbox. It's listed in reverse chronological order - where the mail server on the top is the last server the email message went through, and the bottom is where the email originated
+Return-Path or Reply-To:  showing a reply address mentioned in the Return-Path field.
+Message-ID:  a unique combination of letters and numbers that identifies each mail
+Message Body:  containing the message, separated from the header by a line break
+X-Originating-IP: The IP address of the email was sent from (this is known as an X-header)
+
+smtp.mailfrom/header.from: The domain the email was sent from (these headers are within Authentication-Results)
+Domain Key and DKIM Signatures: Email signatures that help email service providers identify and authenticate your emails, similar to SPF signatures
+MIME-Version: MIME is an internet standard of encoding. It converts non-text content like images, videos, and other attachments into text so they can be attached to an email and sent through SMTP (Simple Mail Transfer Protocol
+
+
+-- Custom X-Headers --
+
+It is important to note that header data is no guarantee of when the message was sent or who sent it, as values can be edited without any requirement for authorization, such as changing the From address to make it look like the email has come from "[contact@amazon.co.uk](mailto:contact@amazon.co.uk)". Additional personalized headers (called X-headers) can be set in order to provide the appropriate information.
+X-Spam-Status: The X-Spam Status shows you the spam score of an email message. First, it'll highlight if a message is classified as spam.Then, the spam score of the email is shown, as well as the threshold for the spam for the email.
+
+Sending Email Address (Ex: [J0hnSm1th@gmail.com](mailto:J0hnSm1th@gmail.com))
+Reply-to Address (Ex: [F4keacc0unt2421@gmail.com](mailto:F4keacc0unt2421@gmail.com))
+Date Sent (Ex: 20th October 2019, 9:34 AM)
+Sending Server IP (Ex: [40.92.10.10](http://40.92.10.10/))
+Reverse DNS of Sending Server IP (Ex: [mail-oln040092010100.outbound.protection.outlook.com](http://mail-oln040092010100.outbound.protection.outlook.com/))
+Recipient(s) (Ex: [jason.s@domain.com](mailto:jason.s@domain.com), [kirsty.p@domain.com](mailto:kirsty.p@domain.com), [brian.b@domain.com](mailto:brian.b@domain.com))
+Subject Line (Ex: Payroll Update – URGENT!)
+
+
+
+
