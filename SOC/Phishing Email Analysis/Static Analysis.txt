@@ -1,0 +1,53 @@
+
+The address that the user sees can be different when the link is clicked (the real address is seen when the link is hovered).
+
+It is possible to find out whether the antivirus engines detect the web address as harmful by searching the web addresses in the mail on VirusTotal.
+
+Cisco Talos Intelligence has search sections where we can learn reputations of IP addresses. By searching the SMTP address of the mail we detected on Talos, we can see the reputation of the IP address and find out whether it is included in the blacklist.
+
+
+-- Artifacts Analysis --
+
+Reverse DNS Lookup
+http://whois.domaintools.com/
+
+Visualization Tools
+https://www.url2png.com/
+
+
+-- URL Reputation Tools --
+
+VirusTotal
+https://www.virustotal.com/gui/
+
+URLScan
+https://urlscan.io/
+
+URLhaus
+https://urlhaus.abuse.ch/
+
+WannaBrowser
+https://www.wannabrowser.net/
+
+
+-- File Reputation Tools --
+
+VirusTotal
+https://www.virustotal.com/gui
+
+Talos File Reputation
+https://www.talosintelligence.com/talos_file_reputation
+
+
+-- Malware Sandboxing --
+
+Hybrid Analysis
+https://www.hybrid-analysis.com/
+
+
+-- Defanging URL & IP Address --
+
+CyberChef 
+https://gchq.github.io/CyberChef/#recipe=Defang_URL(true,true,true,'Valid%20domains%20and%20full%20URLs')Defang_IP_Addresses()) 
+
+
