@@ -1,0 +1,73 @@
+
+Certainly, here's a cheat sheet for email header analysis. Email headers can provide valuable information for investigating the source and authenticity of an email. Understanding these fields can help you identify phishing attempts, spoofed emails, and trace email sources.
+
+
+-- Basic Header Information --
+
+1. Date: The date and time the email was sent.
+2. From: The sender's email address and name.
+3. To: The recipient's email address.
+4. Subject: The email's subject line.
+5. Message-ID: A unique identifier for the email.
+
+
+-- Routing Information --
+
+6. Received: A series of headers indicating the email's journey from sender to recipient. The most recent entry is at the top.
+  Look for:
+    ·  IP addresses and hostnames
+    ·  Timestamps
+    ·  Authentication information (e.g., DKIM and SPF results)
+
+
+-- Sender Verification --
+
+7. SPF (Sender Policy Framework): A mechanism to verify that the sending server is authorized to send on behalf of the sender's domain.
+  · Check SPF records for the sender's domain.
+
+8. DKIM (DomainKeys Identified Mail): A digital signature to verify the email's integrity.
+  · Verify the DKIM signature.
+  · Examine the "d=" tag to check the signing domain.
+
+9. DMARC (Domain-based Message Authentication, Reporting, and Conformance): A policy framework that leverages SPF and DKIM to prevent domain spoofing.
+  · Check for a DMARC record in the header.
+  · Analyze DMARC policy actions (e.g., none, quarantine, or reject).
+
+
+-- Identifying Spoofed or Phishing Emails --
+
+10. Return-Path: The email address to which bounces and errors are delivered.
+  · Check if the Return-Path matches the "From" address. Mismatch can indicate spoofing.
+
+11. Reply-To: The email address to which replies will be sent.
+  · Verify that the Reply-To matches the "From" address. Mismatch can be suspicious.
+
+12. X-Originating-IP: The originating IP address of the sender.
+  · Investigate the IP address for potential abuse.
+
+13. X-Mailer: Information about the email client used to send the email.
+  · Some email clients and spam tools leave identifiable traces.
+
+14. X-Spam-Status: Headers added by spam filters indicating the likelihood of spam.
+  · Analyze spam score and the reasons for flagging.
+
+
+-- Miscellaneous --
+
+15. X-headers: Custom headers added by email servers or filters.
+  · These can contain additional information.
+
+16. Attachments: Check for any attachment filenames or types in the header.
+
+
+-- Additional Tools --
+
+· Online Email Header Analyzer: Various online tools are available for analyzing email headers automatically.
+
+
+-- Notes --
+
+· Look for inconsistencies, unexpected domains, or signs of email spoofing.
+· Verify any domain names, IP addresses, or URLs mentioned in the headers for reputation and authenticity.
+· Keep in mind that headers can be manipulated, so use multiple indicators for verification.
+
