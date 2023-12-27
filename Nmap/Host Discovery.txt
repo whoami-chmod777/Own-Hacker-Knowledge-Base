@@ -110,6 +110,5 @@ If no protocols are specified, the default is to send multiple IP packets for
 # Traceroute Option
 nmap -sn nmap.scanme.org --traceroute
 
-
 # Reverse DNS Resolution Option
 nmap -R 45.33.32.156
