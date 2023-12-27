@@ -1,0 +1,31 @@
+
+AD DS is composed of both physical and logical components
+
+-- Physical components --
+
+· Data store: Stores the AD DS information. This is a file on each domain controller. 
+· Domain Controller Server and read-only domain controller (RODC): Contains a copy of AD DS database. 
+· Global catalog servers: Host the global catalog, which is a partial, read-only copy of all the domain naming contexts in the forest. A global catalog speeds up searches for objects that might be attached to other domain controllers in the forest.
+
+
+-- Logical components --
+
+· Partitions: Various partitions exist in AD DS: domain directory, configuration directory, schema directory, global catalog, application directory.
+· Schema: Defines the list of attributes which all objects in the AD DS can have.
+· Domains: logical, administrative boundary for users and computers
+· Domain Trees: Collection of domain controllers that share a common root domain. 
+· Forests: Collections of domains that share a common AD DS.
+· Sites: Collections of users, groups, computers as defined by their physical locations. Useful in planning administrative tasks such as replication of the AD DS.
+· OUs: Organizes the elements found at a give site or domain for the purposes of securing them more selectively.
+
+
+-- Domain Controllers --
+
+A domain controller is a server with the AD DS server role installed that has specifically been promoted to a domain controller
+
+Domain controllers:
+Host a copy of the AD DS directory store
+Provide authentication and authorization services
+Replicate updates to other domain controllers in the domain and forest
+
+
