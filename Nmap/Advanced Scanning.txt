@@ -1,115 +1,115 @@
-# HOST DISCOVERY
--sL: List Scan - simply list targets to scan
--sn: Ping Scan - disable port scan
--Pn: Treat all hosts as online -- skip host discovery
--PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP or SCTP discovery to given ports
--PE/PP/PM: ICMP echo, timestamp, and netmask request discovery probes
--PO[protocol list]: IP Protocol Ping
--n/-R: Never do DNS resolution/Always resolve [default: sometimes]
---dns-servers <serv1[,serv2],...>: Specify custom DNS servers
---system-dns: Use OS's DNS resolver
---traceroute: Trace hop path to each host
+
+# Default Nmap Scan
+nmap nmap.scanme.org
+nmap 191.168.199.1
 
 
-# Ping Scan - Disable Port Scan
-nmap -sn 192.168.199.1/24
-nmap -sn 192.168.199.1-150
-nmap -sn 192.168.199.1, 192.168.199.38
+# Port Scanning Options & Ranges
+nmap -p 22 192.168.199.39
+nmap -p 22,23,25,80,443 192.168.199.39
+nmap -p 1-1000 192.168.199.39
 
-# Exclude Hosts/Networks
-nmap -sn 192.168.199.1/24 --exclude 192.168.199.1
-nmap -sn 192.168.199.1/24 --excludefile hosts.tx
+nmap -p- 192.168.199.39
 
-# Scan on specific Devices
-nmap -sn -iL hosts.txt
-
-# Don't Ping Scan
-nmap -Pn 192.168.199.1
-nmap -Pn 192.168.199.1.1-100 --excludefile hosts.txt
-nmap -Pn 192.168.199.1/24 --excludefile hosts.txt
+nmap -p ssh 192.168.199.39   
+nmap -p telnet 192.168.199.39
+nmap -p http 192.168.199.39
 
 
-# TCP SYN Ping Scan
-nmap -PS 192.168.199.1/24
-nmap -PS -p21,23,80 192.168.199.1/24
+# TCP Connect Scan (-sT)
+nmap -sT -p- 192.168.199.39
 
-Wireshark
-tcp.flags == 0x012
-
-[ SYN, ACK ] --> device is online and the port is open
-[ RST, ACK ] --> device in offline and the port close
-
-
-# TCP ACK Ping Scan
-nmap -sn -PA nmap.scanme.org
-nmap -Pn -sn -PA nmap.scanme.org
-nmap -Pn -sn -PA -n nmap.scanme.org
-
-Wireshark
-tcp.flags == 0x010
-
-[ ACK ] --> device is online and the port is open
-[ RST, ACK ] --> device in offline and the port close
+Wireshark (Full Tree Way Handshake)
+TCP 40430 → 80 [SYN]
+TCP 80 → 40430 [SYN, ACK]
+TCP 40430 → 80 [ACK]
+TCP 40430 → 80 [RST, ACK]
 
 
-# UDP Ping Scan
-sudo nmap -sn -PU nmap.scanme.org
-sudo nmap -sU -p1-1000 192.168.199.1
+# Stealth (SYN) Scan (-sS)
+nmap -sS -p- 192.168.199.39
+
+Wireshark (Half-Open Scan)
+TCP 52796 → 25 [SYN]
+TCP 25 → 52796 [SYN, ACK]
+TCP 52796 → 25 [RST]
+
+
+# OS Detection & Service Detection (-O, -sV)
+nmap -sS -O 192.168.199.39
+nmap -sS -sV -O -p- 192.168.199.39
+nmap -sn 192.168.199.1/24 --exclude 192.168.199.39
+
+
+# Aggressive Scan (-sS -A)
+nmap -sS -A 192.168.199.1
+
+
+# UDP Scan (-sU)
+nmap -sU -p1-1000 192.168.199.1
 
 Wireshark
-udp.dstport == 77
+Destination Unreachable (Port Unreachable) 
 
-Type: 3 (Destination unreachable)
-Code: 3 (Port unreachable)
-
-If we don't get response it means the port is open
-Destination unreachable (Port unreachable) --> port is close
+ICMP sends UDP packets.
+If the port is open we don't get a response back.
+If we get an ICMP port unreachable response that means that the port is closed.
 
 
-# ARP Ping Scan
-nmap -PR 192.168.199.1/24
-nmap -sP -PR 192.168.1/24
+# Nmap Reason Option (--reason) [ Nmap Scan Report ]
+nmap -sn 192.168.199.1/24 --reason
+nmap -sS -A -p1-100 192.168.199.41 --reason
+
+man nmap | grep -e "reason"
+
+
+# Fast Scan (-F) [ Top 100 Ports ]
+nmap -F 192.168.199.39
+nmap -F -sV 192.168.199.39
+
+
+# Verbosity, Output and Logging (-v, -vv, -vvv)
+nmap -sS -A -F 192.168.199.99 
+nmap -v -sS -A -F 192.168.199.41
+nmap -vv -sS -A -F 192.168.199.41
+nmap -vvv -sS -A -F 192.168.199.41
+nmap -vvv -sS -A -F 192.168.199.41
+
+nmap -vvv -sS -A -F 192.168.199.99 -oA win2k8   
+nmap -vvv -sS -A -F 192.168.199.41 -oN win2k8
+nmap -vvv -sS -A -F 192.168.199.99 -oX win2k8
+nmap -vvv -sS -A -F 192.168.199.99 -oG win2k8
+
+grep -e "SSH" win2k8.gnmap
+
+
+# FIN, XMAS and NULL Scanning
+It's not effective against Windows operating systems !!!
+no-response means the port is open
+
+TCP Null Scan
+nmap -sN 192.168.199.39
+nmap -sN 192.168.199.39 --reason
 
 Wireshark
-Address Resolution Protocol (reply)
+TCP    54    54628 → 722 [<None>]
+TCP    60    3301 → 54628 [RST, ACK]
 
-
-# ICMP ECHO Ping Scan
-sudo nmap -PE nmap.scanme.org
-
-Wireshark
-ICMP 42 Echo (ping) request  
-ICMP 60 Echo (ping) reply
-
-
-# ICMP Timestamp Ping Scan
-nmap -PP nmap.scanme.org
+TCP FIN Scan
+nmap -sF 192.168.199.39
+nmap -sF 192.168.199.39 --reason
+nmap -sF -p 8080 192.168.199.39 --reason
 
 Wireshark
-ICMP 54 Timestamp request  
-ICMP 60 Timestamp reply
+TCP    54    39260 → 53 [FIN]
+TCP    60    1025 → 39260 [RST, ACK]
 
-
-# IP Protocol Ping Scan
-sudo nmap -PO1 nmap.scanme.org
-sudo nmap -PO2 nmap.scanme.org
+XMAS Scan
+nmap -sX 192.168.199.39  
+nmap -sX 192.168.199.39 --reason
 
 Wireshark
-ICMP 54 Timestamp request  
-ICMP 60 Timestamp reply
-
-If no protocols are specified, the default is to send multiple IP packets for 
-- ICMP (protocol 1)
-- IGMP (protocol 2)
-- IP-in-IP (protocol 4)
-- TCP (protocol 6)
-- UDP (protocol 17)
-- SCTP (protocol 132)
+TCP    54    52274 → 5850 [FIN, PSH, URG]
+TCP    60    1311 → 52274 [RST, ACK]
 
 
-# Traceroute Option
-nmap -sn nmap.scanme.org --traceroute
-
-
-# Reverse DNS Resolution Option
-nmap -R 45.33.32.156
