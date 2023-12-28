@@ -1,0 +1,78 @@
+
+Zeek is a free and open-source software network analysis framework.
+
+-- Install Zeek --
+
+echo 'deb http://download.opensuse.org/repositories/security:/zeek/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/security:zeek.list
+curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_20.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
+sudo apt update
+apt-cache policy zeek
+apt install zeek
+
+echo "export PATH=$PATH:/opt/zeek/bin" >> ~/.bashrc
+source ~/.bashrc
+
+
+-- Check the installation Folder --
+
+remnux@remnux:~$ cd /opt/zeek/bin/
+remnux@remnux:/opt/zeek/bin$ ls
+adtrace  btest-ask-update     btest-diff      btest-rst-include  gen-zam        rst           spicy-driver              trace-summary  zeek-config
+bifcl    btest-bg-run         btest-diff-rst  btest-rst-pipe     hiltic         spicy-build   spicy-dump                zeek           zeekctl
+binpac   btest-bg-run-helper  btest-progress  btest-setsid       hilti-config   spicyc        spicy-precompile-headers  zeek-archiver  zeek-cut
+btest    btest-bg-wait        btest-rst-cmd   capstats           paraglob-test  spicy-config  spicyz                    zeek-client    zkg
+remnux@remnux:/opt/zeek/bin$ 
+remnux@remnux:/opt/zeek/bin$ ls | grep zeek
+zeek* 
+zeek-archiver
+zeek-client
+zeek-config
+zeekctl
+zeek-cut* 
+remnux@remnux:/opt/zeek/bin$ 
+
+
+-- PCAP File --
+remnux@remnux:~/Downloads$ unzip 2020-10-12-Lokibot-infection-traffic.pcap.zip
+
+remnux@remnux:~/Downloads$ cd /tmp/
+remnux@remnux:/tmp$ mkdir zeek
+remnux@remnux:/tmp$ cd zeek/
+
+
+-- Run Zeek --
+remnux@remnux:/tmp/zeek$ /opt/zeek/bin/zeek -r ~/Downloads/2020-10-12-Lokibot-infection-traffic.pcap
+
+remnux@remnux:/tmp/zeek$ ls
+conn.log  dns.log  files.log  http.log  packet_filter.log  pe.log  ssl.log  x509.log
+remnux@remnux:/tmp/zeek$
+
+remnux@remnux:/tmp/zeek$ less conn.log
+remnux@remnux:/tmp/zeek$ less -S conn.log
+remnux@remnux:/tmp/zeek$ less -S dns.log
+remnux@remnux:/tmp/zeek$ less -S http.log  
+
+
+-- Run Zeek-Cut --
+remnux@remnux:/tmp/zeek$ cat dns.log | /opt/zeek/bin/zeek-cut query
+remnux@remnux:/tmp/zeek$ cat dns.log | /opt/zeek/bin/zeek-cut query | sort | unique -c | sort -n
+
+remnux@remnux:/tmp/zeek$ less -S pe.log
+remnux@remnux:/tmp/zeek$ grep FkmfCx13mub2PIRRU07 *.log
+
+remnux@remnux:/tmp/zeek$ less -S conn.log
+remnux@remnux:/tmp/zeek$ grep CJxggN12351qNONVpas *.log
+
+
+
+Zeek
+https://zeek.org/
+
+Zeek Installation
+https://kifarunix.com/install-zeek-on-ubuntu/
+
+PCAP Sample
+https://malware-traffic-analysis.net/2020/10/12/index.html
+
+How to use Zeek for PCAP Analysis
+https://www.youtube.com/watch?v=bznH1yMyjjo&list=PLUze0rzlzxgJ2Ys5lpm3HCCa2xC6oNMuK&index=2
