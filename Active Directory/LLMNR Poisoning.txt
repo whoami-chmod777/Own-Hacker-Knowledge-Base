@@ -55,7 +55,7 @@ We can confirm that we have mitigated LLMNR by running the following command in 
 $(Get-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows NT\DNSClient" -name EnableMulticast).EnableMulticast
 
 
-We can confirm that we have mitigated NBT-NS by running the following command in cmd.exe and receiving a ‘2’ in return
+We can confirm that we have mitigated NBT-NS by running the following command in cmd.exe and receiving a '2' in return
 
 wmic nicconfig get caption,index,TcpipNetbiosOptions
 
