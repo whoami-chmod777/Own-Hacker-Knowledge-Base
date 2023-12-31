@@ -1,5 +1,14 @@
 
 
 # Capture source or destination IP address starts with "17" 
+
 ip.src_host matches "17"
 ip.dst_host matches "17"
+
+
+
+# Special Operators
+
+http contains "password"
+http contains "login"
+http contains "moved"
