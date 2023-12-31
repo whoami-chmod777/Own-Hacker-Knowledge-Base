@@ -12,3 +12,5 @@ ip.dst_host matches "17"
 http contains "password"
 http contains "login"
 http contains "moved"
+
+tcp contains "curl"
