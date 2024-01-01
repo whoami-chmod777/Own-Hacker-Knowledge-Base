@@ -10,3 +10,21 @@ https://f5c69ad13726a68f3a4e2a9f917e2305.ctf.hacker101.com/background.png
 
 Inspector
 
+
+
+-- View Page Source --
+
+<!DOCTYPE html>
+<html class="dark" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://blueteamlabs.online/favicon.ico" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="p9ueHasuqe8gUAmt8ddJwx0XXR4OpOr4hkZiJQaC">
+        <meta name="description" content="Blue Team Labs Online">
+        <meta name="keywords" content="blue team labs, blue teaming, sbt, security blue team ,labs, btlo">
+        <meta name="author" content="Security Blue Team">
+        <link rel="icon" href="https://blueteamlabs.online/favicon.ico" type="image/x-icon">
+
+        <title>BTLO</title>
+
