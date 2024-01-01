@@ -8,7 +8,6 @@ tcpdump -nnSX port 443
 tcpdump -c 1 dst host 192.168.199.1
 tcpdump -c 1 dst host 192.168.199.1 -v
 tcpdump -c 100 dst host 192.168.199.1 -v
-tcpdump -c 100 dst host 192.168.199.1 -v
 
 # See the output in ASCII
 tcpdump -A -c 100 dst host 192.168.199.1 -v
