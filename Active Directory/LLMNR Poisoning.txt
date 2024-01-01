@@ -32,7 +32,7 @@ hashcat –m 5600 ntlmhash.txt rockyou.txt
 
 
 
--- LLMNR Poisoning be Mitigation --
+-- LLMNR Poisoning Mitigation --
 
 - Main Defense – Disable LLMNR and NBT-NS -
 
