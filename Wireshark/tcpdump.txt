@@ -1,3 +1,28 @@
+
+Tcpdump is a command-line network protocol analyzer. Tcpdump is used to capture network traffic.
+
+-- Interpreting output --
+
+Once you run a command to capture packets, tcpdump will print the output of the command as the sniffed packets. In the output, tcpdump prints one line of text for each packet with each line beginning with a timestamp. Here’s an example of a command and output for a single TCP packet: 
+
+sudo tcpdump -i any -v -c 1
+
+This command tells tcpdump to capture packets on -i any network interface. The option -v prints out the packet with detailed information and the option -c 1 prints out only one packet. Here is the output of this command: (see at the attached file)
+
+· Timestamp: The output begins with the timestamp, which starts with hours, minutes, seconds, and fractions of a second. 
+· Source IP: The packet’s origin is provided by its source IP address.
+· Source port: This port number is where the packet originated.
+· Destination IP: The destination IP address is where the packet is being transmitted to.
+· Destination port: This port number is where the packet is being transmitted to.
+
+The remaining output contains details of the TCP connection including flags and sequence number. The options information is additional packet information that the  -v option has provided.
+
+
+
+-- tcpdump Examples --
+
+
+
 # Traffic isolation examples
 tcpdump -i eth0
 
