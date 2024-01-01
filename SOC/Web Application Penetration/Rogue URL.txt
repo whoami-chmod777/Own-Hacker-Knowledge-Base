@@ -1,0 +1,12 @@
+
+-- Manipulate the URL --
+
+https://f5c69ad13726a68f3a4e2a9f917e2305.ctf.hacker101.com/
+https://f5c69ad13726a68f3a4e2a9f917e2305.ctf.hacker101.com/background.png
+
+
+
+-- Web Developer Tools --
+
+Inspector
+
