@@ -1,0 +1,5 @@
+
+In order to detect an anomaly we should first understand how the technology works. Web applications communicate via the Hyper-Text Transfer Protocol (HTTP).
+
+HTTP communication takes place between the server and the client. First, the client requests a specific resource from the server. The server receives the HTTP request and sends back an (HTTP Response) to the client after passing it through certain controls and processes. The client’s device receives the response and displays the requested resource in an appropriate format.
+
