@@ -34,6 +34,33 @@ nmap --script auth 192.168.199.39
 nmap --script auth,discovery 192.168.199.39
 
 
+-- Banner Grabbing --
+
+nmap -p22,80 --script banner 192.168.199.39
+nmap -F -T4 --script banner 192.168.199.39
+
+
+-- Whois & Traceroute Geo-location Enumeration --
+
+la -al /usr/share/nmap/scripts | grep -e "whois"
+ls -al /usr/share/nmap/scripts | grep -e "traceroute"
+
+nmap -sn --script whois-domain nmap.scanme.org
+nmap -sn --script "whois-*" nmap.scanme.org
+
+nmap -sn --traceroute nmap.scanme.org
+nmap -sn --traceroute --script traceroute-geolocation nmap.scanme.org
+
+
+
+
+
+
+
+
+
+
+
 
 
 https://nmap.org/book/nse.html
