@@ -1,1 +1,22 @@
 
+-- Gap Analysis & Others --
+
+# In OSINT - Analytical mind
+# Ask a lot of questions : Who, What, When, Where, Why, and How
+
+# Be Curious and Craft a Storyline
+
+# Use Gap Analysis
+https://nixintel.info/osint/using-gap-analysis-to-keep-osint-investigations-on-track/
+
+1. What do we know ?
+2. What does the information mean?
+3. What do I still need to know?
+4. How do I find out?
+
+# Reflect on failures but also wins
+1. What part is taking the most time?
+2. Is this necessary for the investigation?
+3. What could I change in my process?
+4. Could any part be automated?
+5. Who could I ask for input/advice?
