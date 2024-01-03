@@ -1,1 +1,33 @@
 
+https://letsdefend.io/get_user_information?id=1
+https://example.org/users/123
+http://foo.bar/showImage?img=img00011
+
+<form action="/update_profile" method="post">
+  <!-- Other fields for updating name, email, etc. -->
+  <input type="hidden" name="user_id" value="12345">
+  <button type="submit">Update Profile</button>
+</form>
+
+
+
+
+-- How Attackers Leverage with IDOR Attacks --
+
+· Steal personal information
+· Access unauthorized documents 
+· Conduct unauthorized processes (For example: deletion, alteration) 
+
+
+-- How to Prevent IDOR --
+
+In order to establish a secure environment without an IDOR vulnerability you should always check if the person who made the request has any authority.
+
+On top of this, unnecessary parameters should be removed and only the least amount of parameters should be taken away from the user. If we think about the previous example, we don’t need to get the “id” parameter. Instead of getting the  “id” parameter from user, we can identify the person who made the request using the session information.
+
+
+-- Detecting IDOR Attacks --
+
+· Check all parameters: an IDOR vulnerability may occur in any parameter. This is why you should not forget to check all parameters.
+· Look at the amount of requests made for the same page: When attackers detect an IDOR vulnerability they also want to access the information related to all other users so they usually perform a brute force attack. This is why you may see many requests made for the same page from one source.
+· Try to find a pattern: Attackers will plan a brute force attack to reach all objects. Because they will perform the attack on successive and foreseeable values like integer values you can try to find a pattern in these requests. For example: if you see requests such as id=1, id=2, id=3, you may suspect something.
