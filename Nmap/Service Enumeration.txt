@@ -5,7 +5,6 @@ nmap -p22,80 --script banner 192.168.199.39
 nmap -F -T4 --script banner 192.168.199.39
 
 
-
 --  Whois & Traceroute Geo-location Enumeration --
 
 la -al /usr/share/nmap/scripts | grep -e "whois"
@@ -17,3 +16,59 @@ ls -al /usr/share/nmap/scripts | grep -e "traceroute"
 
 nmap -sn --traceroute nmap.scanme.org
 nmap -sn --traceroute --script traceroute-geolocation nmap.scanme.org
+
+
+-- FTP Enumeration --
+
+ls -al /usr/share/nmap/scripts | grep -e "ftp"    
+
+nmap -sV -p21 192.168.199.39 192.168.199.41
+nmap -sS -p21 --script "ftp-*" 192.168.199.39 192.168.199.41
+nmap -sS -p21 --script ftp-anon,ftp-syst,tftp-enum,ftp-vsftpd-backdoor 192.168.199.39 192.168.199.41
+
+nmap --script ftp-vuln-cve2010-4221 -p 21 192.168.199.39
+
+ftp://192.168.199.39:21
+
+
+-- SMTP Enumeration --
+
+ls -la /usr/share/nmap/scripts | grep -e "smtp"
+
+nmap -p25 --script smtp-commands 192.168.199.39
+nmap -p25 --script smtp-enum-users 192.168.199.39  
+nmap -p25 --script smtp-enum-users --script-args smtp-enum-users.methods={VRFY} 192.168.199.39
+nmap -p25 --script smtp-open-relay 192.168.199.39
+nmap -p25 --script smtp-vuln-cve2010-4344 192.168.199.39
+
+
+-- DNS Enumeration - Zone-transfer & DNS Bruteforce --
+
+ls -al /usr/share/nmap/scripts | grep -e "dns" 
+ 
+nmap -p 53 dns-zone-transfer --script-args dns-zone-transfer.domani=zonetras
+
+nmap --script dns-zone-transfer --script-args dns-zone-transfer.server=nsztm1.digi.ninja,dns-zone-transfer.port=53,dns-zone-transfer.domain=zonetransfer.me
+nmap -Pn --script dns-brute --script-args dns-brute.threads=5,dns-brute.hostlist=/usr/share/wordlists/seclists/Discovery/DNS/fierce-hostlist.txt zonetransfer.me
+
+ls -l /usr/share/wordlists/seclists/Discovery/DNS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
