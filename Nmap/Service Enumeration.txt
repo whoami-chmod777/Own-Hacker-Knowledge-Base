@@ -59,16 +59,6 @@ ls -l /usr/share/wordlists/seclists/Discovery/DNS
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+https://digi.ninja/projects/zonetransferme.php
+https://nmap.org/nsedoc/scripts/dns-zone-transfer.html
 
