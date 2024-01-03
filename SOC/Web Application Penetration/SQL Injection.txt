@@ -1,1 +1,69 @@
 
+SELECT * FROM users WHERE username = 'USERNAME' AND password = 'USER_PASSWORD'
+
+SELECT * FROM users WHERE username = 'john' AND password = 'supersecretpassword'
+SELECT * FROM users WHERE username = 'john'' AND password = 'supersecretpassword'
+
+' OR 1=1 -- -
+SELECT * FROM users WHERE username = '' OR 1=1 -- - AND password = 'supersecretpassword'
+SELECT * FROM users WHERE username = '' OR 1=1
+
+
+
+
+
+
+
+
+
+
+
+-- How Attackers Leverage with SQL Injection Attacks --
+
+· Authentication bypass
+· Command execution
+· Exfiltrating sensitive data
+· Creating/deleting/updating database entries
+
+
+-- How to Prevent SQL Injections --
+
+· Use a framework: of course just using a framework will not be sufficient to prevent a SQL Injection attack. It is of utmost importance to use the framework in accordance with documentation.
+· Keep your framework up to date: Keep your web application secure by following security updates related to the framework you use.
+· Always sanitize data received from a user: Never trust data received from a user. On top of that do not only sanitize the form data but also do the same with other data (such as Headers, URLs, etc.)
+· Avoid using raw SQL queries: You may have a habit of writing raw SQL queries but you should opt to make use of the benefits a framework provides and you should also make use of the security it provides.
+
+
+-- Detecting SQL Injection Attacks --
+
+· When examining a web request check all areas that come from the user: Because SQL Injection attacks are not limited to the form areas, you should also check the HTTP Request Headers like User-Agent.
+· Look for SQL keywords: Look for words like INSERT, SELECT, WHERE within the data received from users.
+· Check for special characters: Look for apostrophes (‘), dashes (-), or parentheses which are used in SQL or special characters that are frequently used in SQL attacks within the data received from the user.
+· Familiarize yourself with frequently used SQL Injection payloads: Even though SQL payloads change according to the web application, attackers still use some common payloads to check for SQL Injection vulnerabilities. If you are familiar with these payloads, you can easily detect SQL Injection payloads. You can see some frequently used SQL Injection payloads here.
+
+
+-- Detecting Automated SQL Injection Tools --
+
+· Look at the User-Agent: Automated browser devices generally have their names and versions recorded. You can look at the User-Agent to detect these automated devices.
+· Check the frequency of requests: Automated devices were designed to send an estimated amount of many requests per second to be able to test payloads as quickly as possible. A normal user could send 1 request per second, so you can tell if the requests are made by an automated device or not by looking at the number of requests per second.
+· Look at the contents of the payload: Automated devices usually record their own names in their payloads. For example a SQL Injection payload sent by an automated device could look like this:  sqlmap’ OR 1=1
+· Is the payload complicated: This detection method may not always work but based on my experience, I could say that automated devices send more complicated payloads.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
