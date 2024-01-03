@@ -1,1 +1,57 @@
 
+<script>alert(1)</script>
+<script>window.location='https://google.com'</script>
+https://letsdefend.io/xss_example.php?user=%3Cscript%3Ewindow.location=%27https://google.com%27%3C/script%3E
+
+
+
+
+
+
+
+
+
+
+
+
+-- How Attackers Leverage with XSS Attacks --
+
+· Sanitize data coming from a user: Never trust data coming from a user. If user data needs to be processed and saved it should be encoded with html encoding using special characters and only then should it be saved.
+· Use a framework: Most frameworks come with preventive measures against XSS attacks.
+· Use the framework correctly: Almost all frameworks used to develop web applications come with a sanitation feature but if this is not used properly there still is a chance for XSS vulnerabilities to occur. 
+· Keep your framework up to date: Frameworks are developed by humans so they too may contain XSS vulnerabilities. But these kinds of vulnerabilities are usually patched by security updates. So you should make sure that you have completed your framework’s security updates.
+
+
+-- Detecting XSS Attacks --
+
+· Look for keywords: The easiest way to catch XSS attacks is to look for keywords such as “alert” and “script” which are commonly used in XSS payloads.
+· Familiarize yourself with frequently used XSS payloads: Attackers primarily use the same payloads to look for vulnerabilities before they exploit a XSS vulnerability. This is why familiarizing yourself with frequently used XSS payloads would make it easier for you to detect XSS vulnerabilities. You can examine some frequently used payloads here. 
+· Check if any special characters have been used: Check data coming from a user to see if any special characters that are frequently used in XSS payloads like greater than (>) or lesser than (<) are present. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
