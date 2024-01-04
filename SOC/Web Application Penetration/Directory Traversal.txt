@@ -1,0 +1,81 @@
+
+Directory traversal is an attack type that the attackers leverage often to access files and directories that are stored outside the web server's root directory. It involves manipulating input to be able to access files on a web server that are actually not intended to be accessible by unauthorized users. 
+
+The main difference between the directory traversal and LFI is the source of the input. Directory traversal involves in manipulating the input that is used to access files on a web server, whereas LFI involves in manipulating input that is used to include local files within a web application.
+
+($_GET['page'])
+../../../../etc/passwd
+
+http://example.com/profiles/picture.php?name=user1.jpg
+http://example.com/profiles/picture.php?name=../../etc/passwd
+
+http://example.com/page?parameter=../
+http://example.com/page?parameter=..\/
+http://example.com/page?parameter=%2e%2e%2f
+http://example.com/page?parameter=%252%252e%252f
+
+. = %c0%2e, %e0%40%ae, %c0ae
+/ = %c0%af, %e0%80%af, %c02f
+\ = %c0%5c, %c0%80%5c
+
+
+
+-- Detection Payloads for Directory Traversal Attack --
+
+/^.*"GET.*\?.*=(%2e%2e%2f).+?.*HTTP\/.*".*$/gm
+
+^: Asserts the start of the line.
+.*: Matches any character (except for a newline character) zero or more times.
+"GET: Matches the literal string "GET".
+.*\?: Matches any character (except for a newline character) zero or more times, followed by a "?".
+.*=: Matches any character (except for a newline character) zero or more times, followed by "=".
+(.+?(?=%2e%2e%2fetc%2f)): Capturing group that matches one or more characters lazily (non-greedy) until it encounters the specified string "%2e%2e%2fetc%2f". This is used to prevent false positives related to directory traversal.
+.+?: Matches one or more characters lazily (non-greedy).
+.*?: Matches any character (except for a newline character) zero or more times lazily (non-greedy).
+HTTP\/.*": Matches the literal string "HTTP/", followed by any character (except for a newline character) zero or more times, and ending with a double quote.
+.*$: Matches any character (except for a newline character) zero or more times until the end of the line.
+/gm: Flags for global matching and multiline matching.
+
+
+- Linux -
+
+/etc/issue
+/etc/passwd
+/etc/shadow
+/etc/group
+/etc/hosts
+
+- Windows -
+
+c:/boot.ini
+c:/inetpub/logs/logfiles
+c:/inetpub/wwwroot/global.asa
+c:/inetpub/wwwroot/index.asp
+c:/inetpub/wwwroot/web.config
+c:/sysprep.inf
+
+
+
+-- Directory Traversal Possible Vectors --
+
+1. User input: Attackers can manipulate user input parameters, such as URLs, file paths, and form fields, to access files outside of the intended directory. This can be done by adding "../" or other special characters to the input.
+2. Cookies: If a web application stores user data in cookies, attackers can try to manipulate the cookie value to access files outside of the intended directory.
+3. HTTP headers: Attackers can manipulate HTTP headers, such as the Referer or User-Agent header, to access files outside of the intended directory.
+4. File upload: If a web application allows file uploads, attackers can upload malicious files that contain directory traversal attacks.
+5. Direct requests: Attackers can try to access files and directories directly by guessing or brute-forcing the file names or paths.
+6. URL manipulation: Attackers can try to manipulate the URL of a web application to access files outside of the intended directory. For example, they can add "/../" to the URL to go up one directory level.
+7. Malicious links: Attackers can send users malicious links that contain directory traversal attacks. When the user clicks on the link, the attack is executed on their computer.
+
+
+-- Prevention Methods for Directory Traversal Attacks --
+
+· Input validation and sanitization: Validate and sanitize all user input, especially the file paths and the directory names. This can involve using regular expressions or other methods to check the input for valid characters, and to limit the input to known values or directories.
+· Access controls: Limit the web server's access to only the files and directories required for the application to function. Use file the system permissions and access controls to restrict access to sensitive files and directories.
+· Relative file paths: Use relative file paths instead of absolute paths whenever possible. This can prevent attackers from using the "../" character to navigate up to higher-level directories.
+· Whitelisting: Use a whitelist approach where only specific characters are allowed in the file name parameter. This can be done using a validation library or a custom validation function.
+· Secure coding practices: Use secure coding practices, such as avoiding the use of user input directly in file path concatenation, using secure file upload mechanisms, and avoiding the use of insecure functions like eval() and system().
+· Web application firewall: Use a web application firewall (WAF) to detect and block directory traversal attacks. WAFs can analyze incoming traffic for malicious requests and prevent attacks from reaching the web application.
+
+
+
+
