@@ -54,6 +54,56 @@ nmap -Pn --script dns-brute --script-args dns-brute.threads=5,dns-brute.hostlist
 ls -l /usr/share/wordlists/seclists/Discovery/DNS
 
 
+-- HTTP Enumeration --
+
+ls -al /usr/share/nmap/scripts | grep -e "http-"
+ls -al /usr/share/nmap/scripts | grep -e "http-waf"
+
+nmap -F -sV -T5 192.168.199.39 
+
+nmap -sV -p80 --script http-enum 192.168.199.39
+nmap -Pn -sV -p80 -T4 --script http-methods --script-args http-method.test-all nmap.scanme.org
+
+nmap -Pn -p 443 --script http-waf-detect hackersploit.org
+nmap -Pn -p 443 --script http-waf-fingerprint hackersploit.org
+nmap -Pn -p 443 --script http-waf-detect,http-waf-fingerprint hackersploit.org
+
+
+-- SMB Enumeration --
+
+ls -al /usr/share/nmap/scripts | grep -e "smb"  
+
+nmap -p445 --script smb-os-discovery 192.168.199.39
+nmap -p445 --script smb-enum-shares 192.168.199.41 
+                                                                           
+nmap -p445 --script smb-enum-users 192.168.199.39
+nmap -p445 --script smb-enum-users 192.168.199.41 -d
+
+nmap -p445 --script smb-protocols 192.168.199.39
+nmap -p445 --script smb-double-pulsar-backdoor 192.168.199.39
+nmap -p445 --script smb-vuln-ms17-010.nse 192.168.199.41
+
+
+-- MySQL Enumeration --
+
+ls -al /usr/share/nmap/scripts | grep -e "mysql
+
+nmap -p3306 --script mysql-info 192.168.199.39
+nmap -p3306 --script mysql-enum 192.168.199.39
+
+nmap -p3306 --script mysql-empty-password.nse 192.168.199.39
+mysql -u root -h 192.168.199.39 -p
+
+nmap -p3306 --script mysql-brute.nse 192.168.199.39
+nmap -p3306 --script mysql-brute.nse --script-args mysql-brute.threads=100 192.168.199.39
+
+
+-- Vulnerability Scanning --
+
+ls -al /usr/share/nmap/scripts | grep -e "vulners"
+
+nmap -sV -p21-8080 --script vulners 192.168.199.39   
+nmap -sV -p80 --script vulners --script-args http-vulners-regex 192.168.199.39
 
 
 
@@ -61,4 +111,6 @@ ls -l /usr/share/wordlists/seclists/Discovery/DNS
 
 https://digi.ninja/projects/zonetransferme.php
 https://nmap.org/nsedoc/scripts/dns-zone-transfer.html
-
+https://github.com/vulnersCom/nmap-vulners
+https://nmap.org/nsedoc/scripts/
+https://nmap.org/book/nse.html
