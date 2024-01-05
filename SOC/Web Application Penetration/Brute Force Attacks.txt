@@ -16,6 +16,8 @@ Brute forcing is a type of attack that involves attempting to guess a password o
 · IP blocking: WAFs can block access to the web application from IP addresses that have made excessive login attempts or have triggered other security rules. This can prevent brute force attacks by blocking the attacker's access to the application altogether.
 · User behavior analysis: WAFs can analyze user behavior patterns to detect abnormal activity, such as a high rate of login attempts or unusual login times. This can help prevent brute force attacks by detecting and blocking suspicious behavior before it becomes a problem.
 
+It's important to note that WAFs are not foolproof and can be bypassed by skilled attackers. Therefore, it's important to implement multiple layers of security controls, such as strong passwords, account lockout policies, and security awareness trainings for users, in addition to using  WAFs.
+
 
 -- Detecting Brute Forcing Attacks --
 
