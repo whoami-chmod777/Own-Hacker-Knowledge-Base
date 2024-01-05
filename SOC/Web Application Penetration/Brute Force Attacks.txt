@@ -25,3 +25,39 @@ It's important to note that WAFs are not foolproof and can be bypassed by skille
 
 · Deploy an intrusion detection system (IDS) or intrusion prevention system (IPS) to analyze network traffic and detect signs of brute force attacks. Look for common attack vectors used in brute force attacks, such as dictionary attacks or password spraying. Identify user accounts that are vulnerable to brute force attacks due to weak passwords or other vulnerabilities. Finally, monitor for incidents of brute force attacks and respond to them promptly by blocking malicious IP addresses, locking out user accounts, and implementing additional security controls as necessary. 
 
+Successful login attempts would typically result in a response code of 200 or a redirect to a different page, which can be identified in the log file. However, keep in mind that some attackers may attempt to obfuscate their successful login attempts by logging in with valid credentials or using a compromised account, so it is important to perform further analysis to determine if any suspicious activity is occurring.
+
+
+-- Detect Brute Force Attacks --
+
+· Log analysis tools: There are several log analysis tools such as Logstash, ElasticSearch, and Kibana (ELK Stack) that can help you analyze nginx log files and detect brute force attacks. These tools will allow you to search for specific patterns in the log files, such as repeated failed login attempts from the same IP address or user agent.
+
+· Regular expressions: Regular expressions can be used to search for specific patterns in the log files. For example, you can use a regular expression to match a sequence of repeated failed login attempts from the same IP address or user agent.
+
+Things that you can do after the detection:
+
+· Fail2ban: Fail2ban is a popular intrusion prevention tool that can be used to automatically block the IP addresses that are detected as engaging in brute force attacks. Fail2ban works by monitoring the nginx log files and applying predefined filters to detect and block suspicious activity.
+
+· IP blocking: You can manually block IP addresses that are detected as engaging in brute force attacks by adding them to the nginx configuration file. For example, you can use the deny rule to block traffic from specific IP addresses
+
+
+-- Example of a regular expression tto detect repeated failed login attempts --
+
+/^(\S+) \S+ \S+ \[.*?\] "(POST|GET) \/login\.php.*?" (401|403) \d+ ".*?" ".*?"/gm
+
+This regular expression will match any log file entry that includes a failed login attempt (401 or 403 status code) to the /login.php page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
