@@ -31,7 +31,6 @@ Use secure coding practices: Use secure coding practices, such as input validati
 
 -- XML External Entity (XXE) Injection Payloads --
 
-
 # XXE: Basic XML Example 
 
 <!--?xml version="1.0" ?-->
