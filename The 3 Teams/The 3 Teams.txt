@@ -7,6 +7,7 @@
 
 
 -- Red Team In a Nut Shell --
+
 · Identify and exploit issue in an organizations environment
 · Simulate External & Internal Attackers
 · Provide Cyber Awareness training
@@ -14,6 +15,7 @@
 · Understands Defense as well as Offense 
 
 -- Why Are We Needed? --
+
 · Be the SME for other teams on attacks
 · Realistically test the scope of an attackers effectiveness in a variety of situations
 · Provide risk analysis on attacks and vulnerabilities that may hinder the organization 
@@ -21,12 +23,14 @@
 
 
 -- Blue Team In a Nut Shell --
+
 · Identify, Detect and Respond to any threat the organization faces
 · Handles all Security issues around breaches and compromises
 · Operates 24/7
 · Alternate Names: SIRT & SOC
 
 -- Why Are They Needed? --
+
 · To bring real time protection to the organization
 · Able to contain, analyze and mitigate threats to an organization
 · Compliance Requirements
@@ -36,14 +40,17 @@
 
 
 -- Purple Team --
+
 · Unofficial Team
 
 -- Why Is It Needed? --
+
 · Detection Feedback loop
 · Constant improvements
 · Identify Missing Detections
 
 -- Training --
+
 · The Swap
     Red -> Blue
     Blue <- Red
