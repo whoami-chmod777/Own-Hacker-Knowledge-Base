@@ -1,1 +1,26 @@
 
+apt-get install python3
+pip3 install -r requirements.txt
+
+PlumHound.py -x tasks/default.tasks
+
+
+--  Single Query with Standard Output (Normal Verbosity) --
+
+PlumHound.py -q "MATCH (n:User) RETURN n.name, n.displayname LIMIT 10"
+
+
+--  Single Query with Standard Output (Quiet) --
+
+PlumHound.py -q "MATCH (n:User) RETURN n.name, n.displayname LIMIT 10" -v 0
+PlumHound.py -q "MATCH (n:User) RETURN n.name, n.displayname LIMIT 10" --title "Domain Users (Limit 10)" --of "DomainUserstest.html" --op "reports//" --ox HTML
+
+
+-- Busiest Path (BlueHound Module) --
+
+PlumHound.py -bp short 5
+
+
+-- Analyze Path (BlueHound Module) --
+
+PlumHound.py -ap group
