@@ -1,0 +1,9 @@
+
+
+
+
+
+
+
+
+https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters/powerview
