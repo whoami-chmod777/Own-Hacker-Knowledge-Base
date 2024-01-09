@@ -1,0 +1,43 @@
+
+-- Installation --
+
+git clone https://github.com/dirkjanm/ldapdomaindump.git
+pip install -r ldapdomaindump/requirements.txt
+
+
+-- Basic Usage --
+
+python ldapdomaindump.py -u <username> -p <password> -d <domain>
+
+
+-- Export Results --
+
+python ldapdomaindump.py -u <username> -p <password> -d <domain> -o output.txt
+
+
+-- Specify LDAP Server --
+
+python ldapdomaindump.py -u <username> -p <password> -d <domain> -s <ldap_server>
+
+
+-- Search Specific Organizational Unit --
+
+python ldapdomaindump.py -u <username> -p <password> -d <domain> -b "OU=Users,DC=example,DC=com"
+
+
+Note: LDAP requires a bind credential -- can be a low-level domain user -- in order to connect to the LDAP service and run queries.
+
+# Output help message
+ldapdomaindump -h
+
+# Standard enumeration using credential
+username='domain.tld\username'
+password='password'
+output_dir='/tmp/ldap_stuff'
+ldapdomaindump -u $username -p $password -o $output_dir dc-ip-address
+
+# Standard enumeration using credential and proxychains
+username='domain.tld\username'
+password='password'
+output_dir='/tmp/ldap_stuff'
+proxychains -q ldapdomaindump -u $username -p $password -o $output_dir dc-ip-address
