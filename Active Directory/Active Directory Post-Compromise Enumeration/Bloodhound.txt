@@ -1,1 +1,29 @@
 
+
+apt install bloodhound
+ 
+neo4j console 
+bloodhound
+
+http://localhost:7474/
+
+user: neo4j
+password: neo4j
+
+The bloodhound console must be running to start bloodhound !!!!
+
+
+# Data Collection in BloodHound
+sudo bloodhound-python -d <domain> -u <username> -p <password> -ns -c
+
+# Collect Group Membership Data 
+sudo bloodhound-python -d <domain> -u <username> -p <password> -c -gc
+
+# Find Admin Sessions 
+sudo bloodhound-python -d <domain> -u <username> -p <password> -c -as
+
+# Collect Session Data
+sudo bloodhound-python -d <domain> -u <username> -p <password> -c -ds
+
+# Identify Shortest Paths
+sudo bloodhound-python -d <domain> -u <username> -p <password> -c -sp
