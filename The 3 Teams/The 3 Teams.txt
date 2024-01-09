@@ -16,7 +16,7 @@
 
 -- Why Are We Needed? --
 
-· Be the SME for other teams on attacks
+· Be the SME (Subject Matter Expert) for other teams on attacks
 · Realistically test the scope of an attackers effectiveness in a variety of situations
 · Provide risk analysis on attacks and vulnerabilities that may hinder the organization 
 
