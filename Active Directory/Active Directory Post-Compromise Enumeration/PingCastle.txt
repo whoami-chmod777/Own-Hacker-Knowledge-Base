@@ -1,1 +1,10 @@
 
+--  Run PingCastle --
+
+PingCastle.exe --help
+PingCastle.exe --log --interactive
+PingCastle.exe --healthcheck --server mydomain.com
+
+
+https://www.pingcastle.com/
+
