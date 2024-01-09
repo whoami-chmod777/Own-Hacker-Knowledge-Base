@@ -1,0 +1,45 @@
+
+-- Penetration Testing Methodology --
+
+· What is a Penetration Testing Methodology?
+· How is it used in an organization?
+· What are each steps involved?
+
+
+-- Metrics --
+
+· What are Metrics?
+· How and why are they required?
+· Who sees them?
+· Team measurements 
+
+
+-- Routine Assessments --
+
+· What are Routine Assessments?
+· Understand the types of Assessments
+· Building your own Assessment Plan
+
+
+-- Budget --
+
+· What is an Enterprise Budget?
+· How does it impact the team?
+· Who handles it?
+· Restrictions based on Budget
+
+
+-- Specialties --
+
+· What is a specialty?
+· How to identify yours
+· How is this useful?
+
+
+-- CIA Triangle --
+
+· What is the CIA Triangle
+· How can it be used?
+· Should it always be referenced? 
+
+
