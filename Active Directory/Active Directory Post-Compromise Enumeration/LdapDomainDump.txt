@@ -1,6 +1,8 @@
 
 -- Installation --
 
+sudo apt install python3-ldapdomaindump
+
 git clone https://github.com/dirkjanm/ldapdomaindump.git
 pip install -r ldapdomaindump/requirements.txt
 
