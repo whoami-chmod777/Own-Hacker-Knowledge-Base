@@ -6,9 +6,9 @@ A set of steps or procedures that are to be followed when performing a test
 
 -- Why is it Needed --
 
-Give structure to a Red Team Assessment
-Provide consistency
-Avoids missing required components
+· Give structure to a Red Team Assessment
+· Provide consistency
+· Avoids missing required components
 
 
 -- The Methodology --
@@ -23,52 +23,52 @@ Avoids missing required components
 
 -- Scope Identification --
 
-What is Scope?
-Notification of Assessment
-Stability and Service Considerations
-Goal Identification
+· What is Scope
+· Notification of Assessment
+· Stability and Service Considerations
+· Goal Identification
 
 
 -- Reconnaissance --
 
-What is Reconnaissance?
-Enumeration
-Scanning
-Active vs Passive
+· What is Reconnaissance
+· Enumeration
+· Scanning
+· Active vs Passive
 
 
 -- Exploitation --
 
-What is Exploitation?
-Validating Findings
-Exploiting the Target
-Ensuring Stability
+· What is Exploitation
+· Validating Findings
+· Exploiting the Target
+· Ensuring Stability
 
 
 -- Post Exploitation --
 
-What is Post Exploitation?
-Privilege Escalation
-Persistence
-Moving Laterally
-Looking for good stuff
+· What is Post Exploitation
+· Privilege Escalation
+· Persistence
+· Moving Laterally
+· Looking for good stuff
 
 
 -- Covering Your Tracks --
 
-Why do we cover our tracks?
-Is it Required?
-Log files and their locations
-Wiping the logs
-Hiding persistence
-Cleaning Up
+· Why do we cover our tracks?
+· Is it Required?
+· Log files and their locations
+· Wiping the logs
+· Hiding persistence
+· Cleaning Up
 
 
 -- Reporting --
 
-Why do we report everything?
-Reporting audience
-How to build the report
-Feedback Loop
-Prioritize Business Risk based on findings
+· Why do we report everything?
+· Reporting audience
+· How to build the report
+· Feedback Loop
+· Prioritize Business Risk based on findings
 
