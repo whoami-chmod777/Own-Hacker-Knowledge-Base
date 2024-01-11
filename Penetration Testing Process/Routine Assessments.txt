@@ -18,3 +18,44 @@ Can be a wide variety of Assessments
 · Follow Up Tests
 · Specialized Tests
 · Compliance Requirements
+
+
+
+-- Yearly Assessments --
+
+What are Yearly Assessments
+· Assessments that happen yearly are normally required by compliance obligations
+· These types usually take a larger amount of time to complete
+· This type of assessment tends to have 3rd party involvement
+
+External Perimeter Testing In House
+· A full test from an attackers perspective from the outside of the organizations
+· Assume no knowledge of the network
+· Cannot use work related equipment of credentials
+· Possible Restrictions
+  - Exploits
+  - Services
+· Feedback Loop
+
+3rd Party External Perimeter Testing
+· Same test as the in house
+· May be required per year.
+· Red Team Organizes the Scope to provide to the 3rd party
+· Once done Red Team will validate any findings
+· Prioritize all issues
+· Feedback Loop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
