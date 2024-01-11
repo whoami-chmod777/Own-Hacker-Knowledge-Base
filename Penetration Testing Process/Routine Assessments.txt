@@ -69,6 +69,16 @@ Network Segmentation Testing
   ▫ Production does not reach Development or Corporate
   ▫ Development should never ever ever reach Production
 
+Phishing Campaign
+· Types of Phishing
+  ▫ Active
+  ▫ Passive
+
+0 Day Audit
+· Identify issues in source code of internal products or services
+· Can be don for external code bases
+· Test all built exploits in a Development environment
+· Feedback Loop
 
 
 
