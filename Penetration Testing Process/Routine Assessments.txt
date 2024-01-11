@@ -1,1 +1,20 @@
 
+-- What are Routine Assessments --
+
+A Red Team Engagement that is done on a scheduled basis
+· Consistent
+· Monthly
+· Quarterly
+· Yearly 
+
+Can be a wide variety of Assessments
+· Phishing
+· Password Cracking
+
+
+-- Why are they needed --
+
+· Red Team Actions
+· Follow Up Tests
+· Specialized Tests
+· Compliance Requirements
