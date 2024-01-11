@@ -102,10 +102,32 @@ Unplanned Assessments
 · Why would there be an unplanned assessment?
 
 
+-- Constant Assessments --
 
+What are Constant Assessments
+· Done daily or weekly
+· Automation plays a part here
+· Normally Contains 
+  ▫ Password Cracking
+  ▫ Vulnerability Scanning
+  ▫ Custom Tools
 
+Password Cracking
+· Automate this task
+· Keeping Track
+· Master list
+· Feedback Loop
 
+Vulnerability Scanners
+· Who handles the Scanners
+· Automate all the things!
+· Can this be used in a Red Team Assessment
 
+Custom Tools
+· Who builds these tools
+· What are they
+· Who runs them
+· Feedback Loop
 
 
 
