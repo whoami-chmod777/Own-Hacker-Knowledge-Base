@@ -33,8 +33,8 @@ External Perimeter Testing In House
 · Assume no knowledge of the network
 · Cannot use work related equipment of credentials
 · Possible Restrictions
-  - Exploits
-  - Services
+  ▫ Exploits
+  ▫ Services
 · Feedback Loop
 
 3rd Party External Perimeter Testing
@@ -58,9 +58,16 @@ Perimeter Testing
 · Smaller Sections
 · Specific Services
 
+Perimeter Testing
+· Not to be confused with External Perimeter Testing
+· Smaller Sections
+· Specific Services
 
-
-
+Network Segmentation Testing
+· Tests to ensure all Firewall rules between 2 network segments are in tack
+· In most organizations
+  ▫ Production does not reach Development or Corporate
+  ▫ Development should never ever ever reach Production
 
 
 
