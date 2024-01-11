@@ -2,12 +2,14 @@
 -- What are Routine Assessments --
 
 A Red Team Engagement that is done on a scheduled basis
+
 · Consistent
 · Monthly
 · Quarterly
 · Yearly 
 
 Can be a wide variety of Assessments
+
 · Phishing
 · Password Cracking
 
@@ -24,11 +26,13 @@ Can be a wide variety of Assessments
 -- Yearly Assessments --
 
 What are Yearly Assessments
+
 · Assessments that happen yearly are normally required by compliance obligations
 · These types usually take a larger amount of time to complete
 · This type of assessment tends to have 3rd party involvement
 
 External Perimeter Testing In House
+
 · A full test from an attackers perspective from the outside of the organizations
 · Assume no knowledge of the network
 · Cannot use work related equipment of credentials
@@ -38,6 +42,7 @@ External Perimeter Testing In House
 · Feedback Loop
 
 3rd Party External Perimeter Testing
+
 · Same test as the in house
 · May be required per year.
 · Red Team Organizes the Scope to provide to the 3rd party
@@ -46,10 +51,19 @@ External Perimeter Testing In House
 · Feedback Loop
 
 
+-- Quarterly Assessments --
 
+What are Quarterly Assessments
 
+· The common frequency of a quarter is about 3 months
+· Normally there are 3 assessments per quarter
+· The types of assessment can depend on what the organization or team needs at that time
 
+Perimeter Testing
 
+· Not to be confused with External Perimeter Testing
+· Smaller Sections
+· Specific Services
 
 
 
