@@ -81,5 +81,42 @@ Phishing Campaign
 · Feedback Loop
 
 
+-- Monthly Assessments --
+
+What are Monthly Assessments
+· The most common frequency of Assessments
+· This is where you will find the most and reoccurring findings
+· Normally Contains 
+  ▫ 1 Red Team Assessment
+  ▫ 1 Phishing Campaign 
+
+Phishing
+· The type of Phishing attack must change each month.
+  ▫ Active
+  ▫ Passive
+· Campaigns must be on rotation and unblocked each quarter
+
+Unplanned Assessments
+· In some cases there are unplanned assessments
+· Do we need to move others out or fit it in?
+· Why would there be an unplanned assessment?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
