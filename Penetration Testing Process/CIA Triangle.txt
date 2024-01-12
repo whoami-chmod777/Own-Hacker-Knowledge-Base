@@ -1,1 +1,34 @@
 
+-- What is the CIA Triangle --
+
+· Common Security Model that is used to guide policies that are put in place
+· This is also the case when revisiting older policies
+
+
+-- The CIA Triangle --
+
+· Confidentiality
+· Integrity
+· Availability
+
+
+-- Confidentiality --
+
+· Controls the access to information
+· Put in place to ensure only people with correct access has access
+· Commonly called Authorization
+· Good example is 2FA
+
+
+-- Integrity --
+
+· This ensures the data accessed is trusted and accurate at all times
+· Data that is not consistent and inaccurate breaks the triangle
+· Example is Data Encryption
+
+
+-- Availability --
+
+· If the data is unavailable then it is useless
+· Common cause of this breaking the triangle is a DDOS attack
+· Disaster Recovery Plan is crucial for this step so everything can be mitigated and brought up quickly
