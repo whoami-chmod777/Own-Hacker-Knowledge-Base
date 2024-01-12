@@ -1,1 +1,63 @@
 
+-- What is a Specialty --
+
+· An individual that is a SME on a particular topic
+· Can also be just a focus area the individual wants to focus on
+
+
+-- Examples --
+
+· Password Cracking
+· Enumeration
+· Privilege Escalation
+· Windows & or Linux
+· Scripting
+· External Testing
+· Web Applications
+· Exploit Development
+
+
+-- Why is it important to know --
+
+· No one is an expert at everything
+· A team needs to be well balanced
+· Job Posting may look for a specific skill set
+· Can help distinguish you from the rest
+
+
+-- What if I Don’t Have One! --
+
+· Don’t Panic!
+· Generalists
+· Most common type
+
+
+-- How do I Decide --
+
+· You will want to learn a little bit about each subject to find what you like the most
+· The RedTeam Nation can help!
+· Go out and research some of the topics I spoke about to see what looks the most interesting to you
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
