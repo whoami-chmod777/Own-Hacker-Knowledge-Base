@@ -35,7 +35,6 @@ sudo tcpdump -i eth0 -nn -s0 -v port 80
 port 80: this is a common port filter to capture only traffic on port 80, that is of course usually HTTP.
 
 
-sudo tcpdump [-i interface] [option(s)] [expression(s)]
 
 
 
