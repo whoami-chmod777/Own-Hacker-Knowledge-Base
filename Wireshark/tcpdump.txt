@@ -21,6 +21,16 @@ The remaining output contains details of the TCP connection including flags and 
 
 -- tcpdump Examples --
 
+Breaking down the Tcpdump Command Line
+
+sudo tcpdump -i eth0 -nn -s0 -v port 80
+
+-i: Select interface that the capture is to take place on, this will often be an ethernet card or wireless adapter but could also be a vlan or something more unusual. Not always required if there is only one network adapter.
+-nn: A single (n) will not resolve hostnames. A double (nn) will not resolve hostnames or ports. This is handy for not only viewing the IP / port numbers but also when capturing a large amount of data, as the name resolution will slow down the capture.
+-s0: Snap length, is the size of the packet to capture. -s0 will set the size to unlimited - use this if you want to capture all the traffic. Needed if you want to pull binaries / files from network traffic.
+-v: Verbose, using (-v) or (-vv) increases the amount of detail shown in the output, often showing more protocol specific information.
+port 80: this is a common port filter to capture only traffic on port 80, that is of course usually HTTP.
+
 
 
 # Traffic isolation examples
@@ -34,5 +44,20 @@ tcpdump -c 1 dst host 192.168.199.1
 tcpdump -c 1 dst host 192.168.199.1 -v
 tcpdump -c 100 dst host 192.168.199.1 -v
 
-# See the output in ASCII
+# Display ASCII text
+tcpdump -A -s0 port 80
 tcpdump -A -c 100 dst host 192.168.199.1 -v
+
+# Capture on Protocol
+tcpdump -i eth0 udp
+tcpdump -i eth0 proto 17
+
+# Capture Hosts based on IP address
+tcpdump -i eth0 host 10.10.1.1
+tcpdump -i eth0 dst 10.10.1.20
+
+
+
+
+
+
