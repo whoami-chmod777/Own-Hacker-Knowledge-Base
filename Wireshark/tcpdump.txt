@@ -1,6 +1,9 @@
 
 Tcpdump is a command-line network protocol analyzer. Tcpdump is used to capture network traffic.
 
+sudo tcpdump [-i interface] [option(s)] [expression(s)]
+
+
 -- Interpreting output --
 
 Once you run a command to capture packets, tcpdump will print the output of the command as the sniffed packets. In the output, tcpdump prints one line of text for each packet with each line beginning with a timestamp. Here’s an example of a command and output for a single TCP packet: 
@@ -30,6 +33,11 @@ sudo tcpdump -i eth0 -nn -s0 -v port 80
 -s0: Snap length, is the size of the packet to capture. -s0 will set the size to unlimited - use this if you want to capture all the traffic. Needed if you want to pull binaries / files from network traffic.
 -v: Verbose, using (-v) or (-vv) increases the amount of detail shown in the output, often showing more protocol specific information.
 port 80: this is a common port filter to capture only traffic on port 80, that is of course usually HTTP.
+
+
+sudo tcpdump [-i interface] [option(s)] [expression(s)]
+
+
 
 
 
