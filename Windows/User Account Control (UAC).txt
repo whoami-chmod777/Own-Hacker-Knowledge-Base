@@ -1,0 +1,20 @@
+
+Windows + R --> UserAccountControlSettings
+
+-- What is UAC --
+
+· User Account Control
+· Provide temporary administrative rights to a process during a single run
+· Helps mitigate the impact of Viruses and Malware
+
+
+-- What Does UAC Look Like --
+
+· It is usually a prompt after you attempt to run something that requires administrative privileges when logged in as a standard user
+· This can also prompt for the local administrators password as well
+
+
+-- Is an Admin the same as a User --
+
+· When a standard User logs in they are provided a Standard Access Token to be used for their session
+· Administrators are provided a similar Standard Access Token but are also assigned a Full Administrator Access Token
