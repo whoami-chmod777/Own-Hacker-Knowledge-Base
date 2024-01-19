@@ -1,0 +1,4 @@
+
+C:\Windows\Logs
+
+Event Viewer: eventvwr
