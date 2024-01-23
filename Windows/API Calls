@@ -1,0 +1,40 @@
+
+· -- What is an API --
+
+· Application Programming Interface
+· Used by almost all Windows Applications to interface with the OS
+· Applications ran in the early phases of the start up or boot process use the native API
+
+
+-- Common Libraries --
+
+Base Services
+· Lib: Kernel32.dll, KernelBase.dll
+· Used to provide the most common functionality, handling memory, files ,hardware, etc.
+
+Advanced Services
+· Lib: advapi32.dll, advapires32.dll
+· Provides functions above the Kernel to access Core Windows components such as the Registry, Service Manager and manage user accounts
+
+Graphical Device Interface
+· Lib: gdi32.dll, win32k.sys
+· Used to interface with monitors printers and other output devices.
+
+User Interface
+· Lib: user32.dll
+· Handles the User interface. Everything that appears on the desktop, buttons, creating windows, etc.
+
+Windows Shell
+· Lib: shell32.dll
+· API to access functions in the command line interface.
+
+Network Services
+· Lib: netapi32.dll, Wsock32.dll, Ws2_32.dll
+· Provides all network related functions
+
+Higher Level Protocols
+· Lib: wininet.dll
+· Provides access that can implement things such as FTP, HTP, etc.
+
+
+Tools for Windows: Dependency Walker
