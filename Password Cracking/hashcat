@@ -34,6 +34,10 @@ hashcat -m 1800 -a 0 hashes.txt /usr/share/wordlists/rockyou.txt
 # Crack Specific Hash from File
 hashcat -m 1800 -a 0 '$6$SaltTest$testpassword' /usr/share/wordlists/rockyou.txt
 
+# Crack the NTLM Hash
+hashcat -m 1000 ntds.txt /usr/share/wordlist/rockyou.txt
+hashcat -m 1000 ntds.txt /usr/share/wordlist/rockyou.txt --show
+
 
 
 
