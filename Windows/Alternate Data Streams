@@ -1,0 +1,88 @@
+
+ADS: "myfile.dat:stream1:$DATA"
+
+test.txt::$DATA
+
+C:\Users\Administrator\Desktop>echo RedTeam Nation! > secret.txt
+
+C:\Users\Administrator\Desktop>type secret.txt
+RedTeam Nation!
+
+C:\Users\Administrator\Desktop>echo RedTeam Sucks! > secret.txt:evil.txt
+
+C:\Users\Administrator\Desktop>type secret.txt
+RedTeam Rocks!
+
+C:\Users\Administrator\Desktop>notepad secret.txt:evil.txt
+
+
+
+-- Calc --
+
+C:\Users\Administrator\Desktop>echo RedTeam Nation! > secret.txt
+
+C:\Users\Administrator\Desktop>type secret.txt
+RedTeam Nation!
+
+C:\Users\Administrator\Desktop>type C:\Windows\System32\calc.exe > secret.txt:calc.exe
+
+
+C:\Users\Administrator\Desktop>dir /R
+Volume in drive C has no label.
+Volume Serial Number is B440-3DCF
+
+Directory of C:\Users\Administrator\Desktop
+
+08/07/2022  09:26 AM    <DIR>          .
+08/07/2022  09:26 AM    <DIR>          ..
+08/07/2022  09:28 AM                18 secret.txt
+                                27,648 secret.txt:calc.exe:$DATA
+               1 File(s)             18 bytes
+               2 Dir(s)  52,983,648,256 bytes free
+
+
+C:\Users\Administrator\Desktop>start secret.txt:calc.exe
+
+C:\Users\Administrator\Desktop>forfiles /P C:\Windows\System32 /m notepad.exe /c "C:\Users\Administrator\Desktop\secret.txt:calc.exe"
+
+
+
+-- Windows Examples --
+
+# Creating an Alternate Data Stream
+echo This is the main file content > myfile.txt
+echo This is the alternate data stream content > myfile.txt:stream1
+
+# Viewing Alternate Data Streams
+more myfile.txt
+more myfile.txt:stream1
+
+# Copying Files with Alternate Data Streams
+xcopy myfile.txt newlocation\
+
+# Executing a File from an Alternate Data Stream
+echo echo This is a malicious payload > malicious.txt:payload.exe
+
+# Detecting Alternate Data Streams
+Get-Item -Path .\myfile.txt -Stream *
+
+
+
+-- Linux Examples --
+
+# Creating an Alternate Data Stream
+echo "This is the main file content" > myfile.txt
+echo "This is the alternate data stream content" > myfile.txt:stream1
+
+# Viewing Alternate Data Streams
+cat myfile.txt
+cat myfile.txt:stream1
+
+# Copying Files with Alternate Data Streams
+cp myfile.txt newlocation/
+
+# Executing a File from an Alternate Data Stream
+echo "echo This is a malicious payload" > malicious.txt:payload.sh
+
+# Detecting Alternate Data Streams
+getfattr -d myfile.txt
