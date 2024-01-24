@@ -1,0 +1,264 @@
+
+-- What is a Pipe --
+
+· A Pipe is a 2 sided object that allows data to flow between it 
+· This is normally between 2 processes or a child and parent process
+· Named and Anonymous Pipes
+
+
+-- Named Pipe --
+
+· 2 way communication between 2 process
+· Can be used on the local system or networked system
+· Uses a unique file system called NPFS or Named Pipe FileSystem
+· Path of a Named Pipe
+
+\\.\pipe\NAME_OF_PIPE
+
+
+-- Anonymous Pipe --
+
+· Similar to a Named Pipe but is restricted
+· Has less overhead and maintenance
+· Cannot be used to send data over the network. Local data transfer only
+
+
+-- Can we attack this --
+
+There are a few use cases such as impersonating a user at the end of one pipe
+We can use the ImpersonateNamedPipeClient Api call in conjunction with the CreateProcessAsUser call to get an impersonation token and spawn a process!
+
+
+
+C:\Users\mirko\OneDrive\Desktop>pipelist64.exe
+
+PipeList v1.02 - Lists open named pipes
+Copyright (C) 2005-2016 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+Pipe Name                                    Instances       Max Instances
+---------                                    ---------       -------------
+InitShutdown                                      3               -1
+lsass                                             5               -1
+ntsvcs                                            3               -1
+Winsock2\CatalogChangeListener-62c-0              1                1
+Winsock2\CatalogChangeListener-738-0              1                1
+epmapper                                          3               -1
+Winsock2\CatalogChangeListener-5c4-0              1                1
+Winsock2\CatalogChangeListener-764-0              1                1
+{641B073C-E4A8-4FC1-82CE-CEE579CD0BE6}            1                1
+LSM_API_service                                   3               -1
+atsvc                                             3               -1
+Winsock2\CatalogChangeListener-8fc-0              1                1
+eventlog                                          3               -1
+Winsock2\CatalogChangeListener-1058-0             1                1
+PIPE_EVENTROOT\CIMV2SCM EVENT PROVIDER            1               -1
+WiFiNetworkManagerTask                            1               -1
+Winsock2\CatalogChangeListener-15dc-0             1                1
+wkssvc                                            4               -1
+trkwks                                            3               -1
+TVN_log_pipe_public_name                          1               -1
+hhmxupdbufohiqmmdgsx                              2               -1
+vmware-usbarbpipe                                 1               -1
+AviraOptimizerHost                                1               -1
+TightVNC_Service_Control                          2               -1
+vmware-authdpipe                                  1                1
+srvsvc                                            4               -1
+ProtectedPrefix\LocalService\FTHPIPE              1                1
+593b4092-574a-4048-bda8-f5a16bda503a             40               -1
+Winsock2\CatalogChangeListener-60c-0              1                1
+iGoSWNRpipe                                       1               -1
+iGoSWNRpipeNotify                                 1               -1
+0f561829-ddc4-4770-a65c-3c072ddfe001              1              254
+{18837DD8-C4DF-4E48-8CB6-3DD8E59C2DD5}            1                1
+337D81A2-D867-4C21-9779-B42D218F9FBC              2               -1
+NvMessageBusBroadcast                             6               -1
+{F685F498-BFDE-49D3-8132-D708F76B990E}            3               -1
+2ccf07b4-ba19-46d4-b167-d4b26af67824             40               -1
+AWCCMainPlugin                                    2              200
+UpdateServicePlugin                               2              200
+375bb1f2-4941-4feb-a734-82b78218c5d7             41               -1
+0f1d82eb-1921-4403-ae92-2f1caafeb575             41               -1
+8fbd6c27-8c0f-48f9-8133-9d6c317ffa20             41               -1
+eca267a4-5db9-42e9-bbb2-9252bc952f03             41               -1
+23a625b5-35f7-4088-a4f5-eda6cdf20a10             40               -1
+e0c3808a-e70a-4cf4-8872-9e2bd8428337             40               -1
+89138453AD6BD34F3CDBD3B19E02C55D                  1              254
+2C40DFB07D1B08BB69AC01E8A31BD176                  1              254
+AD4319A1016E375861365D5FDBD9C39C                  1              254
+38C44D5544854B990040674E355903B2                  1              254
+F9A93CC41A344FC41A6B63D6055BBA55                  1              254
+224B431A8E38D5C9DEFE685055D2FAB9                  1              254
+799B4E20E583A0B714D1835708F8E626                  1              254
+234E27A29A17D390163C6B85C6655D5D                  1              254
+846744FF93870E40E76EE4234E482671                  1              254
+516A9AB58802ADC1115A6EABB1AC4907                  1              254
+4393D2E48D8073A5D0233E61F434CAAD                  1              254
+8AC597A6ABF50B94B5BF9FE0CAF41983                  1              254
+B42D52C7DF3783300C1CB5C944BD9E6D                  1              254
+9F0A17E9133DC66B07CAD973B3254DC9                  1              254
+27CD7570C4C0E5DBC7983D2A71155F5E                  1              254
+dotnet-diagnostic-6588                            1               -1
+23771888-7c70-436c-a9db-a78daa1f914a              3               -1
+2921b83a-2161-43f1-8fb1-3af405ffa5de              1               -1
+e5d10cc6-a31e-40b7-a107-8e085dca3d19_UA_0          3               -1
+e5d10cc6-a31e-40b7-a107-8e085dca3d19_UE_UA_0          1               -1
+011a85f5-4a05-4c4a-85ba-3d7012ecd842             40               -1
+424A6E31C9B13C76C63907848757A129B6FD7030ADD0AAC2D6309B680D9C6E84          1              254
+dotnet-diagnostic-13436                           1               -1
+dotnet-diagnostic-10664                           1               -1
+01a3cdfe-8914-45a1-9da7-afb32896dee7_UA_0          1               -1
+tapsrv                                            3               -1
+ROUTER                                            3               -1
+efsrpc                                            3               -1
+268474EA-03D1-425D-AE3D-E09FCCBE6EBC              2               -1
+MsFteWds                                          7               -1
+GoogleCrashServices\S-1-5-18                      1                1
+GoogleCrashServices\S-1-5-18-x64                  1                1
+SACCommunicationPipe                              1                1
+StreamSvcPipe                                     1                8
+SpotlightHostConnectionService                    1               -1
+a6ea6d51-ea9b-4524-91f0-49a927507e8a              1               -1
+2CA0C806-3838-4E3B-95D6-03FB1853436B              2               -1
+Avira.ExternalCommunicationTaskPipe               1              254
+Avira.Launcher.AcpNamedPipe                       2              254
+iGoSWNRCmdServicePipe                             1                1
+NvWksServiceDdisplayPipe                          1               -1
+NvMessageBusBroadcastNVIDIA.Display.Driver          5               -1
+1362a97f-52cf-46e3-94cf-d89e0d1eec59             40               -1
+98304155-6d7f-44ce-bd01-c4914f577601             40               -1
+a9c704f5-8bf4-4f07-ae84-77856f619918             40               -1
+9EA6F070-37D3-424D-84AB-39C2C9FB0621_11           1                1
+Avira.Spotlight.Common.Interface.Services.Systray.IHostSystrayService-26832          1               -1
+c0461720-7db1-417e-ae26-f4f49f94d8b2              1               -1
+dotnet-diagnostic-16072                           1               -1
+crashpad_38152_UDPABPXGNXWCNBDJ                   2                2
+crashpad_16660_FIGRDKXDPOOURPND                   2                2
+mojo.16660.37140.13987547742126788279             1                1
+mojo.16660.37140.4051743873750398733              1                1
+AppContracts_xA715F528-08B2-432E-B00E-D01531572323y          1                1
+mojo.16660.37140.474095812989086674               1                1
+mojo.16660.35232.1608163809803855564              1                1
+mojo.16660.37140.5527692060979079642              1                1
+mojo.16660.35232.9719426475048114416              1                1
+mojo.16660.37140.10331593102877314085             1                1
+mojo.16660.35232.13990203589784499707             1                1
+mojo.16660.35232.11044336779374935383             1                1
+mojo.16660.35232.5775816403281411059              1                1
+mojo.16660.35232.4958073622011367067              1                1
+mojo.16660.37140.8506054383591444252              1                1
+mojo.16660.35232.6188369969694220653              1                1
+mojo.16660.35232.5557097334157363197              1                1
+ko.collabsync.62b0.7478                           1                1
+ko.collabsync.7478.62b0                           1                1
+C:\Users\mirko\AppData\LocalLow\Adobe\Acrobat\DC\Reader\Synchronizer\Notification          1               -1
+C:\Users\mirko\AppData\LocalLow\Adobe\Acrobat\DC\Reader\Synchronizer\Commands          1               -1
+gecko-crash-server-pipe.32892                     1                1
+gecko.32892.29112.1186861902753684588             1                1
+gecko.32892.29112.14086724588376168578            1                1
+gecko.32892.29112.7088285165291599554             1                1
+gecko.32892.29112.11531916616978608171            1                1
+LOCAL\cubeb-pipe-32892-0                          1               -1
+gecko.32892.29112.14166316877404429991            1                1
+gecko.32892.29112.6890542093892868742             1                1
+LOCAL\cubeb-pipe-32892-1                          1               -1
+gecko.32892.29112.4690450145142537672             1                1
+gecko.32892.29112.14087899282988903488            1                1
+gecko.32892.29112.18092113354933579898            1                1
+gecko.32892.29112.16122585854217457604            1                1
+gecko.32892.29112.2645757460354119737             1                1
+gecko.32892.29112.14918128269714942693            1                1
+gecko.32892.29112.13243033584713097861            1                1
+gecko.32892.29112.17015159653877482148            1                1
+gecko.32892.29112.12691639026550316545            1                1
+gecko.32892.29112.13918174217593732432            1                1
+gecko.32892.29112.5615584522773136797             1                1
+gecko.32892.29112.13211597024552179080            1                1
+gecko.32892.29112.6070341310917217776             1                1
+gecko.32892.29112.16015809555660068139            1                1
+gecko.32892.29112.7985598963957810383             1                1
+gecko.32892.29112.11463503784935390124            1                1
+gecko.32892.29112.775929463286067923              1                1
+gecko.32892.29112.15693800714288209978            1                1
+LOCAL\cubeb-pipe-32892-2                          1               -1
+LOCAL\cubeb-pipe-32892-3                          1               -1
+LOCAL\cubeb-pipe-32892-4                          1               -1
+LOCAL\cubeb-pipe-32892-5                          1               -1
+LOCAL\cubeb-pipe-32892-6                          1               -1
+LOCAL\cubeb-pipe-32892-7                          1               -1
+LOCAL\cubeb-pipe-32892-8                          1               -1
+LOCAL\cubeb-pipe-32892-9                          1               -1
+LOCAL\cubeb-pipe-32892-10                         1               -1
+gecko.32892.29112.12136507321090402725            1                1
+gecko.32892.29112.7778712323515669418             1                1
+gecko.32892.29112.15848590734038447382            1                1
+gecko.32892.29112.14976046949658395230            1                1
+gecko.32892.29112.7968450913629339668             1                1
+LOCAL\cubeb-pipe-32892-13                         1               -1
+gecko.32892.29112.13671374619955069832            1                1
+gecko.32892.29112.6958909102137806101             1                1
+LOCAL\cubeb-pipe-32892-14                         1               -1
+gecko.32892.29112.1497456862917413136             1                1
+gecko.32892.29112.1794199915796959520             1                1
+LOCAL\cubeb-pipe-32892-15                         1               -1
+gecko.32892.29112.17900450748502147961            1                1
+gecko.32892.29112.7971791910341263439             1                1
+LOCAL\cubeb-pipe-32892-16                         1               -1
+gecko.32892.29112.8015217891795540372             1                1
+gecko.32892.29112.96978653982380144               1                1
+gecko.32892.29112.6064885202716596243             1                1
+LOCAL\cubeb-pipe-32892-17                         1               -1
+gecko.32892.29112.2331839045691874498             1                1
+gecko.32892.29112.6795846773858496076             1                1
+LOCAL\cubeb-pipe-32892-18                         1               -1
+gecko.32892.29112.2090799322046474587             1                1
+gecko.32892.29112.6485669874323333449             1                1
+LOCAL\cubeb-pipe-32892-20                         1               -1
+gecko.32892.29112.8442822356097998053             1                1
+gecko.32892.29112.6684749616449834331             1                1
+gecko.32892.29112.3957249606990898196             1                1
+gecko.32892.29112.3189380620803888274             1                1
+gecko.32892.29112.2335982819510710039             1                1
+LOCAL\cubeb-pipe-32892-22                         1               -1
+gecko.32892.29112.5779406733874689390             1                1
+gecko.32892.29112.2639249275684582390             1                1
+LOCAL\cubeb-pipe-32892-23                         1               -1
+gecko.32892.29112.12993922427284035731            1                1
+gecko.32892.29112.4078909842297456930             1                1
+gecko.32892.29112.10743755086724511865            1                1
+LOCAL\cubeb-pipe-32892-24                         1               -1
+gecko.32892.29112.9664682641817528344             1                1
+gecko.32892.29112.9372873403680858993             1                1
+LOCAL\cubeb-pipe-32892-25                         1               -1
+gecko.32892.29112.2278363651699166722             1                1
+gecko.32892.29112.2440963782416124986             1                1
+gecko.32892.29112.6249367575886659832             1                1
+LOCAL\cubeb-pipe-32892-26                         1               -1
+gecko.32892.29112.10756553615098640471            1                1
+gecko.32892.29112.3494764148392093042             1                1
+gecko.32892.29112.7186718780418818763             1                1
+gecko.32892.29112.12212939363567577813            1                1
+LOCAL\cubeb-pipe-32892-27                         1               -1
+gecko.32892.29112.7234886717464844286             1                1
+gecko.32892.29112.4557568068961654722             1                1
+gecko.32892.29112.17537000336403510486            1                1
+LOCAL\cubeb-pipe-32892-29                         1               -1
+gecko.32892.29112.2061956797140581118             1                1
+gecko.32892.29112.12662841128505176787            1                1
+gecko.32892.29112.5066839231397002816             1                1
+LOCAL\cubeb-pipe-32892-35                         1               -1
+gecko.32892.29112.8168760440715087125             1                1
+LOCAL\cubeb-pipe-32892-36                         1               -1
+gecko.32892.29112.860820887955029511              1                1
+gecko.32892.29112.10296579104452899931            1                1
+LOCAL\cubeb-pipe-32892-37                         1               -1
+LOCAL\cubeb-pipe-32892-38                         1               -1
+gecko.32892.29112.3770800999884843892             1                1
+gecko.32892.29112.5576927930333032132             1                1
+LOCAL\cubeb-pipe-32892-74                         1               -1
+gecko.32892.29112.3265411675642210277             1                1
+gecko.32892.29112.11191562009043509129            1                1
+LOCAL\cubeb-pipe-32892-77                         1               -1
+gecko.32892.29112.1321123324704599840             1                1
+gecko.32892.29112.686903175066544635              1                1
+LOCAL\cubeb-pipe-32892-78                         1               -1
