@@ -1,0 +1,42 @@
+
+C:\Windows\System32>whoami /all
+
+USER INFORMATION
+----------------
+
+User Name       SID
+=============== =============================================
+cyberpunk\mirko S-1-5-21-3062175375-514254289-2347376863-1001
+
+
+-- What is an SID --
+
+· Security Identifier
+· Unique to the single user or group and will never be used again on that system
+· Kept inside of an Access Token
+· Used to identify that user while performing any and all actions
+· Immutable
+
+
+-- What does an SID look like --
+
+S-1-5-21-3435738111-381107528-3113222742-500
+
+<String is an SID> - <Version of SID> - <Identifying Authority> - <Domain or local identifier> - <Relative ID>
+
+
+-- What is an RID --
+
+· Relative ID
+· Local administrator User: 500
+· Guest account: 501
+· Users start at 1000 and go up by 1 each user
+
+
+-- Universal SID’s --
+
+These are common and universal across all Windows installs
+
+S-1-0-0 Null SID. Assigned if the SID for a user is unknown or a group as 0 members
+S-1-1-0 World SID. Used for a group that has every user in it
+S-1-2-0 Local SID. Assigned to user who login via a local terminal
