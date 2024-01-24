@@ -1,0 +1,36 @@
+
+-- What is a Token --
+
+· It is an object that describes the security context of a process
+· This is created upon login
+
+· Users SID
+· SID of any groups the user belongs to
+· Logon SID that identifies the logon session
+· List of privileges the user or group has
+· Owner SID of the user who created this one
+· SID of primary group, normally the first group they were apart of
+· Default ACL when a user does not have one setup ahead of time
+· Source of the access token, such as local system or a domain
+· Type of Token, primary or impersonation 
+· Optional list of Restricted Tokens
+
+
+-- Types of Tokens --
+
+Primary: The standard access token that is provided to the user upon login
+Impersonation: This is done when a process needs to run as another user
+Restricted: This is used when the CreateRestrictedToken api call is performed. The restricted part may be needed when a user only needs a smaller scope of access than the original primary token
+
+
+-- Where are they used --
+
+· A token is normally attached to an object called a Security Descriptor
+· The Security Descriptor is passed to most functions that requires permissions to be taken into account
+
+
+-- Useful to an Attacker --
+
+YES!
+Once the attacker has been able to gain admin access to the machine they can use an impersonation token to gain the rights as another user on the system
+This is useful for moving laterally across a network as that user may have admin rights on more than just the machine you popped!
