@@ -1,0 +1,81 @@
+
+-- What is a PE File --
+
+PE file or Portable Executable is a format that Windows uses for an executable object
+The PE file format is a data structure that contains the necessary information for the Windows OS loader to use the wrapped executable code
+
+
+-- What is a DLL --
+
+It is a PE file as well!
+A DLL or Dynamically Linked Library file is a module of compiled code that can be used and referenced to perform specific tasks
+
+
+-- PE File Structure --
+
+# DOS MZ Header
+· First 64 Bytes of each PE File
+· The code 0x54AD at the beginning of the file stands for MZ
+· This is needed to let DOS identify this as an executable that can be ran.
+
+# DOS Stub 
+· Usually contains the code to print “This program cannot be run in DOS mode.”
+
+# PE Header
+· This contains fields that will tell the OS loader what the rest of the file looks like
+· Signature: Standard signature for a PE file is  “P.E00”
+· Machine: This identifies the type of system is was meant to be ran on, Intel, AMD
+· Number of Sections: This is the size of the sections table
+
+# Data Directories
+Contains
+· Export Table: DLLS from import table are loaded. Then the Windows OS loader grabs the address of the imported functions or API calls into the Export table to be patched into the main application.
+· Import Table: Show the DLL’s or libraries that will be imported based on the needs of the application
+· Resource Table: Shows a list of resources such as icons and images
+· Many More
+
+# Sections
+This is the main section of the that contains all of the code. It is split into multiple sections
+.text
+.bss
+.rdata
+.data
+.rsrc
+.edata
+.idata
+
+# Sections .text
+This is where all of the code segments reside
+The entry point of the application is also here
+
+# Sections .bss
+This has the uninitialized data for the application
+These are for variables inside of the application that have not been provided any data
+E.X: int I; This would show up in the bss section
+
+# Sections .rdata
+This section contains all of the read only data in the PE
+This is normally strings or constants in the application
+
+# Sections .data
+This is the opposite of the .rdata section
+This holds all of the variables that have been initialized
+Static, global and local scope variables
+
+# Sections .rsrc
+This section contains resource based data
+This can be icons and images
+
+# Sections .edata
+.edata contains the export table information
+This is not always present and will only contain the names and address of exported functions
+
+# Sections .idata
+The opposite of .edata
+This will handle all of the import table functions, names and address
+
+
+
+
+
+
