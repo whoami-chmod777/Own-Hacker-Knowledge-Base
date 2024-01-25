@@ -15,3 +15,31 @@ Task Scheduler: Create Task
 C:\Windows\System32
 
 
+-- Navigation --
+
+cd
+cd C:\Users\Administrator\Desktop
+cd C:\
+
+cd ../
+cd ../../
+cd ../../../
+
+C:
+E:
+
+C:\Users\Administrator>cd D:\boot
+C:\Users\Administrator>D:
+D:\boot
+
+cd /?
+
+
+-- 
+
+
+
+
+
+
+
