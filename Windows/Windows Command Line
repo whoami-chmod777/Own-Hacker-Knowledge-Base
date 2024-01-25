@@ -67,7 +67,28 @@ rename test_directory test_directory_tmp
 rmdir test_directory_tmp
 
 
+-- Working with Pipes (Redirections) --
 
+echo red > data.txt
+echo blue > data.txt
+
+echo yellow >> data.txt
+echo Red Team Nation> >> data.txt
+
+sort data.txt
+sort < data.txt
+
+type data.txt
+type data.txt | sort
+
+type data.txt & echo test > test.txt
+
+dir && echo test > test.txt (succed)
+dir /y || echo test > test.txt (fail)
+
+dir || echo test > test.txt
+
+dir /y && echo Worked > worked.txt || echo Failed > failed.txt
 
 
 
