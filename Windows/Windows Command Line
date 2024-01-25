@@ -35,7 +35,36 @@ D:\boot
 cd /?
 
 
--- 
+-- Working with Files --
+
+echo "your message" > text.txt
+
+copy con text.txt: "your message"
+
+echo "another one message" >> text.txt
+
+copy text.txt ..\
+
+rename text.txt secret.txt
+
+type text.txt
+
+del secret.txt
+
+
+-- Working with Directories --
+
+dir 
+dir /A
+dir /R 
+
+mkdir test_directory
+
+xcopy test_directory ..\test_other_directory
+
+rename test_directory test_directory_tmp
+
+rmdir test_directory_tmp
 
 
 
