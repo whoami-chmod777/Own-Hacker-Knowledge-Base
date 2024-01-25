@@ -107,5 +107,33 @@ application 2> nul
 application /y 2> nul
 
 
---
+-- Managing Windows --
+
+net user
+net user Brandon /add
+net user Brandon /del
+
+net user Brandon *
+Type a password:
+
+systeminfo
+systeminfo | findstr KB
+systeminfo | findstr KB12345678
+
+sc query windefend
+sc qc windefend
+
+sc create testSvc start=auto binPath="C:\Users\Administrator\Desktop\pipelist.exe"
+sc qc testSvc
+
+sc create testSvc start=auto binPath="C:\windows\system32\cmd.exe"
+sc qc testSvc
+
+sc query AppReadiness
+sc start AppReadiness
+sc stop AppReadiness
+
+netstat
+netstat -a
+netstat -ano
 
