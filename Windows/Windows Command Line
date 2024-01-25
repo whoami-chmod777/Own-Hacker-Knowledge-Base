@@ -91,5 +91,21 @@ dir || echo test > test.txt
 dir /y && echo Worked > worked.txt || echo Failed > failed.txt
 
 
+-- Windows Standard Input/Output/Error --
 
+Standard Input: 0
+Standard Output: 1
+Standard Error: 2
+
+sort < data.txt [<0]
+echo test 1> text.txt
+
+dir /y 2> errors.txt
+dir 2> errors.txt
+
+application 2> nul
+application /y 2> nul
+
+
+--
 
