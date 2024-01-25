@@ -1,5 +1,6 @@
 
 Golden Ticket attacks: These attacks can forge Kerberos tickets to gain persistent, undetectable access to an entire Active Directory domain.
+Pass-the-hash attacks: These attacks can use the hash to authenticate to other systems without knowing the actual password.
 
 
 mimikatz.exe
