@@ -1,1 +1,180 @@
 
+
+-- Regex Basics --
+
+# Literal Characters
+Match the character itself.
+Example: abc matches "abc" exactly.
+
+# Dot ( . )
+Matches any single character (except for a newline).
+Example: a.b matches "aab", "axb", etc.
+
+# Character Classes
+[ ] denotes a character class.
+Example: [aeiou] matches any vowel.
+
+# Quantifiers
+*: Matches 0 or more occurrences.
++: Matches 1 or more occurrences.
+?: Matches 0 or 1 occurrence.
+Example: a*b matches "b", "ab", "aab", etc.
+
+# Anchors
+^: Matches the start of a string.
+$: Matches the end of a string.
+Example: ^abc matches "abc" at the beginning.
+
+# Escape Special Characters
+Use \ to escape special characters.
+Example: \. matches a literal period.
+
+
+-- Character Classes --
+
+# Digits
+\d: Matches any digit (0-9).
+
+# Non-Digits
+\D: Matches any non-digit.
+
+# Word Characters
+\w: Matches any word character (alphanumeric + underscore).
+
+# Non-Word Characters
+\W: Matches any non-word character.
+
+# Whitespace
+\s: Matches any whitespace character.
+
+# Non-Whitespace
+\S: Matches any non-whitespace character.
+
+
+
+-- Groups and Ranges --
+
+# Grouping
+( ): Groups expressions together.
+Example: (abc)+ matches "abc", "abcabc", etc.
+
+# Alternation
+|: Acts like a logical OR.
+Example: cat|dog matches "cat" or "dog".
+
+# Ranges
+[a-z]: Matches any lowercase letter.
+[0-9]: Matches any digit.
+Example: [A-Za-z] matches any uppercase or lowercase letter.
+
+
+-- Examples --
+
+# Email Addresses
+[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}
+
+# URLs
+https?://\S+
+
+# IP Addresses
+\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+
+# Phone Numbers
+\d{3}[-.\s]?\d{3}[-.\s]?\d{4}
+
+# Date (MM/DD/YYYY)
+^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/(19|20)\d{2}$
+
+# Social Security Numbers (SSN)
+\d{3}-\d{2}-\d{4}
+
+# Credit Card Numbers (basic)
+\d{4}[-\s]?\d{4}[-\s]?\d{4}[-\s]?\d{4}
+
+# Hexadecimal Color Codes
+#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})
+
+# HTML Tags
+<[^>]+>
+
+# Username (alphanumeric with underscores)
+[a-zA-Z0-9_]+
+
+# File Paths (Unix/Windows)
+Unix: \/[^\0]+
+Windows: [A-Za-z]:\\[^\0]+
+
+# Credit Card Expiry Date (MM/YYYY)
+(0[1-9]|1[0-2])\/\d{4}
+
+# MAC Address
+([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})
+
+# IPv6 Address
+([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}
+
+# YouTube Video ID
+^[A-Za-z0-9_-]{11}$
+
+# Hashtags (Twitter/Facebook)
+#[^\s]+
+
+# Mentioned Users (Twitter/Facebook)
+@[a-zA-Z0-9_]+
+
+# Zip Code (US)
+\b\d{5}(?:-\d{4})?\b
+
+# Currency Amount (with optional commas)
+\$\s?(\d{1,3}(,\d{3})*(\.\d+)?)
+
+# Email Addresses (with domain restriction)
+\b[A-Za-z0-9._%+-]+@(example\.com|domain\.com)\b
+
+
+# ISBN (International Standard Book Number)
+(ISBN(?:-13)?:?\s?(?:[0-9]+[-\s]?){3,5}[0-9]+)
+
+# IMEI (International Mobile Equipment Identity)
+\b(?:\d{15}|\d{17})\b
+
+# Domain Names
+(https?|ftp):\/\/[^\s\/$.?#].[^\s]*
+
+# Time in HH:MM format
+^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
+
+# YouTube Video URL
+(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=[a-zA-Z0-9_-]+
+
+# Hashes (MD5, SHA-1, SHA-256)
+MD5: [a-fA-F\d]{32}
+SHA-1: [a-fA-F\d]{40}
+SHA-256: [a-fA-F\d]{64}
+
+# HTML Comments
+<!--[\s\S]*?-->
+
+# Markdown Headings
+^#{1,6}\s.+
+
+# Street Addresses
+\b\d+\s\w+\s\w+\b
+
+# Vehicle Identification Number (VIN)
+[A-HJ-NPR-Z0-9]{17}
+
+# Tumblr Blog URL
+^https:\/\/[a-zA-Z0-9_-]+\.tumblr\.com\/?$
+
+# ISBN (International Standard Book Number) for both 10 and 13 digits
+(ISBN(?:-10)?:?\s?(?:\d+[-\s]?){3,5}[\dX])|(ISBN(?:-13)?:?\s?(?:\d+[-\s]?){4,5}\d)
+
+# Reddit Usernames
+u\/[a-zA-Z0-9_]+
+
+# SSH Public Key
+ssh-rsa AAAA[0-9A-Za-z+/]+[=]{0,3} (?:[^\s@]+@[^,]+)?
+
+# Medical License Numbers:
+[A-Za-z]{1,2}\d{6}
