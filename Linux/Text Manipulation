@@ -1,3 +1,67 @@
 
 In Linux, nearly everything you deal with directly is a file, and most often these will be text files; for instance, all configuration files in Linux are text files. So to reconfigure an application, you simply open the configuration file, change the text, save the file, and then restart the application - your reconfiguration is complete.
 
+
+-- Displaying the first lines--
+
+head /etc/snort/snort.conf 
+head -20 /etc/snort/snort.conf
+
+-- Displaying the last lines --
+
+tail /etc/snort/snort.conf
+tail -20 /etc/snort/snort.conf
+
+-- Displaying line numbers in terminal output --
+
+nl /etc/snort/snort.conf
+
+-- Displaying lines with instances of the keyword or phrase specified by grep --
+
+cat /etc/snort/snort.conf | grep output
+
+-- Using grep, nl, tail, and head --
+
+nl /etc/snort/snort.conf | grep output
+tail -n+459 /etc/snort/snort.conf | head -n 6
+
+-- Find and replace keywords or phrases --
+
+sed s/mysql/MySQL/g /etc/snort/snort.conf > snort2.conf
+sed s/mysql/MySQL/ /etc/snort/snort.conf > snort2.conf
+sed s/mysql/MySQL/2 /etc/snort/snort.conf > snort2.conf
+
+-- Display terminal output one page at a time --
+
+more /etc/snort/snort.conf
+
+-- Display terminal output a page at a time and filter results --
+
+less /etc/snort/snort.conf
+
+Press the forward slash (/) key, less will let you search for terms in the file
+
+Snort build options: 
+Options: --enable-gre --enable-mpls --enable-targetbased --enable-ppm --enable-perfprofiling enable-zlib --enable-active -response --enable-normalizer --enable-reload --enable-react /output
+
+This will immediately take you to the first occurrence of output and highlight it. You can then look for the next occurrence of output by typing n (for next).
+
+Configure output plugins:
+For more information, see Snort Manual, Configuring Snort - Output Modules
+
+#############################################################################
+
+-- unified2 --
+
+Recommended for most installs
+output unified2: filename merged.log, limit 128, nostamp, mpls_event_types, vlan_event_types
+output unified2: filename snort.log, limit 128, nostamp, mpls_event_types, vlan_event_types
+
+# Additional configuration for specific types of installs
+# output alert_unified2: filename snort.alert, limit 128, nostamp
+# output log_unified2: filename snort.log, limit 128, nostamp
+
+# syslog
+# output alert_syslog: LOG_AUTH LOG_ALERT
+:
+
