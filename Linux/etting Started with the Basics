@@ -1,0 +1,129 @@
+By our very nature, hackers are doers. We want to touch and play with things. We also want to create and, sometimes, break things. Few of us want to read long tomes of information technology theory before we can do what we love most: hacking. With that in mind, this chapter is designed to give you some fundamental skills to get you up and running in Kali . . . now!
+
+
+-- Overview --
+
+· Introductory Terms and Concepts
+· The Linux filesystem
+· Basic Commands in Linux
+
+
+-- Introductory Terms and Concepts --
+
+Binaries 
+This term refers to files that can be executed, similar to executables in Windows. Binaries generally reside in the /usr/bin or usr/sbin directory and include utilities such as ps, cat, ls, and cd (we’ll
+touch on all of four of these in this chapter) as well as applications such as the wireless hacking tool aircrack-ng and the intrusion detection system
+(IDS) Snort.
+
+Case sensitivity 
+Unlike Windows, Linux is case sensitive. This means that Desktop is different from desktop, which is different from DeskTop. Each of these would represent a different file or directory name. Many people coming from a Windows environment can find this frustrating. If you get the error message “file or directory not found” and you are sure the file or directory exists, you probably need to check your case. Directory This is the same as a folder in Windows. A directory provides a way of organizing files, usually in a hierarchical manner.
+
+Home 
+Each user has their own /home directory, and this is generally where files you create will be saved by default.
+
+Kali 
+Kali Linux is a distribution of Linux specifically designed for penetration testing. It has hundreds of tools preinstalled, saving you the hours it would take to download and install them yourself. I will be using the latest version of Kali at the time of this writing: Kali 2018.2, first released in April 2018.
+
+Script 
+This is a series of commands run in an interpretive environment that converts each line to source code. Many hacking tools are simply scripts. Scripts can be run with the bash interpreter or any of the other scripting language interpreters, such as Python, Perl, or Ruby. Python is currently the most popular interpreter among hackers.
+
+Shell 
+This is an environment and interpreter for running commands in Linux. The most widely used shell is bash, which stands for Bourneagain shell, but other popular shells include the C shell and Z shell. I will be using the bash shell exclusively in this book.
+
+Terminal 
+This is a command line interface (CLI).
+
+
+-- The Linux filesystem --
+
+The Linux filesystem structure is somewhat different from that of Windows. Linux doesn’t have a physical drive (such as the C: drive) at the base of the
+filesystem but uses a logical filesystem instead. At the very top of the filesystem structure is /, which is often referred to as the root of the filesystem. Keep in mind that this is
+different from the root user.
+
+The root (/) of the filesystem is at the top of the tree, and the following are the most important subdirectories to know:
+
+/root Superuser’s home directory
+
+/etc System configuration files
+
+/mnt General purpose mount point
+
+/sys Kernel’s view of the hardware
+
+/bin Binaries
+
+/lib Libraries
+
+/sbin Binaries
+
+/boot Kernel image
+
+/home User directories
+
+/proc View of internal kernel data
+
+/dev Special device files
+
+/media Where CDs and USB devices are usually attached or mounted to the filesystem
+
+
+-- Basic Commands in Linux --
+
+kali > pwd
+kali > whoami
+
+kali > cd /
+kali > cd /etc
+kali > cd ..
+kali > cd .. ..
+kali > cd .. ..
+
+kali > ls
+kali > ls -l
+kali > ls -la
+
+kali > aircrack-ng --help
+kali > nmap -h
+kali > ls -?
+kali > man aircrack-ng
+
+
+kali > man aircrack-ng
+
+
+locate will go through your entire filesystem and locate every occurrence of that word. locate uses a database that is usually only updated once a day, so if you just created a file a few minutes or a few hours ago, it might not appear in this list until the next day.
+
+whereis command returns not only the location of the binary but also its source and man page if they are available.
+
+which command is even more specific: it only returns the location of  the binaries in the PATH variable in Linux
+
+kali > locate aircrack-ng
+kali > whereis aircrack-ng
+kali > which aircrack-ng
+
+kali > find / -type f -name apache2
+kali > find /etc -type f -name apache2
+kali > find /etc -type f --name apache2.*
+
+Wildcards: * . , ? and []
+
+kali > ps aux
+kali > ps aux | grep apache2
+
+kali > cat > hackingskills
+kali > cat >> hackingskills
+
+kali > touch newfile
+
+kali > mkdir newdirectory
+
+kali > touch oldfile
+kali > cp oldfile /root/newdirectory/newfile
+
+kali > mv newfile newfile2
+
+kali > rm newfile2
+
+kali > rmdir newdirectory
+kali > rm -r newdirectory
+kali > rm -rf newdirectory
