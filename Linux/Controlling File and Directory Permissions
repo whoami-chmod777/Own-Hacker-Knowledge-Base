@@ -1,0 +1,121 @@
+
+Not every user of a single operating system should have the same level of access to files and directories. Like any professional or enterprise-level operating system, Linux has methods for securing file and directory access. This security system allows the system administrator - the
+root user - or the file owner to protect their files
+
+
+r Permission to read. This grants permission only to open and viewa file.
+w Permission to write. This allows users to view and edit a file.
+x Permission to execute. This allows users to execute a file (but not necessarily view or edit it).
+
+When a file is created, typically the user who created it is the owner of the file, and the owning group is the user’s current group.
+
+
+-- Granting Ownership to an Individual User --
+
+chown bob /tmp/bobsfile
+
+
+-- Granting Ownership to a Group --
+
+chgrp security newIDS
+
+
+-- Checking Permissions --
+
+ls –l /usr/share/hashcat
+
+
+-- Changing Permissions with Decimal Notation --
+
+Binary  Octal  rwx
+000     0      ---
+001     1      --x
+010     2      -w-
+011     3      -wx
+100     4      r--
+101     5      r-x
+110     6      rw-
+111     7      rwx
+
+set only the read permission
+r w x
+4 - -
+
+set the permission to wx
+r w x
+- 2 1
+
+all three permissions are on
+r w x
+4 2 1
+
+4 + 2 + 1 = 7
+
+Represent all permissions for the owner, group, and all users
+7 7 7
+
+# Gives the owner all permissions, the group all permissions, and everyone else (other) only the read permission
+chmod 774 hashcat.hcstat
+
+
+-- Changing Permissions with UGO --
+
+UGO syntax which stands for user (or owner), group, and others.
+
+- Removes a permission
++ Adds a permission
+= Sets a permission
+
+# Remove the write permission from the user that the file hashcat.hcstat belongs to
+chmod u-w hashcat.hcstat
+
+# Give both the user and the other users (not including the group) execute permission
+chmod u+x, o+x hashcat.hcstat
+
+
+-- Giving Root Execute Permission on a New Tool --
+
+chmod 766 newhackertool
+
+
+
+-- Default Permissions with Masks --
+
+The umask method represents the permissions you want to remove from the base permissions on a file or directory to make them more secure. 
+
+In Kali, as with most Debian systems, the umask is preconfigured to 022
+
+To change the umask value for a user, edit the file /home/username/.profile
+
+umask
+umask 022
+
+
+-- Special Permissions --
+
+These special permissions are set user ID (or SUID), set group ID (or SGID), and sticky bit
+
+
+- Granting Temporary Root Permissions with SUID -
+
+chmod 4644 file
+chmod u+s file
+
+
+- Granting the Root User’s Group Permissions SGID -
+
+chmod 2644 file
+chmod g+s file
+
+
+- Sticky Bit -
+
+The sticky bit is a permission bit that you can set on a directory to allow a user to delete or rename files within that directory.
+
+chmod 1777 sticky_folder1/
+chmod +t sticky_folder2
+
+
+- Find files on the filesystem for the root user or other sysadmin, with the permissions 4000 -
+
+find / -user root -perm -4000
