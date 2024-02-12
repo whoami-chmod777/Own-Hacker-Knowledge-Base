@@ -1,0 +1,113 @@
+
+-- Overview of tcpdump --
+
+
+-- Basics of traffic isolation --
+
+
+-- Viewing traffic on an interface --
+
+
+-- Viewing HTTPS traffic --
+
+
+-- Limiting packets --
+
+
+
+-- Capturing credentials --
+
+
+
+
+-- Monitoring suspicious domain traffic --
+
+
+
+-- SMB Traffic --
+
+
+
+-- Capturing TCP RESET-ACK Packets --
+
+
+
+-- Filtering by IP --
+
+
+
+-- Filtering by Source/Destination --
+
+
+
+-- Filtering by Network --
+
+
+
+-- Filtering by Port --
+
+
+
+-- Overview of key options --
+
+
+
+-- Combinations of filters: AND, OR, EXCEPT --
+
+
+
+
+-- Isolating TCP Flags --
+
+
+
+-- Raw output view --
+
+
+
+-- Capturing HTTP User Agents --
+
+
+
+-- Identifying cleartext passwords --
+
+
+
+-- Finding traffic with the "Evil Bit" -- 
+
+
+
+-- Writing to a file --
+
+
+
+-- Reading from a file --
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://danielmiessler.com/p/tcpdump/
