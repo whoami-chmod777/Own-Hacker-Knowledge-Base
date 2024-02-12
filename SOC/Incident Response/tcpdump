@@ -1,0 +1,21 @@
+
+-- Filter for host --
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52
+
+
+-- Filter for host and port number --
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80
+
+
+-- Full ASCII decode of the packet and the payload --
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -A
+
+
+-- See the raw Hex --
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -AX
+
+-- Specify specific protocols --
+tcpdump -n -r magnitude_1hr.pcap ip6
+
+-- Disperse their C2 traffic --
+tcpdump -n -r magnitude_1hr.pcap net 192.168.99.0/24
