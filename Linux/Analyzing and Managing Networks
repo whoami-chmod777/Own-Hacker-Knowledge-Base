@@ -1,0 +1,78 @@
+
+Understanding networking is crucial for any aspiring hacker. In many situations, you’ll be hacking something over a network, and a good hacker needs to know how to connect to and interact with that network.
+
+-- Analyzing Networks --
+
+ifconfig
+iwconfig
+
+eth0Linkencap:EthernetHWaddr 00:0c:29:ba:82:0f
+
+inet addr:192.168.181.131 Bcast:192.168.181.255 Mask:255.255.255.0
+
+lo Linkencap:Local Loopback
+inet addr:127.0.0.1 Mask:255.0.0.0
+
+wlan0 Link encap:EthernetHWaddr 00:c0:ca:3f:ee:02
+
+
+-- Changing Your IP Address --
+
+ifconfig eth0 192.168.181.115
+
+
+-- Changing Your Network Mask and Broadcast Address --
+
+ifconfig eth0 192.168.181.115 netmask 255.255.0.0 broadcast 192.168.1.255
+
+
+-- Spoofing Your MAC Address --
+
+ifconfig eth0 down 
+ifconfig eth0 hw ether 00:11:22:33:44:55 
+ifconfig eth0 up
+
+
+-- Assigning New IP Addresses from the DHCP Server --
+
+dhclient eth0
+
+
+-- Manipulating Domain Name System --
+
+dig hackers-arise.com NS
+dig hackers-arise.com MX
+dig hackers-arise.com A
+dig hackers-arise.com SOA
+
+
+-- Changing Your DNS Server --
+
+leafpad /etc/resolv.conf
+nameserver 8.8.8.8
+
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
+If you’re using a DHCP address and the DHCP server provides a DNS setting, the DHCP server will replace the contents of the file when it renews the DHCP address.
+
+
+-- Mapping Your Own IP Addresses --
+
+leafpad /etc/hosts
+192.168.181.131 bankofamerica.com
+
+_______________________________________________________________
+
+127.0.0.1 localhost
+127.0.1.1 kali
+192.168.181.131 bankofamerica.com
+
+
+-- The following lines are desirable for IPv6 capable hosts --
+
+::1 localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+_______________________________________________________________
+
+Make certain you press tab between the IP address and the domain key—not the spacebar
