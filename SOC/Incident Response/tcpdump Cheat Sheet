@@ -1,0 +1,33 @@
+
+-- Traffic isolation examples --
+
+tcpdump -i eth0
+tcpdump -nnSX port 443
+tcpdump -nnSXA port 443
+
+
+-- Capture Credentials in Plain Text --
+
+tcpdump -A -i eth0 'port http or port ftp or port telnet' | grep -i 'user\|pass\|login'
+tcpdump -i eth0 dst host suspicious.com
+
+
+
+
+
+
+-- Find Cleartext Passwords --
+
+tcpdump port http or port ftp or port smtp or port imap or port pop3 or port telnet -lA | egrep -i -B5 
+'pass=|pwd=|log=|login=|user=|username=|pw=|passw=|passwd=|password=|pass:|user:|username:|password:|login:|pass |user ' 
+
+
+
+
+
+
+
+
+
+
+https://danielmiessler.com/p/tcpdump/
