@@ -1,0 +1,88 @@
+
+At any given time, a Linux system typically has hundreds, or sometimes even thousands, of processes running simultaneously. A process is simply a program that’s running and using resources. It includes a terminal, web server, any running commands, any databases, the GUI interface, and much more.
+
+
+-- Viewing Processes --
+
+kali >ps
+kali >ps aux
+
+USER    The user who invoked the process 
+PID     The process ID 
+%CPU    The percent of CPU this process is using 
+%MEM    The percent of memory this process is using 
+COMMAND     The name of the command that started the process
+
+
+-- Filtering by Process Name --
+
+kali >ps aux | grep msfconsole
+
+
+-- Finding the Greediest Processes with top --
+
+kali >top
+
+
+-- Changing Process Priority with nice --
+
+The values for nice range from −20 to +19, with zero being the default value. A high nice value translates to a low priority and a low nice value translates to a high priority
+
+kali >nice -n -10 /bin/slowprocess
+kali >nice -n 10 /bin/slowprocess
+
+
+-- Changing the Priority of a Running Process with renice --
+
+The renice command takes absolute values between –20 and 19 and sets the priority to that particular level, rather than increasing or decreasing from the level at which it started. Renice requires the PID of the process you are targeting rather than the name.
+
+kali >renice 20 6996 (PID of 6996)
+
+
+-- Killing Processes --
+
+- Commonly Used Kill Signals -
+
+SIGHUP 1: This is known as the Hangup (HUP) signal. It stops the designated process and restarts it with the same PID. 
+SIGINT 2: This is the Interrupt (INT) signal. It is a weak kill signal that isn’t guaranteed to work, but it works in most cases. 
+SIGQUIT 3: This is known as the core dump. It terminates the process and saves the process information in memory, and then it saves this information in the current working directory to a file named core. (The reasons for doing this are beyond the scope of this book.) 
+SIGTERM 15: This is the Termination (TERM) signal. It is the kill command’s default kill signal. 
+SIGKILL 9: This is the absolute kill signal. It forces the process to stop by sending the process’s resources to a special device, /dev/null.
+
+Using the top command, you can identify which processes are using too many resources
+
+kali >kill -1 6996
+kali >kill -9 6996
+kali >killall -9 zombieprocess
+
+
+-- Running Processes in the Background --
+
+kali >leafpad newscript &
+
+
+-- Moving a Process to the Foreground --
+
+kali >fg 1234
+
+
+-- Scheduling Processes --
+
+The at command is a daemon a background process-useful for scheduling a job to run once at some point in the future.
+The crond is more suited for scheduling tasks to occur every day, week or month.
+
+
+Time format           Meaning 
+at 7:20pm             Scheduled to run at 7:20 pm on the current day
+at 7:20pm June 25     Scheduled to run at 7:20 pm on June 25 
+at noon               Scheduled to run at noon on the current day 
+at noon June 25       Scheduled to run at noon on June 25 
+at tomorrow           Scheduled to run tomorrow 
+at now + 20 minutes   Scheduled to run in 20 minutes from the current time 
+at now + 10 hours     Scheduled to run in 10 hours from the current time
+at now + 5 days       Scheduled to run in five days from the current date 
+at now + 3 weeks      Scheduled to run in three weeks from the current date 
+at 7:20pm 06/25/2019  Scheduled to run at 7:20 pm on June 25, 2019
+
+kali >at 7:20am
+at >/root/myscanningscript
