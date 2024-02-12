@@ -9,6 +9,10 @@ tcpdump -nnSXA port 443
 -- Capture Credentials in Plain Text --
 
 tcpdump -A -i eth0 'port http or port ftp or port telnet' | grep -i 'user\|pass\|login'
+
+
+-- Monitor Traffic to a Suspicious Domain --
+
 tcpdump -i eth0 dst host suspicious.com
 
 
