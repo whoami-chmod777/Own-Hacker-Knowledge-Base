@@ -10,6 +10,27 @@ In this real training webinar I will show  you how to use the Windows security l
 - How to recognize new malware 
 
 
+Just enable "Audit process tracking"
+
+Event IDs
+ID 592 - A new process has been created 
+ID 593 - A process has exited
+
+Logon Event
+ID 528 - Successful Logon
+ID 540 - Successful Network Logon
+
+
+Putting knowledge to work
+
+- What programs did this user execute? 
+- How long did the program run? 
+- Detect new programs run for the first time 
+- What are all the unique programs executed on this server over a period of time? 
+- How to recognize new malware
+
+
+
 
 
 
