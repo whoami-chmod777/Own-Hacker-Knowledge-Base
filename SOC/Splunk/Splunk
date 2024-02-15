@@ -1,0 +1,99 @@
+
+Make sure you turn searching query time to All Times to see all the events. To quickly identify sourcetype (don’t look through every single log) make sure to turn Event Sampling to 1:100 or 1:1000 or etc.
+
+# All queries must start by referencing the dataset
+index=<dataset>
+index=*
+
+# To search for a source ip address
+index=<dataset> src="x.x.x.x"
+
+# To search for a destination ip address that made a connection with, i.e. locahost (127.0.0.1)
+index=<dataset> src="127.0.0.1" dst="x.x.x.x"
+
+# To look for words “pass” and “password
+index=* pass* AND fail*
+index=* “pass” AND “fail”
+index=* “password” AND “fail”
+index=* “pass” AND “failure”
+index=* “password” AND “failure”
+
+# Searching for processes
+index="botsv1" earliest=0 Image="*\\cmd.exe" | stats values(CommandLine) by host
+
+# Identify malicious activity
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php"
+
+
+# Labs Commands
+
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php"
+
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php" src_ip="23.22.63.114"
+
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php" src_ip="23.22.63.114"
+| spath timestamp
+| search timestamp="2016-08-10T21:46:44.453730Z"
+
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php" src_ip="23.22.63.114"
+| spath timestamp
+| table  timestamp,form_data
+
+
+index="botsv1" sourcetype=fortigate_utm url_domain="imreallynotbatman.com" vulnerability
+index="botsv1" sourcetype=fortigate_utm url_domain="imreallynotbatman.com" vulnerability src_ip="40.80.148.42"
+
+index="botsv1" sourcetype=fortigate_utm url_domain="imreallynotbatman.com" vulnerability
+| sort _time asc
+
+
+index="botsv1" sourcetype="xmlwineventlog" osk.exe
+
+index="botsv1" sourcetype=xmlwineventlog osk.exe Image="C:\\Users\\bob.smith.WAYNECORPINC\\AppData\\Roaming\\{35ACA89F-933F-6A5D-2776-A3589FB99832}\\osk.exe" DestinationPort=6892  
+| stats count by DestinationIp
+
+index="botsv1" sourcetype="xmlwineventlog" EventCode=7 ImageLoaded=*osk.exe
+
+index="botsv1" sourcetype="fortigate_utm" dest_port=6892
+
+index="botsv1" sourcetype="suricata" dest_port=80 alert
+
+index="botsv1" sourcetype="suricata" src_ip=192.168.250.100 dest_port=80 event_type=alert
+
+
+index=* sourcetype=fortigate_utm level=alert 
+| stats count as Total
+
+index=* sourcetype=suricata event_type=alert alert.category!=""
+| stats count as Total
+
+index=* sourcetype=suricata event_type=alert category!=""  category="Information Leak"
+
+index=* sourcetype=suricata event_type=alert category!="" category="A Network Trojan was detected"
+
+index=* sourcetype=suricata event_type=alert "http.status"=200 
+| stats count by signature
+
+index=* sourcetype=fortigate_utm level=alert attack="MS.Windows.CMD.Reverse.Shell"
+
+index=* sourcetype=xmlwineventlog 192.168.250.70
+
+index=* sourcetype=fortigate_utm level=alert attack="Apache.Roller.OGNL.Injection.Remote.Code.Exec
+
+index=* sourcetype=fortigate_utm level=alert attack="Acunetix.Web.Vulnerability.Scanner"
+
+index=* sourcetype=suricata event_type=alert category!="" category="Web Application Attack"
+
+index=* sourcetype=suricata acunetix
+
+
+index=* sourcetype=suricata event_type=alert 
+| stats count by severity
+
+index=* sourcetype=fortigate_utm level=alert
+
+index=* sourcetype=fortigate_utm level=alert
+| stats count by severity
+
+
+
