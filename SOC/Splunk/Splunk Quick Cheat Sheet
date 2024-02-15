@@ -1,0 +1,39 @@
+
+# DNS Lookup
+
+| lookup dnslookup clientip as dest_ip OUTPUT clienthost as dest_host
+
+
+# DNS Independent IP Resolution
+
+| inputlookup tHostInfo
+| search src_ip=$IPADDRESS$ OR src_host=$HOSTNAME$
+
+
+# Event Frequency
+
+| stats count by signature
+    `comment("define varriables")`
+| eval days = 10
+| eval events_perShift = round(count / ((days * 24)/4),3)
+| eval events_perDay = round(count / days,2)
+| eval events_perWeek = round(count / (days / 7),2)
+| sort - count
+| fields - count days
+| table signature events_perShift events_perDay events_perWeek
+| addcoltotals labelfield=signature label=Total
+
+
+# Get the earliest and latest time for an observed field value
+
+| stats earliest(_time) as firstTime latest(_time) as lastTime by dest
+| eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S")
+| eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S")
+
+
+# List All Available Indexes with Events
+
+| eventcount summarize=false index=*
+| search count!=0
+| dedup index
+| fields - server
