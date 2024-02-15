@@ -1,0 +1,14 @@
+
+-- Searching --
+
+# Explore failed SSH login attempts
+
+error OR fail*
+fail* AND password
+fail* AND password "port 22"
+fail* AND password "port 22" admin
+
+
+
+
+
