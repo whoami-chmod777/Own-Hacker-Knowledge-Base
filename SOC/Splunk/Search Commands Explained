@@ -1,0 +1,24 @@
+
+-- Basic Search Commands --
+
+search: The fundamental command to start a search in Splunk
+index: Restrict your search to a specific index.
+
+index=your_index
+
+
+source: Search for events from a specific data source.
+
+source=your_source
+
+
+sourcetype: Search for events of a specific sourcetype.
+
+sourcetype=your_sourcetype
+
+
+-- Time-Related Commands --
+
+earliest and latest: Specify a time range for your search 
+
+earliest=your_start_time latest=your_end_time
