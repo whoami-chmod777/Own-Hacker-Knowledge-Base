@@ -1,21 +1,54 @@
 
--- Filter for host --
+# Filter for host 
 tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52
 
-
--- Filter for host and port number --
+# Filter for host and port number 
 tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80
 
-
--- Full ASCII decode of the packet and the payload --
+# Full ASCII decode of the packet and the payload 
 tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -A
 
-
--- See the raw Hex --
+# See the raw Hex 
 tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -AX
 
--- Specify specific protocols --
+# Specify specific protocols 
 tcpdump -n -r magnitude_1hr.pcap ip6
 
--- Disperse their C2 traffic --
+# Disperse their C2 traffic 
+tcpdump -n -r magnitude_1hr.pcap net 192.168.99.0/24
+
+# SOC Core Skills
+
+man tcpdump
+tcpdump --help
+
+root@DESKTOP-I1T2G01:~# tcpdump -i eth0
+root@DESKTOP-I1T2G01:~# tcpdump -i lo
+adhd@DESKTOP-I1T2G01:~$ nc -l -p 2222
+adhd@DESKTOP-I1T2G01:~$ nc 172.20.7.219 2222
+
+root@DESKTOP-I1T2G01:~# tcpdump -D
+1.eth0 [Up, Running]
+2.any (Pseudo-device that captures on all interfaces) [Up, Running]
+3.lo [Up, Running, Loopback]
+4.nflog (Linux netfilter log (NFLOG) interface)
+5.nfqueue (Linux netfilter queue (NFQUEUE) interface)
+root@DESKTOP-I1T2G01:~#
+
+
+tcpdump -i lo -X
+tcpdump -i lo -A
+
+tcpdump -i ens33 -w
+
+tcpdump -r taildooe_traffic_no_interaction.pcap -X -A host 10.0.2.15 and port 80
+
+tcpdump -n -w magnitude_1hr.pcap host 192.168.99.52
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -A
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -AX
+tcpdump -n -r magnitude_1hr.pcap host 192.168.99.52 and port 80 -AX | less
+
+tcpdump -n -r magnitude_1hr.pcap ip
+tcpdump -n -r magnitude_1hr.pcap ip6
 tcpdump -n -r magnitude_1hr.pcap net 192.168.99.0/24
