@@ -6,11 +6,38 @@ ip.src_host matches "17"
 ip.dst_host matches "17"
 
 
-
 # Special Operators
 
 http contains "password"
 http contains "login"
 http contains "moved"
-
+http contains "New-Object"
 tcp contains "curl"
+
+
+# SOC Core Skills
+
+Watching the traffic
+
+Statistics > Endpoints
+Statistics > Conversations
+Statistics > Protocol Hierarchy
+Statistics > HTTP > Requests
+
+Follow TCP Stream
+
+
+Statistics > Conversations (Packets A->B)
+
+Conversation and select Apply as Filter > Selected > A<->B
+ip.addr==68.183.138.51 && ip.addr==192.168.99.52
+
+Follow > TCP Stream
+This is showing the request (in red) and the response (in blue) between our two systems
+
+
+# Basic Filters
+llmnr
+ipv6 
+http contains "New-Object"
+
