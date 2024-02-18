@@ -17,6 +17,7 @@ tcpdump -n -r magnitude_1hr.pcap ip6
 # Disperse their C2 traffic 
 tcpdump -n -r magnitude_1hr.pcap net 192.168.99.0/24
 
+
 # SOC Core Skills
 
 man tcpdump
