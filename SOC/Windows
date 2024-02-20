@@ -1,0 +1,33 @@
+
+-- Create a Share --
+ 
+net share class=C:\Tools
+
+C:> net view \\127.0.0.1
+C:> net use * \\127.0.0.1\c$ (create some sessions)
+
+C:> net session 
+C:> net use
+
+C:> netstat
+C:> netstat -naob
+C:> netstat -f
+
+  
+-- Windows Processes --
+
+C:> tasklist
+C:> tasklist /svc
+
+C:> tasklist /m
+C:> tasklist /m ntdll.dll
+C:\> tasklist /m /fi "pid eq [proc_id]"
+
+C:> wmic process list full 
+C:> wmic process where processid=[pid] get commandline 
+C:> wmic process get name,parentprocessid,processid 
+C:> wmic process get name,parentprocessid,processid | find "2236"
+C:> wmic process get name,parentprocessid,processid | find "432"
+
+C:\tools>wmic process get name,parentprocessid,processid | find "2236"
+TrustMe.exe                      432              2236
