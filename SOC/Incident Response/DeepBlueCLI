@@ -1,0 +1,39 @@
+
+Set-ExecutionPolicy Bypass -Scope CurrentUser
+
+# Event log manipulation
+.\DeepBlue.ps1 .\evtx\disablestop-eventlog.evtx
+
+# Metasploit native target (security) check
+.\DeepBlue.ps1 .\evtx\metasploit-psexec-native-target-security.evtx
+.\DeepBlue.ps1 .\evtx\metasploit-psexec-native-target-system.evtx
+
+
+./DeepBlue.ps1 ../Log1.evtx
+
+./DeepBlue.ps1 -log security
+./DeepBlue.ps1 -log system
+
+./DeepBlue.ps1 ./evtx/password-spray.evtx
+./DeepBlue.ps1 ./evtx/new-user-security.evtx
+./DeepBlue.ps1 ./evtx/powersploit-system.evtx
+
+
+
+-- SOC Core Skills --
+
+cd \tools\DeepBlueCLI-master
+powershell
+
+Set-ExecutionPolicy unrestricted
+
+.\DeepBlue.ps1 .\evtx\new-user-security.evtx
+.\DeepBlue.ps1 .\evtx\smb-password-guessing-security.evtx
+.\DeepBlue.ps1 .\evtx\password-spray.evtx
+
+.\DeepBlue.ps1 .\evtx\Powershell-Invoke-Obfuscation-encoding-menu.evtx
+Get-WinEvent -FilterHashtable @{Path="C:\tools\DeepBlueCLI-master\DeepBlueCLI-master\Webcast\Security.evtx";id=4672} | Where-Object -Property Message -Match bertha.schulz
+
+# Event Viewer
+Applications and Service Logs -> Microsoft -> Windows -> Sysmon -> Operational
+
