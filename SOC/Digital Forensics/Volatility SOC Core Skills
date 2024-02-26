@@ -1,0 +1,48 @@
+
+Memory Analysis: Network
+Memory Analysis: Processes
+Memory Analysis: DLL and Command Line
+
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.netscan
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.pslist
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.pstree
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem dlllist --pid 5452
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.malfind.Malfind
+
+
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.netscan
+
+0xa98dc9c341f0  TCPv4   192.168.192.145 1605    192.168.192.146 445     ESTABLISHED     4       System  2020-11-30 17:44:38.000000
+0xa98dc9c50490  TCPv4   192.168.192.145 1716    172.104.59.60   4444    CLOSED  5452    TrustMe.exe     2020-11-30 20:46:30.000000
+0xa98dc9cbd5c0  TCPv4   0.0.0.0 47001   0.0.0.0 0       LISTENING       4       System  2020-11-30 17:42:35.000000
+
+
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.pslist
+
+788     4160    chrome.exe      0xa98dca52e080  5       -       1       False   2020-11-30 17:42:42.000000      N/A     Disabled
+4264    4160    chrome.exe      0xa98dc9d8b080  2       -       1       False   2020-11-30 17:42:43.000000      N/A     Disabled
+3608    4160    chrome.exe      0xa98dca583080  4       -       1       False   2020-11-30 17:42:43.000000      N/A     Disabled
+4668    4160    chrome.exe      0xa98dccc26800  8       -       1       False   2020-11-30 17:43:02.000000      N/A     Disabled
+5452    3616    TrustMe.exe     0xa98dc9307800  1       -       1       True    2020-11-30 17:43:17.000000      N/A     Disabled
+5528    5452    cmd.exe 0xa98dca6bd080  1       -       1       True    2020-11-30 17:43:27.000000      N/A     Disabled
+5536    5528    conhost.exe     0xa98dca6ba080  3       -       1       False   2020-11-30 17:43:27.000000      N/A     Disabled
+5984    5528    net.exe 0xa98dcc17a080  0       -       1       True    2020-11-30 17:44:38.000000      2020-11-30 17:44:38.000000      Disabled
+5848    3616    cmd.exe 0xa98dcaa2e080  1       -       1       False   2020-11-30 17:54:17.000000      N/A     Disabled
+
+
+python3 vol.py -f /mnt/c/tools/volatility_2.6_win64_standalone/memdump.vmem windows.malfind.Malfind
+
+Volatility 3 Framework 1.0.0
+Progress:  100.00               PDB scanning finished
+PID     Process Start VPN       End VPN Tag     Protection      CommitCharge    PrivateMemory   File output     Hexdump Disasm
+
+5452    TrustMe.exe     0x450000        0x480fff        VadS    PAGE_EXECUTE_READWRITE  49      1       Disabled
+4d 5a e8 00 00 00 00 5b MZ.....[
+52 45 55 89 e5 81 c3 93 REU.....
+45 00 00 ff d3 81 c3 66 E......f
+62 02 00 89 3b 53 6a 04 b...;Sj.
+50 ff d0 00 00 00 00 00 P.......
+00 00 00 00 00 00 00 00 ........
+00 00 00 00 00 00 00 00 ........
+00 00 00 00 f8 00 00 00 ........        4d 5a e8 00 00 00 00 5b 52 45 55 89 e5 81 c3 93 45 00 00 ff d3 81 c3 66 62 02 00 89 3b 53 6a 04 50 ff d0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 f8 00 00 00
+5452    TrustMe.exe     0x510000        0x56efff        VadS    PAGE_EXECUTE_READWRITE  95      1       Disabled
