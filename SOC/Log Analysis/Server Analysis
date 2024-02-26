@@ -1,0 +1,9 @@
+
+WebLogs Example1: access.log 
+/var/log/apache2 $ tail -f access.log
+
+WebLogs Example 2: error.log
+/var/log/apache2 $ tail -f error.log
+
+WebLogs Example 2: auth.log
+/var/log/apache2 $ tail -f auth.log
